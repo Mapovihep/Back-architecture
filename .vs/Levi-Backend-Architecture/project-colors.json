@@ -1,0 +1,56 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "a58174ab-1f94-4e31-aed1-1ae334e6d4d2": {
+      "ProjectGuid": "a58174ab-1f94-4e31-aed1-1ae334e6d4d2",
+      "DisplayName": "Data",
+      "ColorIndex": 0
+    },
+    "59e3e213-fc3a-4af5-82e4-02a6d6719870": {
+      "ProjectGuid": "59e3e213-fc3a-4af5-82e4-02a6d6719870",
+      "DisplayName": "Levi-Inventarization-Backend",
+      "ColorIndex": 1
+    },
+    "ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4": {
+      "ProjectGuid": "ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4",
+      "DisplayName": "Entities",
+      "ColorIndex": 2
+    },
+    "1c54a5c1-43f9-4bfa-9652-2a0aef4060e5": {
+      "ProjectGuid": "1c54a5c1-43f9-4bfa-9652-2a0aef4060e5",
+      "DisplayName": "Data",
+      "ColorIndex": 3
+    },
+    "b0a59960-4b99-493e-b41e-73b7db06b3f7": {
+      "ProjectGuid": "b0a59960-4b99-493e-b41e-73b7db06b3f7",
+      "DisplayName": "Domain",
+      "ColorIndex": 4
+    },
+    "1e98c620-cf64-4016-bf6b-c63a728498f2": {
+      "ProjectGuid": "1e98c620-cf64-4016-bf6b-c63a728498f2",
+      "DisplayName": "Services",
+      "ColorIndex": 5
+    },
+    "a2ff181d-3cdb-4adb-8542-1ae59dddb0f2": {
+      "ProjectGuid": "a2ff181d-3cdb-4adb-8542-1ae59dddb0f2",
+      "DisplayName": "Mappers",
+      "ColorIndex": 6
+    },
+    "e2c3cf1b-2b7f-4889-bce6-ff51a61639dd": {
+      "ProjectGuid": "e2c3cf1b-2b7f-4889-bce6-ff51a61639dd",
+      "DisplayName": "API",
+      "ColorIndex": 7
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "b3135f1f-ef0c-477b-a6ca-8f53c58b294f": {
+      "ProjectGuid": "b3135f1f-ef0c-477b-a6ca-8f53c58b294f",
+      "DisplayName": "ConfigurationContainer",
+      "ColorIndex": 8
+    }
+  },
+  "NextColorIndex": 9
+}

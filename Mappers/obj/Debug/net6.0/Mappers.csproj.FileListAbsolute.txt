@@ -1,0 +1,17 @@
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Levi-Backend-Architecture\Mappers\bin\Debug\net6.0\Mappers.deps.json
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Levi-Backend-Architecture\Mappers\bin\Debug\net6.0\Mappers.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Levi-Backend-Architecture\Mappers\bin\Debug\net6.0\ref\Mappers.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Levi-Backend-Architecture\Mappers\bin\Debug\net6.0\Mappers.pdb
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Levi-Backend-Architecture\Mappers\bin\Debug\net6.0\Domain.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Levi-Backend-Architecture\Mappers\bin\Debug\net6.0\Entities.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Levi-Backend-Architecture\Mappers\bin\Debug\net6.0\Domain.pdb
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Levi-Backend-Architecture\Mappers\bin\Debug\net6.0\Entities.pdb
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Levi-Backend-Architecture\Mappers\obj\Debug\net6.0\Mappers.csproj.AssemblyReference.cache
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Levi-Backend-Architecture\Mappers\obj\Debug\net6.0\Mappers.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Levi-Backend-Architecture\Mappers\obj\Debug\net6.0\Mappers.AssemblyInfoInputs.cache
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Levi-Backend-Architecture\Mappers\obj\Debug\net6.0\Mappers.AssemblyInfo.cs
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Levi-Backend-Architecture\Mappers\obj\Debug\net6.0\Mappers.csproj.CoreCompileInputs.cache
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Levi-Backend-Architecture\Mappers\obj\Debug\net6.0\Mappers.csproj.CopyComplete
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Levi-Backend-Architecture\Mappers\obj\Debug\net6.0\Mappers.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Levi-Backend-Architecture\Mappers\obj\Debug\net6.0\ref\Mappers.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Levi-Backend-Architecture\Mappers\obj\Debug\net6.0\Mappers.pdb
