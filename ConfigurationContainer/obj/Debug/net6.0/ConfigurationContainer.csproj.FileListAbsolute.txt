@@ -10,3 +10,15 @@ C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Levi-Backen
 C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Levi-Backend-Architecture\ConfigurationContainer\obj\Debug\net6.0\ConfigurationContainer.dll
 C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Levi-Backend-Architecture\ConfigurationContainer\obj\Debug\net6.0\ref\ConfigurationContainer.dll
 C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Levi-Backend-Architecture\ConfigurationContainer\obj\Debug\net6.0\ConfigurationContainer.pdb
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\ConfigurationContainer\bin\Debug\net6.0\ConfigurationContainer.deps.json
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\ConfigurationContainer\bin\Debug\net6.0\ConfigurationContainer.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\ConfigurationContainer\bin\Debug\net6.0\ref\ConfigurationContainer.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\ConfigurationContainer\bin\Debug\net6.0\ConfigurationContainer.pdb
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\ConfigurationContainer\obj\Debug\net6.0\ConfigurationContainer.csproj.AssemblyReference.cache
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\ConfigurationContainer\obj\Debug\net6.0\ConfigurationContainer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\ConfigurationContainer\obj\Debug\net6.0\ConfigurationContainer.AssemblyInfoInputs.cache
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\ConfigurationContainer\obj\Debug\net6.0\ConfigurationContainer.AssemblyInfo.cs
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\ConfigurationContainer\obj\Debug\net6.0\ConfigurationContainer.csproj.CoreCompileInputs.cache
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\ConfigurationContainer\obj\Debug\net6.0\ConfigurationContainer.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\ConfigurationContainer\obj\Debug\net6.0\ref\ConfigurationContainer.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\ConfigurationContainer\obj\Debug\net6.0\ConfigurationContainer.pdb

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "y1z+F3ZEEnBAFYfdO6nsgL/vk0y6wQSYGu+vCrB12fNUmN1sE7k4ggkOxBnti1Z9cWvveYVPd4mhOdEBeESoLQ==",
+  "dgSpecHash": "vjEcB9jRaI1SyBr9t7Mw9K/54kMIWOytbzRWYsQAPvkMNnsLaR5ZU63JumkyW1xCld+uSf0GZ+qBpUqFaBKInA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Levi-Backend-Architecture\\ConfigurationContainer\\ConfigurationContainer.csproj",
+  "projectFilePath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Back-architecture\\ConfigurationContainer\\ConfigurationContainer.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

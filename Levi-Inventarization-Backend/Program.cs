@@ -1,8 +1,11 @@
-using ConfigurationContainer;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using ConfigurationContainer;
+using Data;
+
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -11,6 +14,10 @@ builder.Services.AddControllersWithViews();
 
 IConfiguration configuration = builder.Configuration;
 
+builder.Services.AddDbContext<ApplicationContext>(opts => 
+    opts.UseSqlServer(configuration["ConnectionStrings:DefaultConnection"],
+     b => b.MigrationsAssembly("Levi-Inventarization-Backend")
+     ));//---------------------//
 
 
 builder.Services.AddAuthorization(auth =>
@@ -48,11 +55,14 @@ Console.WriteLine(configuration.GetValue<string>("ConnectionStrings:DefaultConne
 
 var app = builder.Build();
 
+/*app.Services.CreateScope().ServiceProvider.GetRequiredService<ApplicationContext>();*///----------------------//
+/*app.Services.GetService<ApplicationContext>();*/
 app.UseRouting();
 app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
+
 app.MapFallbackToFile("index.html");
 app.UseCors(x => x
                 .WithOrigins("http://localhost:3000")

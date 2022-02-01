@@ -1,4 +1,4 @@
-﻿
+﻿/*
 using Domain;
 using Services.Abstract;
 
@@ -43,3 +43,4 @@ namespace Services
 
     }
 }
+*/

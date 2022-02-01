@@ -104,9 +104,6 @@ namespace Levi_Inventarization_Backend.Migrations
                     b.Property<Guid>("RoomEntityId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("SetupEntityId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
@@ -121,8 +118,6 @@ namespace Levi_Inventarization_Backend.Migrations
                     b.HasIndex("DepartmentEntityId");
 
                     b.HasIndex("RoomEntityId");
-
-                    b.HasIndex("SetupEntityId");
 
                     b.HasIndex("UserEntityId");
 
@@ -244,7 +239,7 @@ namespace Levi_Inventarization_Backend.Migrations
             modelBuilder.Entity("Entities.DefectEntity", b =>
                 {
                     b.HasOne("Entities.InventoryEntity", "InventoryEntity")
-                        .WithMany("DefectsListEntity")
+                        .WithMany("DefectsEntity")
                         .HasForeignKey("InventoryEntityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -264,12 +259,6 @@ namespace Levi_Inventarization_Backend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Entities.InventorySetupEntity", "SetupEntity")
-                        .WithMany()
-                        .HasForeignKey("SetupEntityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Entities.UserEntity", "UserEntity")
                         .WithMany()
                         .HasForeignKey("UserEntityId")
@@ -277,8 +266,6 @@ namespace Levi_Inventarization_Backend.Migrations
                         .IsRequired();
 
                     b.Navigation("RoomEntity");
-
-                    b.Navigation("SetupEntity");
 
                     b.Navigation("UserEntity");
                 });
@@ -318,7 +305,7 @@ namespace Levi_Inventarization_Backend.Migrations
 
             modelBuilder.Entity("Entities.InventoryEntity", b =>
                 {
-                    b.Navigation("DefectsListEntity");
+                    b.Navigation("DefectsEntity");
                 });
 #pragma warning restore 612, 618
         }

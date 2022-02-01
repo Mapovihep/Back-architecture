@@ -1,20 +1,20 @@
 ﻿using Data.UnitOfWork.Abstract;
 using Services.Abstract;
-using Domain;
+using DomainDTO;
+using Entities;
 
 namespace Services
 {
-    public class RoomService : ICRUDDefaultService<Room>
+    public class RoomService : ICRUDDefaultService<RoomDTO>
     {
-        private readonly IConstructorRepository<Room> _roomRepository;
-        public RoomService(IConstructorRepository<Room> roomRepository)
+        private readonly IConstructorRepository<RoomEntity> _roomRepository;
+        public RoomService(IConstructorRepository<RoomEntity> roomRepository)
         {
             _roomRepository = roomRepository;
         }
-
-        public Task<Room> Add(Room room)
+        public RoomDTO Add(RoomDTO item)
         {
-            return _roomRepository.Add(room);
+            throw new NotImplementedException();
         }
 
         public void Delete(Guid id)
@@ -22,17 +22,17 @@ namespace Services
             throw new NotImplementedException();
         }
 
-        public Task<Room> Get(Guid id)
+        public Task<RoomDTO> Get(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<Room>> GetAll()
+        public Task<List<RoomDTO>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Task<Room> Update(Room item)
+        public Task<RoomDTO> Update(RoomDTO item)
         {
             throw new NotImplementedException();
         }

@@ -9,9 +9,8 @@ namespace Entities
         public Guid UpdateBy { get; set; }
         public bool Status { get; set; }
 
-        public InventorySetupEntity SetupEntity { get; set; }
         public UserEntity UserEntity { get; set; }
         public RoomEntity RoomEntity { get; set; }
-        public List<DefectEntity> DefectsListEntity { get; set; } = new List<DefectEntity>();
+        public List<DefectEntity> DefectsEntity { get; set; } = new List<DefectEntity>();
     }
 }

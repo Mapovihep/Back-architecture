@@ -595,21 +595,10 @@
           }
         }
       },
-      "ConfigurationContainer/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "compile": {
-          "bin/placeholder/ConfigurationContainer.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/ConfigurationContainer.dll": {}
-        }
-      },
       "Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "ConfigurationContainer": "1.0.0",
           "Entities": "1.0.0",
           "Microsoft.EntityFrameworkCore": "6.0.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.1"
@@ -621,24 +610,42 @@
           "bin/placeholder/Data.dll": {}
         }
       },
-      "Domain/1.0.0": {
+      "DomainDTO/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "compile": {
-          "bin/placeholder/Domain.dll": {}
+          "bin/placeholder/DomainDTO.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Domain.dll": {}
+          "bin/placeholder/DomainDTO.dll": {}
         }
       },
       "Entities/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "6.0.1",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.1"
+        },
         "compile": {
           "bin/placeholder/Entities.dll": {}
         },
         "runtime": {
           "bin/placeholder/Entities.dll": {}
+        }
+      },
+      "Mappers/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "DomainDTO": "1.0.0",
+          "Entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Mappers.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Mappers.dll": {}
         }
       }
     }
@@ -1805,31 +1812,32 @@
         "version.txt"
       ]
     },
-    "ConfigurationContainer/1.0.0": {
-      "type": "project",
-      "path": "../ConfigurationContainer/ConfigurationContainer.csproj",
-      "msbuildProject": "../ConfigurationContainer/ConfigurationContainer.csproj"
-    },
     "Data/1.0.0": {
       "type": "project",
       "path": "../Data/Data.csproj",
       "msbuildProject": "../Data/Data.csproj"
     },
-    "Domain/1.0.0": {
+    "DomainDTO/1.0.0": {
       "type": "project",
-      "path": "../Domain/Domain.csproj",
-      "msbuildProject": "../Domain/Domain.csproj"
+      "path": "../Domain/DomainDTO.csproj",
+      "msbuildProject": "../Domain/DomainDTO.csproj"
     },
     "Entities/1.0.0": {
       "type": "project",
       "path": "../Entities/Entities.csproj",
       "msbuildProject": "../Entities/Entities.csproj"
+    },
+    "Mappers/1.0.0": {
+      "type": "project",
+      "path": "../Mappers/Mappers.csproj",
+      "msbuildProject": "../Mappers/Mappers.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Data >= 1.0.0",
-      "Domain >= 1.0.0"
+      "DomainDTO >= 1.0.0",
+      "Mappers >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1838,11 +1846,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Levi-Backend-Architecture\\Services\\Services.csproj",
+      "projectUniqueName": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Back-architecture\\Services\\Services.csproj",
       "projectName": "Services",
-      "projectPath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Levi-Backend-Architecture\\Services\\Services.csproj",
+      "projectPath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Back-architecture\\Services\\Services.csproj",
       "packagesPath": "C:\\Users\\Leviossa IT\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Levi-Backend-Architecture\\Services\\obj\\",
+      "outputPath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Back-architecture\\Services\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Leviossa IT\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1859,11 +1867,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Levi-Backend-Architecture\\Data\\Data.csproj": {
-              "projectPath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Levi-Backend-Architecture\\Data\\Data.csproj"
+            "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Back-architecture\\Data\\Data.csproj": {
+              "projectPath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Back-architecture\\Data\\Data.csproj"
             },
-            "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Levi-Backend-Architecture\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Levi-Backend-Architecture\\Domain\\Domain.csproj"
+            "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Back-architecture\\Domain\\DomainDTO.csproj": {
+              "projectPath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Back-architecture\\Domain\\DomainDTO.csproj"
+            },
+            "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Back-architecture\\Mappers\\Mappers.csproj": {
+              "projectPath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Back-architecture\\Mappers\\Mappers.csproj"
             }
           }
         }

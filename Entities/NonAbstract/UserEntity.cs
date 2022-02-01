@@ -13,6 +13,5 @@ namespace Entities
 
         public List<InventorySetupEntity> InventorySetupEntities = new List<InventorySetupEntity>();
         public List<InventoryEntity> InventoryEntities = new List<InventoryEntity>();
-
     }
 }

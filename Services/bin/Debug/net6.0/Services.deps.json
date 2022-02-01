@@ -9,7 +9,8 @@
       "Services/1.0.0": {
         "dependencies": {
           "Data": "1.0.0",
-          "Domain": "1.0.0"
+          "DomainDTO": "1.0.0",
+          "Mappers": "1.0.0"
         },
         "runtime": {
           "Services.dll": {}
@@ -457,14 +458,8 @@
           }
         }
       },
-      "ConfigurationContainer/1.0.0": {
-        "runtime": {
-          "ConfigurationContainer.dll": {}
-        }
-      },
       "Data/1.0.0": {
         "dependencies": {
-          "ConfigurationContainer": "1.0.0",
           "Entities": "1.0.0",
           "Microsoft.EntityFrameworkCore": "6.0.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.1"
@@ -473,14 +468,27 @@
           "Data.dll": {}
         }
       },
-      "Domain/1.0.0": {
+      "DomainDTO/1.0.0": {
         "runtime": {
-          "Domain.dll": {}
+          "DomainDTO.dll": {}
         }
       },
       "Entities/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "6.0.1",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.1"
+        },
         "runtime": {
           "Entities.dll": {}
+        }
+      },
+      "Mappers/1.0.0": {
+        "dependencies": {
+          "DomainDTO": "1.0.0",
+          "Entities": "1.0.0"
+        },
+        "runtime": {
+          "Mappers.dll": {}
         }
       }
     }
@@ -771,22 +779,22 @@
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
     },
-    "ConfigurationContainer/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
     "Data/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Domain/1.0.0": {
+    "DomainDTO/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
     "Entities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Mappers/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -5,7 +5,7 @@ namespace Services.Abstract
     {
         Task<List<T>> GetAll();
         Task<T> Get(Guid id);
-        Task<T> Add(T item);
+        T Add(T item);
         Task<T> Update(T item);
         void Delete(Guid id);
     }

@@ -1,11 +1,11 @@
-﻿using Domain;
+﻿using DomainDTO;
 using Entities;
 
 namespace Mappers
 {
     public static class RoomMapper
     {
-        public static RoomEntity ToEntity(this Room room)
+        public static RoomEntity ToEntity(this RoomDTO room)
         {
 
             return new RoomEntity

@@ -13,5 +13,6 @@ namespace Entities
 
         public UserEntity UserEntity { get; set; }
         public RoomEntity RoomEntity { get; set; }
+        List<InventoryEntity> InventoriesEntity { get; set; }
     }
 }
