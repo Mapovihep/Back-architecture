@@ -7,7 +7,7 @@ namespace Entities
         public Guid UpdateBy { get; set; }
 
 
-        public List<RoomEntity> RoomsEntity { get; set; } = new List<RoomEntity>();
-        public List<InventoryEntity> InventoriesEntity { get; set; } = new List<InventoryEntity>();
+        public List<RoomEntity>? RoomsEntityList { get; set; } = new List<RoomEntity>();
+        public List<InventoryEntity>? InventoryEntityList { get; set; } = new List<InventoryEntity>();
     }
 }

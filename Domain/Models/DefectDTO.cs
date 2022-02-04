@@ -1,5 +1,7 @@
 ﻿
-namespace DomainDTO
+using DomainDTO.Abstract;
+
+namespace DomainDTO.Models
 {
     public class DefectDTO : BaseDTO
     {
@@ -7,6 +9,6 @@ namespace DomainDTO
         public string Image { get; set; }
         public Guid UpdateBy { get; set; }
 
-        public InventoryDTO Inventory { get; set; }
+        public Guid? InventoryDTOId { get; set; }
     }
 }

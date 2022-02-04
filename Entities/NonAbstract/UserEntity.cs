@@ -11,7 +11,7 @@ namespace Entities
         public Guid UpdateBy { get; set; }
         public bool IsAdmin { get; set; }
 
-        public List<InventorySetupEntity> InventorySetupEntities = new List<InventorySetupEntity>();
-        public List<InventoryEntity> InventoryEntities = new List<InventoryEntity>();
+        public List<InventorySetupEntity>? InventorySetupEntityList = new List<InventorySetupEntity>();
+        public List<InventoryEntity>? InventoryEntityList = new List<InventoryEntity>();
     }
 }

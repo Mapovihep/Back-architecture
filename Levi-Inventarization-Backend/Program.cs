@@ -6,6 +6,13 @@ using System.Text;
 using ConfigurationContainer;
 using Data;
 
+using Data.UnitOfWork.Abstract;
+using Data.Repository;
+using Services.RoomService;
+using Services.Abstract;
+using Services.DefectService;
+using Services.InventoryService;
+using Services.UserService;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -32,6 +39,28 @@ builder.Services.AddSingleton(new GetJwtSettings(configuration["Jwt:Key"],
     configuration["Jwt:Audience"]));
 
 builder.Services.AddSingleton(new GetConnectionString(configuration["ConnectionStrings:DefaultConnection"]));
+// добавить все сервисы в сервис коллекцию
+builder.Services.AddTransient<ApplicationContext, ApplicationContext>();
+//defectWorkers
+builder.Services.AddTransient<IDefectService, DefectService>();
+builder.Services.AddTransient<IDefectRepository, DefectRepository>();
+//RoomsWorkers
+builder.Services.AddTransient<IRoomService, RoomService>();
+builder.Services.AddTransient<IRoomRepository, RoomRepository>();
+
+//InventoryWorkers 
+builder.Services.AddTransient<IInventoryService, InventoryService>();
+builder.Services.AddTransient<IInventoryRepository, InventoryRepository>();
+
+//UsersWorkers
+builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+
+//Other workers
+builder.Services.AddTransient<IDefectService, DefectService>();
+builder.Services.AddTransient<IDefectService, DefectService>();
+builder.Services.AddTransient<IDefectService, DefectService>();
+builder.Services.AddTransient<IDefectService, DefectService>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -53,9 +82,10 @@ Console.WriteLine(configuration.GetValue<string>("Jwt:Issuer"));
 Console.WriteLine(configuration.GetValue<string>("Jwt:Key"));
 Console.WriteLine(configuration.GetValue<string>("ConnectionStrings:DefaultConnection"));
 
+
 var app = builder.Build();
 
-/*app.Services.CreateScope().ServiceProvider.GetRequiredService<ApplicationContext>();*///----------------------//
+/*app.Services.CreateScope().ServiceProvider.GetRequiredService<ApplicationContext>();*/
 /*app.Services.GetService<ApplicationContext>();*/
 app.UseRouting();
 app.UseAuthorization();

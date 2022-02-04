@@ -4,7 +4,8 @@ namespace Entities
 {
     public class RoomEntity : BaseEntity
     {
-        public List<InventorySetupEntity> InventorySetupEntities = new List<InventorySetupEntity>();
-        public List<InventoryEntity> InventoryEntities = new List<InventoryEntity>();
+        public Guid? DepartmentEntityId { get; set; }
+        /*public List<InventorySetupEntity>? InventorySetupEntityList;
+        public List<InventoryEntity>? InventoryEntityList;*/
     }
 }

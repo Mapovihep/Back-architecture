@@ -595,6 +595,16 @@
           }
         }
       },
+      "ConfigurationContainer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/ConfigurationContainer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ConfigurationContainer.dll": {}
+        }
+      },
       "Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1812,6 +1822,11 @@
         "version.txt"
       ]
     },
+    "ConfigurationContainer/1.0.0": {
+      "type": "project",
+      "path": "../ConfigurationContainer/ConfigurationContainer.csproj",
+      "msbuildProject": "../ConfigurationContainer/ConfigurationContainer.csproj"
+    },
     "Data/1.0.0": {
       "type": "project",
       "path": "../Data/Data.csproj",
@@ -1835,6 +1850,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "ConfigurationContainer >= 1.0.0",
       "Data >= 1.0.0",
       "DomainDTO >= 1.0.0",
       "Mappers >= 1.0.0"
@@ -1867,6 +1883,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Back-architecture\\ConfigurationContainer\\ConfigurationContainer.csproj": {
+              "projectPath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Back-architecture\\ConfigurationContainer\\ConfigurationContainer.csproj"
+            },
             "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Back-architecture\\Data\\Data.csproj": {
               "projectPath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Back-architecture\\Data\\Data.csproj"
             },

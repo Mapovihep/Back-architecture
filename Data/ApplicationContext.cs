@@ -23,7 +23,7 @@ namespace Data
         }*/
         public ApplicationContext(DbContextOptions<ApplicationContext> opt) : base(opt)
         {
-
+            
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -37,13 +37,52 @@ namespace Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //    base.OnModelCreating(modelBuilder);
+            Guid guid = Guid.NewGuid();
+            Guid guid2 = Guid.NewGuid();
             //    modelBuilder.Entity<Post>(); // для добавления в БД данных колонки
-            //    modelBuilder.Entity<Post>().HasData(new Post[]
-            //    {
-            //        new Post { Title = "Jenny", Description = "Jenny1", AuthorId = 33},
-            //        new Post { Title = "Kenny", Description = "Jenny2", AuthorId = 44},
-            //        new Post { Title = "Tony", Description = "Jenny3", AuthorId = 55}
-            //    });
+            modelBuilder.Entity<DefectEntity>().HasData(new DefectEntity[]
+                {
+                    new DefectEntity {
+                                Id = new Guid("11111111-9833-45ca-9017-1ded701ef149"),
+                                Name = "name1",
+                                CreatedAt = DateTime.Parse("2022-01-24T14:54:39.230Z"),
+
+                                UpdateBy = new Guid("11111111-9833-45ca-9017-1ded701ef149"),
+                                Image = "image1",
+                                Description = "description1",
+                                InventoryEntity = null
+                            },
+                    new DefectEntity {
+                                Id = new Guid("22222222-9833-45ca-9017-1ded701ef149"),
+                                Name = "name2",
+                                CreatedAt = DateTime.Parse("2022-01-24T14:54:39.230Z"),
+
+                                UpdateBy = new Guid("22222222-9833-45ca-9017-1ded701ef149"),
+                                Image = "image2",
+                                Description = "description2",
+                                InventoryEntity = null
+                            },
+                });
+            modelBuilder.Entity<RoomEntity>().HasData(new RoomEntity[]
+            {
+                new RoomEntity {
+                    Id = guid2,
+                    Name =  "Name2",
+                    CreatedAt = DateTime.Parse("2021-01-24T14:54:39.230Z"),
+                    DepartmentEntityId = guid,
+                }
+            }); ;
+            modelBuilder.Entity<DepartmentEntity>().HasData(new DepartmentEntity[]
+            {
+                new DepartmentEntity {
+                    Id = guid,
+                    CreatedAt = DateTime.Parse("2021-01-24T14:54:39.230Z"),
+                    Name = "DepName",
+                    UpdateBy = Guid.NewGuid(),
+                    RoomsEntityList = new List<RoomEntity>()
+                    
+                }
+            });
             //    modelBuilder.Entity<Criminal>().Ignore(c => c.ammount); //для игнорирования свойства
             //    modelBuilder.Entity<User>().Property(b => b.Name).IsRequired();
             //    modelBuilder.Entity<Comment>().HasData(

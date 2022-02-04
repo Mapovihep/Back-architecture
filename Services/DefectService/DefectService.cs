@@ -1,27 +1,30 @@
 ﻿using Data.UnitOfWork.Abstract;
-using DomainDTO;
+using DomainDTO.Models;
 using Entities;
 using Mappers;
+using Microsoft.Extensions.DependencyInjection;
 using Services.Abstract;
 
 
 namespace Services.DefectService
 {
-    public class DefectService : ICRUDDefaultService<DefectDTO>
+    public class DefectService : IDefectService
     {
-        private readonly IConstructorRepository<DefectEntity> _roomRepository;
-        public DefectService(IConstructorRepository<DefectEntity> roomRepository)
+        
+        private readonly IDefectRepository _defectRepository;
+        public DefectService(IServiceProvider _serviceProvider)
         {
-            _roomRepository = roomRepository;
+            _defectRepository = _serviceProvider.GetService<IDefectRepository>();
         }
-        public DefectDTO Add(DefectDTO item)
+        public async Task<DefectDTO> Add(DefectDTO item)
         {
             try
             {
                 DefectEntity newDefect = DefectMapper.ToEntity(item);
-                if (_roomRepository.Add(newDefect) != null)
+                DefectEntity d = await _defectRepository.Add(newDefect);
+                if (d != null)
                 {
-                    DefectDTO defectDTO = DefectMapper.ToDTO(newDefect);
+                    DefectDTO defectDTO = DefectMapper.ToDTO(d);
                     return defectDTO;
                 };
             }
@@ -32,9 +35,21 @@ namespace Services.DefectService
             return null;
         }
 
-        public void Delete(Guid id)
+        public async Task<string> Delete(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string answer = await _defectRepository.Delete(id);
+                if (await _defectRepository.Get(id) == null)
+                {
+                    return answer;
+                }
+            }
+            catch(Exception ex)
+            {
+                return ex.Message;
+            }
+            return "No success";
         }
 
         public Task<DefectDTO> Get(Guid id)
@@ -42,9 +57,23 @@ namespace Services.DefectService
             throw new NotImplementedException();
         }
 
-        public Task<List<DefectDTO>> GetAll()
+        public async Task<List<DefectDTO>> GetAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<DefectDTO> AllDTO = new List<DefectDTO>();
+                List<DefectEntity>  AllEntities = await _defectRepository.GetAll();
+                if (AllEntities.Count != 0)
+                {
+                    AllEntities.ForEach(x => AllDTO.Add(DefectMapper.ToDTO(x)));
+                    return AllDTO;
+                };
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine(ex);
+            }
+            return null;
         }
 
         public Task<DefectDTO> Update(DefectDTO item)

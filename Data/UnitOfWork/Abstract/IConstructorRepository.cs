@@ -8,6 +8,7 @@ namespace Data.UnitOfWork.Abstract
         Task<IEnumerable<T>> Find(Func<T, bool> predicate);//что делает эта строчка, пока не имею понятия
         Task<T> Add(T item);
         Task<T> Update(T item);
-        void Delete(Guid id);
+        Task<string> Delete(Guid id);
+        
     }
 }

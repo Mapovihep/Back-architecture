@@ -46,3 +46,5 @@ C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-archit
 C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\API\bin\Debug\net6.0\Mappers.dll
 C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\API\bin\Debug\net6.0\DomainDTO.pdb
 C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\API\bin\Debug\net6.0\Mappers.pdb
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\API\bin\Debug\net6.0\ConfigurationContainer.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\API\bin\Debug\net6.0\ConfigurationContainer.pdb

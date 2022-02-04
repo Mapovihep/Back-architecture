@@ -11,8 +11,10 @@ namespace Entities
         public Guid UpdatedBy { get; set; }
         public bool Status { get; set; }
 
-        public UserEntity UserEntity { get; set; }
-        public RoomEntity RoomEntity { get; set; }
-        List<InventoryEntity> InventoriesEntity { get; set; }
+        public UserEntity? UserEntity { get; set; }
+        public Guid? UserEntityId { get; set; }
+        public RoomEntity? RoomEntity { get; set; }
+        public Guid? RoomEntityId { get; set; }
+        List<InventoryEntity>? InventoriesEntity { get; set; } = new List<InventoryEntity>();
     }
 }

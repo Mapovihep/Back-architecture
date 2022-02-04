@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "Services/1.0.0": {
         "dependencies": {
+          "ConfigurationContainer": "1.0.0",
           "Data": "1.0.0",
           "DomainDTO": "1.0.0",
           "Mappers": "1.0.0"
@@ -458,6 +459,11 @@
           }
         }
       },
+      "ConfigurationContainer/1.0.0": {
+        "runtime": {
+          "ConfigurationContainer.dll": {}
+        }
+      },
       "Data/1.0.0": {
         "dependencies": {
           "Entities": "1.0.0",
@@ -778,6 +784,11 @@
       "sha512": "sha512-CeWTdRNfRaSh0pm2gDTJFwVaXfTq6Xwv/sA887iwPTneW7oMtMlpvDIO+U60+3GWTB7Aom6oQwv5VZVUhQRdPQ==",
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
+    },
+    "ConfigurationContainer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Data/1.0.0": {
       "type": "project",

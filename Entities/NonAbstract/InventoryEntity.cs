@@ -9,8 +9,11 @@ namespace Entities
         public Guid UpdateBy { get; set; }
         public bool Status { get; set; }
 
-        public UserEntity UserEntity { get; set; }
-        public RoomEntity RoomEntity { get; set; }
-        public List<DefectEntity> DefectsEntity { get; set; } = new List<DefectEntity>();
+        public UserEntity? UserEntity { get; set; }
+        public Guid? UserEntityId { get; set; }
+        public RoomEntity? RoomEntity { get; set; }
+        public Guid? RoomEntityId { get; set; }
+
+        public List<DefectEntity>? DefectsEntityList { get; set; } = new List<DefectEntity>();
     }
 }

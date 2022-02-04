@@ -1,17 +1,20 @@
-﻿using DomainDTO;
-using Services.Abstract;
+﻿using Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
+using DomainDTO.Models;
+using Microsoft.AspNetCore.Authorization;
+
 namespace API.Controllers
 {
     [ApiController]
+    [Authorize]
     public class DefectController : ControllerBase
     {
-        private readonly ICRUDDefaultService<DefectDTO> _defectService;
-
+        private readonly IDefectService _defectService;
         
-        public DefectController(ICRUDDefaultService<DefectDTO> defectService)
+        public DefectController(IServiceProvider _serviceProvider)
         {
-            _defectService = defectService;
+            _defectService = _serviceProvider.GetService<IDefectService>();
         }
 
         [HttpPost]
@@ -20,9 +23,48 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(_defectService.Add(defectDTO));
+                return Ok(await _defectService.Add(defectDTO));
             }
             catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPost]
+        [Route("update/defect")]
+        public async Task<IActionResult> UpdateDefect([FromBody] DefectDTO defectDTO)
+        {
+            try
+            {
+                return Ok(await _defectService.Update(defectDTO));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpGet]
+        [Route("get/defects")]
+        public async Task<IActionResult> GetDefects()
+        {
+            try
+            {
+                return Ok(await _defectService.GetAll());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpDelete]
+        [Route("delete/defects/{id}")]
+        public async Task<IActionResult> DeleteDefects(Guid id)
+        {
+            try
+            {
+                return Ok(await _defectService.Delete(id));
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }

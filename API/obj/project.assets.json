@@ -1526,6 +1526,16 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
+      "ConfigurationContainer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/ConfigurationContainer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ConfigurationContainer.dll": {}
+        }
+      },
       "Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1583,6 +1593,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "ConfigurationContainer": "1.0.0",
           "Data": "1.0.0",
           "DomainDTO": "1.0.0",
           "Mappers": "1.0.0"
@@ -5343,6 +5354,11 @@
         "system.xml.xdocument.4.0.11.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "ConfigurationContainer/1.0.0": {
+      "type": "project",
+      "path": "../ConfigurationContainer/ConfigurationContainer.csproj",
+      "msbuildProject": "../ConfigurationContainer/ConfigurationContainer.csproj"
     },
     "Data/1.0.0": {
       "type": "project",

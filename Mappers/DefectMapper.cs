@@ -1,4 +1,4 @@
-﻿using DomainDTO;
+﻿using DomainDTO.Models;
 using Entities;
 
 namespace Mappers
@@ -15,8 +15,9 @@ namespace Mappers
                 defectEntity.Description = defectDTO.Description;
                 defectEntity.Image = defectDTO.Image;
                 defectEntity.UpdateBy = defectDTO.UpdateBy;
-                defectDTO.Id = defectDTO.Id;
-                defectEntity.InventoryEntity = InventoryMapper.ToEntity(defectDTO.Inventory);
+                defectEntity.Id = defectDTO.Id == Guid.Empty ? Guid.NewGuid() : defectDTO.Id;
+                defectEntity.InventoryEntityId = defectDTO.InventoryDTOId;
+                
                 return defectEntity;
             }
             return null;
@@ -32,7 +33,7 @@ namespace Mappers
                 defectDTO.Image = defectEntity.Image;
                 defectDTO.UpdateBy = defectEntity.UpdateBy;
                 defectDTO.Id = defectEntity.Id;
-                defectDTO.Inventory = InventoryMapper.ToDTO(defectEntity.InventoryEntity);
+                defectDTO.InventoryDTOId = defectEntity.InventoryEntityId;
                 return defectDTO;
             }
             return null;

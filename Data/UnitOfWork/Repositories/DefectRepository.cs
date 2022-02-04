@@ -2,30 +2,43 @@
 using Data.UnitOfWork.Abstract;
 using Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Data.Repository
 {
-    public class DefectRepository : IConstructorRepository<DefectEntity>
+    public class DefectRepository : IDefectRepository
     {
         private ApplicationContext db;
-        public DefectRepository(ApplicationContext context)
+        public DefectRepository(IServiceProvider _serviceProvider)
         {
-            this.db = context;
+            db = _serviceProvider.GetService<ApplicationContext>();
         }
 
         public async Task<DefectEntity> Add(DefectEntity item)
         {
-            var answer = await db.Defects.AddAsync(item);
-            var needed = await db.Defects.FirstOrDefaultAsync(x => x.Id == item.Id);
+            db.Defects.Add(item);
+            await db.SaveChangesAsync();
+            var updatedDefects = await db.Defects.ToListAsync();
+            var needed = updatedDefects.Find(x => x.Id == item.Id);
             return needed;
         }
 
-        public async void Delete(Guid id)
+        public async Task<string> Delete(Guid id)
         {
-            DefectEntity defect = await db.Defects.FindAsync(id);
-            db.Defects.Remove(defect);
+            try
+            {
+                DefectEntity defect = await db.Defects.FirstOrDefaultAsync(x => x.Id == id);
+                db.Defects.Remove(defect);
+                await db.SaveChangesAsync();
+                return "success";
+            }
+            catch (Exception ex)
+            {
+                return(ex.Message);
+            }
+            
         }
-
+        
         public Task<IEnumerable<DefectEntity>> Find(Func<DefectEntity, bool> predicate)
         {
             throw new NotImplementedException();
@@ -36,15 +49,21 @@ namespace Data.Repository
             return db.Defects.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public Task<List<DefectEntity>> GetAll()
+        public async Task<List<DefectEntity>> GetAll()
         {
-            return db.Defects.ToListAsync();
+            return await db.Defects.ToListAsync();
         }
 
-        public Task<DefectEntity> Update(DefectEntity item)
+        public async Task<DefectEntity> Update(DefectEntity item)
         {
             db.Entry(item).State = EntityState.Modified;
-            return db.Defects.FirstOrDefaultAsync(x => x.Id == item.Id);
+            await db.SaveChangesAsync();
+            return await db.Defects.FirstOrDefaultAsync(x => x.Id == item.Id);
+        }
+        public async Task<List<DefectEntity>> GetByInventoryId(Guid id)
+        {
+            List<DefectEntity> defectsById = await db.Defects.ToListAsync();
+            return defectsById.FindAll(x => x.InventoryEntityId == id);
         }
     }
 }

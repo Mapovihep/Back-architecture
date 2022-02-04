@@ -39,7 +39,10 @@ namespace Levi_Inventarization_Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("InventoryEntityId")
+                    b.Property<Guid?>("Inventory")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("InventoryEntityId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
@@ -51,9 +54,29 @@ namespace Levi_Inventarization_Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("InventoryEntityId");
+                    b.HasIndex("Inventory");
 
                     b.ToTable("Defects");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("11111111-9833-45ca-9017-1ded701ef149"),
+                            CreatedAt = new DateTime(2022, 1, 24, 17, 54, 39, 230, DateTimeKind.Local),
+                            Description = "description1",
+                            Image = "image1",
+                            Name = "name1",
+                            UpdateBy = new Guid("11111111-9833-45ca-9017-1ded701ef149")
+                        },
+                        new
+                        {
+                            Id = new Guid("22222222-9833-45ca-9017-1ded701ef149"),
+                            CreatedAt = new DateTime(2022, 1, 24, 17, 54, 39, 230, DateTimeKind.Local),
+                            Description = "description2",
+                            Image = "image2",
+                            Name = "name2",
+                            UpdateBy = new Guid("22222222-9833-45ca-9017-1ded701ef149")
+                        });
                 });
 
             modelBuilder.Entity("Entities.DepartmentEntity", b =>
@@ -75,6 +98,15 @@ namespace Levi_Inventarization_Backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Departments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("2ee3663d-2fbe-4f27-a9b9-c903dbbf6f8e"),
+                            CreatedAt = new DateTime(2021, 1, 24, 17, 54, 39, 230, DateTimeKind.Local),
+                            Name = "DepName",
+                            UpdateBy = new Guid("24f95cec-161e-4762-a334-806d70d74d08")
+                        });
                 });
 
             modelBuilder.Entity("Entities.InventoryEntity", b =>
@@ -101,7 +133,7 @@ namespace Levi_Inventarization_Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("RoomEntityId")
+                    b.Property<Guid?>("RoomEntityId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Status")
@@ -110,7 +142,7 @@ namespace Levi_Inventarization_Backend.Migrations
                     b.Property<Guid>("UpdateBy")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UserEntityId")
+                    b.Property<Guid?>("UserEntityId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -145,7 +177,7 @@ namespace Levi_Inventarization_Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("RoomEntityId")
+                    b.Property<Guid?>("RoomEntityId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("RoomName")
@@ -161,7 +193,7 @@ namespace Levi_Inventarization_Backend.Migrations
                     b.Property<Guid>("UpdatedBy")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UserEntityId")
+                    b.Property<Guid?>("UserEntityId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -194,6 +226,15 @@ namespace Levi_Inventarization_Backend.Migrations
                     b.HasIndex("DepartmentEntityId");
 
                     b.ToTable("Rooms");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("e033acda-7f2c-42fe-969f-c9cf92f95714"),
+                            CreatedAt = new DateTime(2021, 1, 24, 17, 54, 39, 230, DateTimeKind.Local),
+                            DepartmentEntityId = new Guid("2ee3663d-2fbe-4f27-a9b9-c903dbbf6f8e"),
+                            Name = "Name2"
+                        });
                 });
 
             modelBuilder.Entity("Entities.UserEntity", b =>
@@ -239,10 +280,8 @@ namespace Levi_Inventarization_Backend.Migrations
             modelBuilder.Entity("Entities.DefectEntity", b =>
                 {
                     b.HasOne("Entities.InventoryEntity", "InventoryEntity")
-                        .WithMany("DefectsEntity")
-                        .HasForeignKey("InventoryEntityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("DefectsEntityList")
+                        .HasForeignKey("Inventory");
 
                     b.Navigation("InventoryEntity");
                 });
@@ -250,20 +289,16 @@ namespace Levi_Inventarization_Backend.Migrations
             modelBuilder.Entity("Entities.InventoryEntity", b =>
                 {
                     b.HasOne("Entities.DepartmentEntity", null)
-                        .WithMany("InventoriesEntity")
+                        .WithMany("InventoryEntityList")
                         .HasForeignKey("DepartmentEntityId");
 
                     b.HasOne("Entities.RoomEntity", "RoomEntity")
                         .WithMany()
-                        .HasForeignKey("RoomEntityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RoomEntityId");
 
                     b.HasOne("Entities.UserEntity", "UserEntity")
                         .WithMany()
-                        .HasForeignKey("UserEntityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserEntityId");
 
                     b.Navigation("RoomEntity");
 
@@ -274,15 +309,11 @@ namespace Levi_Inventarization_Backend.Migrations
                 {
                     b.HasOne("Entities.RoomEntity", "RoomEntity")
                         .WithMany()
-                        .HasForeignKey("RoomEntityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RoomEntityId");
 
                     b.HasOne("Entities.UserEntity", "UserEntity")
                         .WithMany()
-                        .HasForeignKey("UserEntityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserEntityId");
 
                     b.Navigation("RoomEntity");
 
@@ -292,20 +323,20 @@ namespace Levi_Inventarization_Backend.Migrations
             modelBuilder.Entity("Entities.RoomEntity", b =>
                 {
                     b.HasOne("Entities.DepartmentEntity", null)
-                        .WithMany("RoomsEntity")
+                        .WithMany("RoomsEntityList")
                         .HasForeignKey("DepartmentEntityId");
                 });
 
             modelBuilder.Entity("Entities.DepartmentEntity", b =>
                 {
-                    b.Navigation("InventoriesEntity");
+                    b.Navigation("InventoryEntityList");
 
-                    b.Navigation("RoomsEntity");
+                    b.Navigation("RoomsEntityList");
                 });
 
             modelBuilder.Entity("Entities.InventoryEntity", b =>
                 {
-                    b.Navigation("DefectsEntity");
+                    b.Navigation("DefectsEntityList");
                 });
 #pragma warning restore 612, 618
         }
