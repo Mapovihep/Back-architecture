@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 namespace API.Controllers
 {
     [ApiController]
-    [Authorize]
     public class DefectController : ControllerBase
     {
         private readonly IDefectService _defectService;
@@ -30,6 +29,7 @@ namespace API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpPost]
         [Route("update/defect")]
         public async Task<IActionResult> UpdateDefect([FromBody] DefectDTO defectDTO)
@@ -43,6 +43,7 @@ namespace API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpGet]
         [Route("get/defects")]
         public async Task<IActionResult> GetDefects()
@@ -56,6 +57,7 @@ namespace API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpDelete]
         [Route("delete/defects/{id}")]
         public async Task<IActionResult> DeleteDefects(Guid id)
@@ -63,6 +65,20 @@ namespace API.Controllers
             try
             {
                 return Ok(await _defectService.Delete(id));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("{controller}/page={pageNumber}/{filters}")]
+        public async Task<IActionResult> GetDefectsWithParams(string pageNumber, string filters)
+        {
+            try
+            {
+                return Ok(" ");
             }
             catch (Exception ex)
             {

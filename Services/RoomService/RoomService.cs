@@ -18,21 +18,30 @@ namespace Services.RoomService
         {
             try
             {
-                RoomEntity newRoom = RoomMapper.ToEntity(item);
-                RoomEntity r = await _roomRepository.Add(newRoom);
-                if (r != null)
-                {
-                    RoomDTO roomDTO = RoomMapper.ToDTO(r);
-                    return roomDTO;
-                };
+                return RoomMapper.ToDTO(
+                    await _roomRepository.Add(RoomMapper.ToEntity(item))
+                    );
             }
             catch (Exception ex)
             {
-                Console.Error.WriteLine(ex);
+                Console.Error.WriteLine(ex.Message + "Room Service Add Error");
+                throw ex;
             }
-            return null;
         }
-
+        public async Task<List<RoomDTO>> AddRange(List<RoomDTO> roomList)
+        {
+            try
+            {
+                return RoomMapper.ToDTOList(
+                        await _roomRepository.AddRange(RoomMapper.ToEntityList(roomList))
+                    );
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine(ex.Message + "Room Service AddRange Error");
+                throw ex;
+            }
+        }
         public async Task<string> Delete(Guid id)
         {
             try
@@ -41,7 +50,8 @@ namespace Services.RoomService
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                Console.Error.WriteLine(ex.Message + "Room Service Delete Error");
+                throw ex;
             }
             
         }
@@ -51,9 +61,11 @@ namespace Services.RoomService
             try
             {
                 return RoomMapper.ToDTO(await _roomRepository.Get(id));
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                return null;
+                Console.Error.WriteLine(ex.Message + "Room Service Get Error");
+                throw ex;
             }
         }
 
@@ -61,14 +73,12 @@ namespace Services.RoomService
         {
             try
             {
-                List<RoomEntity> roomEntityList = await _roomRepository.GetAll();
-                List<RoomDTO> roomDTOList = new List<RoomDTO>();
-                roomEntityList.ForEach(x => roomDTOList.Add(RoomMapper.ToDTO(x)));
-                return roomDTOList;
+                return RoomMapper.ToDTOList(await _roomRepository.GetAll());
             }
             catch (Exception ex)
             {
-                return null;
+                Console.Error.WriteLine(ex.Message + "Room Service GetAll Error");
+                throw ex;
             }
         }
 
@@ -76,11 +86,14 @@ namespace Services.RoomService
         {
             try
             {
-                return RoomMapper.ToDTO(await _roomRepository.Update(RoomMapper.ToEntity(item)));
-            }catch (Exception ex)
+                return RoomMapper.ToDTO(
+                    await _roomRepository.Update(RoomMapper.ToEntity(item))
+                    );
+            }
+            catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                return null;
+                Console.Error.WriteLine(ex.Message + "Room Service Update Error");
+                throw ex;
             }
         }
     }

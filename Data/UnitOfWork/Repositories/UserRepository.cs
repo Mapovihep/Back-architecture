@@ -12,56 +12,119 @@ namespace Data.Repository
         {
             db = _serviceProvider.GetService<ApplicationContext>();
         }
-        public async Task<UserEntity> Add(UserEntity user)
-        {
-            await db.Users.AddAsync(user);
-            await db.SaveChangesAsync();
-            return await db.Users.FirstOrDefaultAsync(x=>x.Id == user.Id);
-        }
-
-        public Task<string> Delete(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<UserEntity>> Find(Func<UserEntity, bool> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<UserEntity> Get(UserEntity user)
+        public async Task<User> Add(User user)
         {
             try
             {
-                var users = await db.Users.ToListAsync();
-                var currentEmployee = users.Find(x => x.Email == user.Email
-                && x.Password == user.Password);
-                if (currentEmployee != null)
-                {
-                    return currentEmployee;
-                }
-                
+                await db.Users.AddAsync(user);
+                await db.SaveChangesAsync();
+                return await db.Users.FirstAsync(x => x.Id == user.Id);
             }
             catch (Exception ex)
             {
-                Console.WriteLine("An Error in UserRepository - GetMethod");
+                Console.WriteLine(ex.Message + Environment.NewLine + "User Repository Add Error");
+                throw ex;
             }
-            return null;
         }
-        public async Task<UserEntity> GetProfile(Guid id)
+
+        public async Task<string> Delete(Guid id)
         {
-            return await db.Users.FirstOrDefaultAsync(x=>x.Id == id);
-            //добавить кучу всяких примочек о связях с юзером 
-            /*return null;*/
+            try
+            {
+                var user = await db.Users.FirstOrDefaultAsync(x => x.Id == id);
+                db.Users.Remove(user);
+                await db.SaveChangesAsync();
+                return await db.Users.FirstOrDefaultAsync(x => x.Id == id)!=null ?
+                    "Success" : "Not successed deleting";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + Environment.NewLine + "User Repository Delete Error");
+                throw ex;
+            }
         }
-        public Task<List<UserEntity>> GetAll()
+
+        public Task<IEnumerable<User>> Find(Func<User, bool> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public Task<UserEntity> Update(UserEntity user)
+        public async Task<User> GetProfileToAuth(User user)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await db.Users.FirstAsync(x =>
+                                x.Password == user.Password && x.Email == user.Email);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + Environment.NewLine + "User Repository GetProfileToAuth Error");
+                throw ex;
+            }
+
+        }
+        public async Task<User> Get(Guid id)
+        {
+            try
+            {
+                return await db.Users
+                    .Include(s => s.InventoryList)
+                    /*.Include(s => s.InventorySetupList)*/
+                    .FirstAsync(x => x.Id == id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + "/n User Repository Get Error");
+                throw ex;
+            }
+        }
+        public async Task<List<User>> GetAll()
+        {
+            try
+            {
+                return await db.Users
+                .Include(u => u.InventoryList)
+                .Include(u => u.InventorySetupList)
+                .ToListAsync();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message + "/n User Repository GetAll Error");
+                throw ex;
+            }
+        }
+
+        public async Task<User> Update(User user)
+        {
+            try
+            {
+                user.Password = (await db.Users.FirstAsync(x => x.Id == user.Id)).Password;
+                db.Entry(user).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+
+                return await db.Users
+                    .Include(s => s.InventoryList)
+                    .Include(s => s.InventorySetupList)
+                    .FirstAsync(x => x.Id == user.Id);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message + Environment.NewLine + "User Repository Update Error");
+                throw ex;
+            }
+        }
+
+        public async Task<List<User>> GetUsersBySearch(string search)
+        {
+            try
+            {
+                return await db.Users.Where(u=>u.Name.Contains(search)).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + Environment.NewLine + "User Repository GetUsersBySearch Error");
+                throw ex;
+            }
         }
     }
 }

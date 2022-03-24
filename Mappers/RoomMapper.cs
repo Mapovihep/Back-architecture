@@ -5,44 +5,30 @@ namespace Mappers
 {
     public static class RoomMapper
     {
-        public static RoomEntity ToEntity(RoomDTO roomDTO)
+        public static Room ToEntity(RoomDTO roomDTO)
         {
-            RoomEntity roomEntity = new RoomEntity();
+            Room roomEntity = new Room();
             if (roomDTO != null)
             {
                 roomEntity.Name = roomDTO.Name;
                 roomEntity.CreatedAt = roomDTO.CreatedAt;
 
-                if(roomDTO.Id != Guid.Empty)
-                {
-                    roomEntity.Id = roomDTO.Id;
-                }
-                else
-                {
-                    roomEntity.Id = Guid.NewGuid();
-                }
-                /*roomEntity.InventorySetupEntityList = new List<InventorySetupEntity>();*///дописать, когда напишу маппер
-
-                /*if (roomDTO.InventoryDTOList.Count != 0)
-                {
-                    List<InventoryEntity> inventoryEntityList = new List<InventoryEntity>();
-                    roomDTO.InventoryDTOList.ForEach(inventoryDTO => inventoryEntityList.Add(InventoryMapper.ToEntity(inventoryDTO)));
-                    roomEntity.InventoryEntityList = inventoryEntityList;
-                }
-                else
-                {
-                    roomEntity.InventoryEntityList = new List<InventoryEntity>();
-                }*/
-                /*roomEntity.Department = null;*/
-                /*roomEntity.InventorySetupEntityList = null;
-                roomEntity.InventoryEntityList = null;*/
+                roomEntity.Id = roomDTO.Id != Guid.Empty ?  roomDTO.Id : Guid.NewGuid();
                 return roomEntity;
             }
             return null;
         }
+        public static List<Room> ToEntityList(List<RoomDTO> roomDTOList)
+        {
+            List<Room> roomEntityList = new List<Room>();
+            foreach(RoomDTO room in roomDTOList)
+            {
+                roomEntityList.Add(ToEntity(room));
+            }
+            return roomEntityList;
+        }
 
-
-        public static RoomDTO ToDTO(RoomEntity roomEntity)
+        public static RoomDTO ToDTO(Room roomEntity)
         {
             RoomDTO roomDTO = new RoomDTO();
             if (roomEntity != null)
@@ -51,23 +37,18 @@ namespace Mappers
                 roomDTO.CreatedAt = roomEntity.CreatedAt;
                 roomDTO.Id = roomEntity.Id;
 
-               /* roomDTO.InventorySetupDTOList = new List<InventorySetupDTO>();*///дописать, когда напишу маппер
-
-                /*if (roomEntity.InventoryEntityList.Count != 0)
-                {
-                    List<InventoryDTO> inventoryDTOList = new List<InventoryDTO>();
-                    roomEntity.InventoryEntityList.ForEach(inventoryEntity => inventoryDTOList.Add(InventoryMapper.ToDTO(inventoryEntity)));
-                    roomDTO.InventoryDTOList = inventoryDTOList;
-                }
-                else
-                {
-                    roomDTO.InventoryDTOList = new List<InventoryDTO>();
-                }
-*/
                 return roomDTO;
             }
             return null;
         }
-
+        public static List<RoomDTO> ToDTOList(List<Room> roomEntityList)
+        {
+            List<RoomDTO> roomDTOList = new List<RoomDTO>();
+            foreach (Room room in roomEntityList)
+            {
+                roomDTOList.Add(ToDTO(room));
+            }
+            return roomDTOList;
+        }
     }
 }

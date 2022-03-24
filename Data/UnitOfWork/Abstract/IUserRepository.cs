@@ -4,12 +4,13 @@ namespace Data.UnitOfWork.Abstract
 {
     public interface IUserRepository 
     {
-        Task<List<UserEntity>> GetAll();
-        Task<UserEntity> Get(UserEntity user);
-        Task<IEnumerable<UserEntity>> Find(Func<UserEntity, bool> predicate);//что делает эта строчка, пока не имею понятия
-        Task<UserEntity> Add(UserEntity user);
-        Task<UserEntity> Update(UserEntity user);
-        Task<UserEntity> GetProfile(Guid id);
+        Task<List<User>> GetAll();
+        Task<User> Get(Guid id);
+        Task<User> GetProfileToAuth(User user);
+        Task<IEnumerable<User>> Find(Func<User, bool> predicate);
+        Task<User> Add(User user);
+        Task<User> Update(User user);
         Task<string> Delete(Guid id);
+        Task<List<User>> GetUsersBySearch(string search);
     }
 }

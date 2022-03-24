@@ -4,7 +4,7 @@ using Entities;
 
 namespace Data.Repository
 {
-    public class DepartmentRepository
+    public class DepartmentRepository : IDepartmentRepository
     {
         
     }

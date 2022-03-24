@@ -9,5 +9,9 @@ namespace Services.Abstract
         Task<InventoryDTO> Add(InventoryDTO item);
         Task<InventoryDTO> Update(InventoryDTO item);
         Task<string> Delete(Guid id);
+        Task<List<IGrouping<string, InventoryDTO>>> GetSelectedByCategories();
+        Task<List<InventoryDTO>> GetInventoryFiltered(string? search, int page, int offSet, string? filters,
+            bool ascend, string? category);
+
     }
 }

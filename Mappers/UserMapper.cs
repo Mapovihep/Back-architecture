@@ -5,9 +5,9 @@ namespace Mappers
 {
     public static class UserMapper
     {
-        public static UserEntity ToEntity(UserDTO userDTO)
+        public static User ToEntity(UserDTO userDTO)
         {
-            UserEntity userEntity = new UserEntity();
+            User userEntity = new User();
             try 
             {
                 if (userDTO != null)
@@ -16,7 +16,7 @@ namespace Mappers
                     userEntity.Name = userDTO.Name;
                     userEntity.CreatedAt = userDTO.CreatedAt;
                     userEntity.Id = userDTO.Id == Guid.Empty ? Guid.NewGuid() : userDTO.Id;//есть ли id в запросе
-                                                                                           //UserDTO
+                    //UserDTO
                     userEntity.Email = userDTO.Email;
                     userEntity.Password = userDTO.Password;
                     userEntity.Phone = userDTO.Phone;
@@ -25,28 +25,28 @@ namespace Mappers
                     userEntity.UpdateBy = userDTO.UpdateBy;
 
                     //всегда добавляет набор инвентаря
-                    userEntity.InventoryEntityList = new List<InventoryEntity>();
+                    userEntity.InventoryList = new List<Inventory>();
                     //если инвентарь есть в присланном объекте, добавляет их в список сущностей
-                    if (userDTO.InventoryDTOList.Count() != 0)
+                    if (userDTO.InventoryDTOList != null)
                     {
                         userDTO.InventoryDTOList.ForEach(x => x.UserDTOId = userEntity.Id);
-                        userDTO.InventoryDTOList.ForEach(x => userEntity.InventoryEntityList.Add(InventoryMapper.ToEntity(x)));
+                        userDTO.InventoryDTOList.ForEach(x => userEntity.InventoryList.Add(InventoryMapper.ToEntity(x)));
                     }
-                    userEntity.InventorySetupEntityList = new List<InventorySetupEntity>();
-                    if (userDTO.InventorySetupDTOList.Count() != 0)
+                    userEntity.InventorySetupList = new List<Setup>();
+                    if (userDTO.InventorySetupDTOList != null)
                     {
-                        userDTO.InventorySetupDTOList.ForEach(x => x.UserDTOId = userEntity.Id);
-                        userDTO.InventorySetupDTOList.ForEach(x => userEntity.InventorySetupEntityList.Add(InventorySetupMapper.ToEntity(x)));
+                        userDTO.InventorySetupDTOList.ForEach(x => x.UserId = userEntity.Id);
+                        userDTO.InventorySetupDTOList.ForEach(x => userEntity.InventorySetupList.Add(SetupMapper.ToEntity(x)));
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("An Error in the UserMapper.ToDTO");
+                Console.WriteLine("An Error in the UserMapper.ToEntity");
             }
             return userEntity;
         }
-        public static UserDTO ToDTO (UserEntity userEntity)
+        public static UserDTO ToDTO (User userEntity)
         {
             UserDTO userDTO = new UserDTO();
             try
@@ -67,12 +67,17 @@ namespace Mappers
 
                     //всегда добавляет набор инвентаря
                     userDTO.InventoryDTOList = new List<InventoryDTO>();
-
-                    //если инвентарm с бд есть, то каждый добавляется в переводе в DTO
-                    userEntity.InventoryEntityList.ForEach(x => userDTO.InventoryDTOList.Add(InventoryMapper.ToDTO(x)));
+                    if (userEntity.InventoryList != null)
+                    {
+                        //если инвентарm с бд есть, то каждый добавляется в переводе в DTO
+                        userEntity.InventoryList.ForEach(x => userDTO.InventoryDTOList.Add(InventoryMapper.ToDTO(x)));
+                    }
                     //всегда добавляет набор сетапов и если есть, наполняет
-                    userDTO.InventorySetupDTOList = new List<InventorySetupDTO>();
-                    userEntity.InventorySetupEntityList.ForEach(x => userDTO.InventorySetupDTOList.Add(InventorySetupMapper.ToDTO(x)));
+                    userDTO.InventorySetupDTOList = new List<SetupDTO>();
+                    if (userEntity.InventorySetupList != null)
+                    {
+                        userEntity.InventorySetupList.ForEach(x => userDTO.InventorySetupDTOList.Add(SetupMapper.ToDTO(x)));
+                    }
                 }
             }
             catch (Exception ex)
@@ -80,6 +85,24 @@ namespace Mappers
                 Console.WriteLine("An Error in the UserMapper.ToDTO");
             }
             return userDTO;
+        }
+        public static List<UserDTO> ToDTOList(List<User> userEntityList)
+        {
+            List<UserDTO> userDTOs = new List<UserDTO>();
+            foreach (User user in userEntityList)
+            {
+                userDTOs.Add(ToDTO(user));
+            }
+            return userDTOs;
+        }
+        public static List<User> ToEntitiesList(List<UserDTO> userDTOList)
+        {
+            List<User> users = new List<User>();
+            foreach (UserDTO userDTO in userDTOList)
+            {
+                users.Add(ToEntity(userDTO));
+            }
+            return users;
         }
     }
 }

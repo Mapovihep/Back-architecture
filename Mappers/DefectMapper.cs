@@ -5,9 +5,9 @@ namespace Mappers
 {
     public static class DefectMapper
     {
-        public static DefectEntity ToEntity(DefectDTO defectDTO)
+        public static Defect ToEntity(DefectDTO defectDTO)
         {
-            DefectEntity defectEntity = new DefectEntity();
+            Defect defectEntity = new Defect();
             if (defectDTO != null)
             {
                 defectEntity.Name = defectDTO.Name;
@@ -16,13 +16,13 @@ namespace Mappers
                 defectEntity.Image = defectDTO.Image;
                 defectEntity.UpdateBy = defectDTO.UpdateBy;
                 defectEntity.Id = defectDTO.Id == Guid.Empty ? Guid.NewGuid() : defectDTO.Id;
-                defectEntity.InventoryEntityId = defectDTO.InventoryDTOId;
+                defectEntity.InventoryId = defectDTO.InventoryDTOId;
                 
                 return defectEntity;
             }
             return null;
         }
-        public static DefectDTO ToDTO(DefectEntity defectEntity)
+        public static DefectDTO ToDTO(Defect defectEntity)
         {
             DefectDTO defectDTO = new DefectDTO();
             if (defectEntity != null)
@@ -33,11 +33,28 @@ namespace Mappers
                 defectDTO.Image = defectEntity.Image;
                 defectDTO.UpdateBy = defectEntity.UpdateBy;
                 defectDTO.Id = defectEntity.Id;
-                defectDTO.InventoryDTOId = defectEntity.InventoryEntityId;
+                defectDTO.InventoryDTOId = defectEntity.InventoryId;
                 return defectDTO;
             }
             return null;
         }
-
+        public static List<DefectDTO> ToDTOList(List<Defect> defectEntities)
+        {
+            List<DefectDTO> defectDTOs= new List<DefectDTO>();
+            foreach (Defect defect in defectEntities)
+            {
+                defectDTOs.Add(ToDTO(defect));
+            }
+            return defectDTOs;
+        }
+        public static List<Defect> ToDTOList(List<DefectDTO> defectDTOs)
+        {
+            List<Defect> defectEntities = new List<Defect>();
+            foreach (DefectDTO defect in defectDTOs)
+            {
+                defectEntities.Add(ToEntity(defect));
+            }
+            return defectEntities;
+        }
     }
 }

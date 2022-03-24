@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using Data.UnitOfWork.MockData;
+using Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Data
@@ -6,12 +7,12 @@ namespace Data
 
     public class ApplicationContext : DbContext
     {
-        public DbSet<RoomEntity>? Rooms { get; set; }
-        public DbSet<InventoryEntity>? InventoryLots { get; set; }
-        public DbSet<UserEntity>? Users { get; set; }
-        public DbSet<InventorySetupEntity>? Setups { get; set; }
-        public DbSet<DepartmentEntity>? Departments { get; set; }
-        public DbSet<DefectEntity>? Defects { get; set; }
+        public DbSet<Room> Rooms { get; set; }
+        public DbSet<Inventory> Inventory { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Setup> Setups { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Defect> Defects { get; set; }
 
         /*public static async Task<SqlConnection> GetConnecton(string connectionString)
         {
@@ -19,11 +20,11 @@ namespace Data
             await sqlConnection.OpenAsync();
             SqlCommand cmd = sqlConnection.CreateCommand();
             SqlDataReader rdr = cmd.ExecuteReader();
-            return sqlConnection;
+            return sqlConnection; 
         }*/
         public ApplicationContext(DbContextOptions<ApplicationContext> opt) : base(opt)
         {
-            
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -36,53 +37,51 @@ namespace Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //    base.OnModelCreating(modelBuilder);
-            Guid guid = Guid.NewGuid();
-            Guid guid2 = Guid.NewGuid();
-            //    modelBuilder.Entity<Post>(); // для добавления в БД данных колонки
-            modelBuilder.Entity<DefectEntity>().HasData(new DefectEntity[]
-                {
-                    new DefectEntity {
-                                Id = new Guid("11111111-9833-45ca-9017-1ded701ef149"),
-                                Name = "name1",
-                                CreatedAt = DateTime.Parse("2022-01-24T14:54:39.230Z"),
+            Guid DepId = Guid.NewGuid();
+            Guid MainAdmin = Guid.NewGuid();
 
-                                UpdateBy = new Guid("11111111-9833-45ca-9017-1ded701ef149"),
-                                Image = "image1",
-                                Description = "description1",
-                                InventoryEntity = null
-                            },
-                    new DefectEntity {
-                                Id = new Guid("22222222-9833-45ca-9017-1ded701ef149"),
-                                Name = "name2",
-                                CreatedAt = DateTime.Parse("2022-01-24T14:54:39.230Z"),
+            modelBuilder.Entity<Inventory>()
+                .HasOne(inv => inv.Setup)
+                .WithMany(setup => setup.InventoryList)
+                .OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<Inventory>()
+                .HasOne(inv => inv.User)
+                .WithMany(inv => inv.InventoryList)
+                .OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<Inventory>()
+                .HasOne(inv => inv.Room)
+                .WithMany(r => r.InventoryList)
+                .OnDelete(DeleteBehavior.SetNull);
 
-                                UpdateBy = new Guid("22222222-9833-45ca-9017-1ded701ef149"),
-                                Image = "image2",
-                                Description = "description2",
-                                InventoryEntity = null
-                            },
-                });
-            modelBuilder.Entity<RoomEntity>().HasData(new RoomEntity[]
-            {
-                new RoomEntity {
-                    Id = guid2,
-                    Name =  "Name2",
-                    CreatedAt = DateTime.Parse("2021-01-24T14:54:39.230Z"),
-                    DepartmentEntityId = guid,
-                }
-            }); ;
-            modelBuilder.Entity<DepartmentEntity>().HasData(new DepartmentEntity[]
-            {
-                new DepartmentEntity {
-                    Id = guid,
-                    CreatedAt = DateTime.Parse("2021-01-24T14:54:39.230Z"),
-                    Name = "DepName",
-                    UpdateBy = Guid.NewGuid(),
-                    RoomsEntityList = new List<RoomEntity>()
-                    
-                }
-            });
+            modelBuilder.Entity<Defect>()
+                .HasOne(def => def.Inventory)
+                .WithMany(inv => inv.DefectList)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Setup>()
+                 .HasOne(setup => setup.Room)
+                 .WithMany(r => r.SetupList)
+                 .OnDelete(DeleteBehavior.SetNull);
+            
+            var depMockData = new DepartmentMock().GetDepMock(DepId, MainAdmin);
+            modelBuilder.Entity<Department>().HasData(depMockData);
+
+            var userMockData = new UserMock().GetRandomData(10, MainAdmin);
+            modelBuilder.Entity<User>().HasData(userMockData);
+
+            string[] RoomNames = { "Ruby", "Node", ".Net" };
+            var roomMockData = new RoomMock().GetRandomData(RoomNames, DepId);
+            modelBuilder.Entity<Room>().HasData(roomMockData);
+
+            var setupMockData = new SetupMock().GetRandomData(roomMockData, MainAdmin);
+            modelBuilder.Entity<Setup>().HasData(setupMockData);
+
+            var inventoryMockData = new InventoryMock().GetRandomData(roomMockData, userMockData, setupMockData);
+            modelBuilder.Entity<Inventory>().HasData(inventoryMockData);
+
+            var defectMockData = new DefectMock().GetRandomData(inventoryMockData, userMockData);
+            modelBuilder.Entity<Defect>().HasData(defectMockData);
+
+
             //    modelBuilder.Entity<Criminal>().Ignore(c => c.ammount); //для игнорирования свойства
             //    modelBuilder.Entity<User>().Property(b => b.Name).IsRequired();
             //    modelBuilder.Entity<Comment>().HasData(

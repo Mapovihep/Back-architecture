@@ -28,10 +28,28 @@ namespace API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPost]
+        [Route("rooms/addRange")]
+        public async Task<IActionResult> AddRange([FromBody] List<RoomDTO> roomDTOList)
+        {
+            try
+            {
+                List<RoomDTO> list = new List<RoomDTO>();
+                list = await _roomService.AddRange(roomDTOList);
+                return Ok(list);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPut]
         [Route("rooms/{id}")]
         public async Task<IActionResult> UpdateRoom([FromBody] RoomDTO roomDTO, Guid id)
         {
+            
             roomDTO.Id = id;
             try
             {
@@ -42,6 +60,7 @@ namespace API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpGet]
         [Route("rooms")]
         public async Task<IActionResult> GetRooms()
@@ -55,6 +74,7 @@ namespace API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpGet]
         [Route("rooms/{id}")]
         public async Task<IActionResult> GetRoom(Guid id)
@@ -68,6 +88,7 @@ namespace API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpDelete]
         [Route("rooms/{id}")]
         public async Task<IActionResult> DeleteRoom(Guid id)

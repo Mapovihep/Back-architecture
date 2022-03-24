@@ -14,6 +14,9 @@ namespace DomainDTO.Models
         public Guid UpdateBy { get; set; } = Guid.NewGuid();
         public bool IsAdmin { get; set; } = false;
         public List<InventoryDTO>? InventoryDTOList { get; set; }
-        public List<InventorySetupDTO>? InventorySetupDTOList { get; set; }
+        public List<string>? InventoryIdList { get; set; }
+        public List<SetupDTO>? InventorySetupDTOList { get; set; }
+        public List<string>? InventorySetupIdList { get; set; }
+
     }
 }

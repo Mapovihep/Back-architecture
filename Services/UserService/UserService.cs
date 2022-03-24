@@ -16,24 +16,21 @@ namespace Services.UserService
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-        private readonly IInventoryRepository _inventoryRepository;
         private readonly GetJwtSettings _settingsJwt;
 
         public UserService(IServiceProvider _serviceProvider, GetJwtSettings settingsJwt)
         {
             _userRepository = _serviceProvider.GetService<IUserRepository>();
-            _inventoryRepository = _serviceProvider.GetService<IInventoryRepository>();
             _settingsJwt = _serviceProvider.GetService<GetJwtSettings>();
         }
 
-        List<UserEntity> usersFromDB = new List<UserEntity>();
-        List<UserEntity> usersInSession = new List<UserEntity>();
+        List<User> usersFromDB = new List<User>();
+        List<User> usersInSession = new List<User>();
 
         public async Task<UserDTO> Registration(UserDTO user)
         {
             try
             {
-                /*usersFromDB = usersFromDB.Count() == 0 ? await _userRepository.GetAll() : usersFromDB;*/
                 if (usersFromDB.Find(x => x.Email == user.Email) == null)
                 {
                     byte[] data = new UTF8Encoding().GetBytes(user.Password);
@@ -42,15 +39,17 @@ namespace Services.UserService
                     hashedPassword = shaM.ComputeHash(data);
                     user.Password = Convert.ToBase64String(hashedPassword);
                     user.CreatedAt = DateTime.Now;
-                    return UserMapper.ToDTO(await _userRepository.Add(UserMapper.ToEntity(user)));
+                    return UserMapper.ToDTO(
+                        await _userRepository.Add(UserMapper.ToEntity(user))
+                        );
                 }
+                throw new Exception("User is already in the DB");
             }
             catch (Exception ex)
             {
-                Console.WriteLine("User Service -  Registration");
-                return null;
+                Console.WriteLine(ex.Message + "/n User Service - Registration Error");
+                throw ex;
             }
-            return null;
         }
         public async Task<string> Login(UserDTO user)
         {
@@ -60,19 +59,21 @@ namespace Services.UserService
                 byte[] hashedPassword;
                 SHA256 shaM = new SHA256Managed();
                 hashedPassword = shaM.ComputeHash(data);
+                Console.WriteLine("In UserController - Login method");
+                Console.WriteLine(user.Password);
+                string token = await GenerateJwtToken(user.Password, user.Email);
                 user.Password = Convert.ToBase64String(hashedPassword);
-
-                if (await _userRepository.Get(UserMapper.ToEntity(user)) != null)
+                if (await _userRepository.GetProfileToAuth(UserMapper.ToEntity(user)) != null)
                 {
-                    user = UserMapper.ToDTO(await _userRepository.Get(UserMapper.ToEntity(user)));
                     return await GenerateJwtToken(user.Password, user.Email);
                 }
+                throw new Exception("Doesn't generate the token");
             }
             catch (Exception ex)
             {
-                Console.WriteLine("User Service - Login");
+                Console.WriteLine(ex.Message + "/n User Service - Login Error");
+                throw ex;
             }
-            return null;
         }
         public async Task<string> GenerateJwtToken(string password, string mail)
         {
@@ -80,13 +81,15 @@ namespace Services.UserService
             Console.WriteLine(jwtInfo[0]);
             Console.WriteLine(jwtInfo[1]);
             Console.WriteLine(jwtInfo[2]);
+            Console.WriteLine(password);
             List<Claim> claims = new List<Claim>() {
-            new Claim(ClaimTypes.Email, mail),
-            new Claim(ClaimTypes.Hash, password),
+                new Claim("EmailAddress", mail),
+                new Claim("NonHashedPassword", password),
             };
             var jwtTokenHandler = new JwtSecurityTokenHandler();
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtInfo[0]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+            
             JwtSecurityToken SecurityToken = new JwtSecurityToken(
                 issuer: jwtInfo[1],
                 audience: jwtInfo[2],
@@ -100,35 +103,87 @@ namespace Services.UserService
                 return jwtTokenHandler.WriteToken(SecurityToken);
             });
         }
-        public Task<string> Delete(Guid id)
+        public async Task<string> Delete(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _userRepository.Delete(id);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message + "/n User Service Delete Error");
+                throw ex;
+            }
         }
 
-        public Task<UserDTO> Get(UserDTO user)
+        public async Task<UserDTO> Get(Guid id)
         {
-            throw new NotImplementedException();
-        }
-        public async Task<UserDTO> GetProfile(Guid id)
-        {
-            UserEntity user = await _userRepository.GetProfile(id);
-            user.InventoryEntityList = await _inventoryRepository.GetAll();
-            /*user.InventorySetupEntityList = await _inventorySetupRepository.GetAll();*/
-            return UserMapper.ToDTO(user);
+            try
+            {
+                return UserMapper.ToDTO(await _userRepository.Get(id));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + "/n User Service Get By Id Error");
+                throw ex;
+            }
         }
 
-        public Task<List<UserDTO>> GetAll()
+        public async Task<List<UserDTO>> GetAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return UserMapper.ToDTOList(await _userRepository.GetAll());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + "/n User service - GetAll method Error");
+                throw ex;
+            }
         }
         
-        public Task<UserDTO> Update(UserDTO item)
+        public async Task<UserDTO> Update(UserDTO updatedUser)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return UserMapper.ToDTO(
+                    await _userRepository.Update(UserMapper.ToEntity(updatedUser))
+                    );
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message + "/n User service - Update Error");
+                throw ex;
+            }
         }
-        public Task<UserDTO> Add(UserDTO item)
+        public async Task<UserDTO> Add(UserDTO newUser)
         {
-            throw new NotImplementedException();
+            try
+            {
+                
+                return UserMapper.ToDTO(
+                    await _userRepository.Add(UserMapper.ToEntity(newUser))
+                    );
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + "/n User service - Add Error");
+                throw ex;
+            }
+        }
+
+        public async Task<List<UserDTO>> GetUsersBySearch(string search)
+        {
+            try
+            {
+                //////////////////////////
+                return UserMapper.ToDTOList(await _userRepository.GetUsersBySearch(search));
+                /////////////////////////////
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

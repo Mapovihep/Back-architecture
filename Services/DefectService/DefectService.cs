@@ -5,10 +5,9 @@ using Mappers;
 using Microsoft.Extensions.DependencyInjection;
 using Services.Abstract;
 
-
 namespace Services.DefectService
 {
-    public class DefectService : IDefectService
+    public class DefectService : IDefectService, IPaginationService<Defect>
     {
         
         private readonly IDefectRepository _defectRepository;
@@ -20,36 +19,27 @@ namespace Services.DefectService
         {
             try
             {
-                DefectEntity newDefect = DefectMapper.ToEntity(item);
-                DefectEntity d = await _defectRepository.Add(newDefect);
-                if (d != null)
-                {
-                    DefectDTO defectDTO = DefectMapper.ToDTO(d);
-                    return defectDTO;
-                };
+                return DefectMapper.ToDTO(
+                    await _defectRepository.Add(DefectMapper.ToEntity(item))
+                    );
             }
             catch (Exception ex)
             {
-                Console.Error.WriteLine(ex);
+                Console.WriteLine(ex.Message + Environment.NewLine + "Inventory Service - Add Error");
+                throw ex;
             }
-            return null;
         }
 
         public async Task<string> Delete(Guid id)
         {
             try
             {
-                string answer = await _defectRepository.Delete(id);
-                if (await _defectRepository.Get(id) == null)
-                {
-                    return answer;
-                }
+                return await _defectRepository.Delete(id);
             }
             catch(Exception ex)
             {
                 return ex.Message;
             }
-            return "No success";
         }
 
         public Task<DefectDTO> Get(Guid id)
@@ -61,13 +51,9 @@ namespace Services.DefectService
         {
             try
             {
-                List<DefectDTO> AllDTO = new List<DefectDTO>();
-                List<DefectEntity>  AllEntities = await _defectRepository.GetAll();
-                if (AllEntities.Count != 0)
-                {
-                    AllEntities.ForEach(x => AllDTO.Add(DefectMapper.ToDTO(x)));
-                    return AllDTO;
-                };
+                Defect defect = new Defect();
+                //return DefectMapper.ToDTOList(await _defectRepository.GetElementsByPage(defect, 15));
+                return DefectMapper.ToDTOList(await _defectRepository.GetAll());
             }
             catch (Exception ex)
             {
@@ -76,6 +62,26 @@ namespace Services.DefectService
             return null;
         }
 
+
+        public async Task<List<Defect>> GetElementsByPage(Defect last, int offSet, int currentPage)
+        {
+            try
+            {
+                //return await _defectRepository.GetElementsByPage(last, currentPage);
+                throw new NotSupportedException();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public Task<List<IGrouping<string, Defect>>> GetGroupingAllPages()
+        {
+            throw new NotImplementedException();
+        }
+
+        //не написан
         public Task<DefectDTO> Update(DefectDTO item)
         {
             throw new NotImplementedException();

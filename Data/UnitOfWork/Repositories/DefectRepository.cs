@@ -14,56 +14,106 @@ namespace Data.Repository
             db = _serviceProvider.GetService<ApplicationContext>();
         }
 
-        public async Task<DefectEntity> Add(DefectEntity item)
+        public async Task<Defect> Add(Defect defect)
         {
-            db.Defects.Add(item);
-            await db.SaveChangesAsync();
-            var updatedDefects = await db.Defects.ToListAsync();
-            var needed = updatedDefects.Find(x => x.Id == item.Id);
-            return needed;
+            try
+            {
+                await db.Defects.AddAsync(defect);
+                await db.SaveChangesAsync();
+                return await db.Defects.FirstAsync(x => x.Id == defect.Id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + Environment.NewLine + "Defects Repository Add");
+                throw ex;
+            }
         }
 
         public async Task<string> Delete(Guid id)
         {
             try
             {
-                DefectEntity defect = await db.Defects.FirstOrDefaultAsync(x => x.Id == id);
+                Defect defect = await db.Defects.FirstAsync(x => x.Id == id);
                 db.Defects.Remove(defect);
                 await db.SaveChangesAsync();
-                return "success";
+                return await db.Setups.FindAsync(id) == null ? "Success" : "Not Deleted Defect";
             }
             catch (Exception ex)
             {
-                return(ex.Message);
+                Console.WriteLine(ex.Message + Environment.NewLine + "Defects Repository Delete");
+                throw ex;
             }
-            
         }
-        
-        public Task<IEnumerable<DefectEntity>> Find(Func<DefectEntity, bool> predicate)
+
+        public Task<IEnumerable<Defect>> Find(Func<Defect, bool> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public Task<DefectEntity> Get(Guid id)
+        public async Task<Defect> Get(Guid id)
         {
-            return db.Defects.FirstOrDefaultAsync(x => x.Id == id);
+            try
+            {
+                return await db.Defects.FirstAsync(x => x.Id == id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + Environment.NewLine + "Defects Repository Get By Id");
+                throw ex;
+            }
         }
 
-        public async Task<List<DefectEntity>> GetAll()
+        public async Task<List<Defect>> GetAll()
         {
-            return await db.Defects.ToListAsync();
+            try
+            {
+                return await db.Defects.Include(x => x.Inventory).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + Environment.NewLine + "Defects Repository GetAll");
+                throw ex;
+            }
         }
 
-        public async Task<DefectEntity> Update(DefectEntity item)
+        /*public async Task<int> GetAmmount()
         {
-            db.Entry(item).State = EntityState.Modified;
-            await db.SaveChangesAsync();
-            return await db.Defects.FirstOrDefaultAsync(x => x.Id == item.Id);
+            return db.Defects.Count();
         }
-        public async Task<List<DefectEntity>> GetByInventoryId(Guid id)
+        public async Task<List<Defect>> GetElementsByPage(Defect last, int offset)
         {
-            List<DefectEntity> defectsById = await db.Defects.ToListAsync();
-            return defectsById.FindAll(x => x.InventoryEntityId == id);
+            ///////////////////
+            FilterAbstract<Defect> filter = new Filter();
+            return await filter.Filter(last, "3", "Price");
+            ///////////////////
+            try
+            {
+                return await db.Defects
+                    .Where(x => x.CreatedAt > last.CreatedAt)
+                    .OrderBy(x => x.CreatedAt)
+                    .Take(offset)
+                    .ToListAsync();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message + Environment.NewLine + "Defect GetElementsByPage");
+                throw ex;
+            }
+        }*/
+
+        public async Task<Defect> Update(Defect defect)
+        {
+            try
+            {
+                db.Entry(defect).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return await db.Defects.FirstAsync(x => x.Id == defect.Id);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message + Environment.NewLine + "Defects Repository Update");
+                throw ex;
+            }
         }
     }
 }

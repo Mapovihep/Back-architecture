@@ -145,3 +145,6 @@ C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-archit
 C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\Levi-Inventarization-Backend\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\Levi-Inventarization-Backend\bin\Debug\net6.0\DomainDTO.dll
 C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\Levi-Inventarization-Backend\bin\Debug\net6.0\DomainDTO.pdb
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\Levi-Inventarization-Backend\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\Levi-Inventarization-Backend\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\Levi-Inventarization-Backend\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll

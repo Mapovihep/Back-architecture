@@ -5,8 +5,7 @@ namespace Services.Abstract
     public interface IUserService
     {
         Task<List<UserDTO>> GetAll();
-        Task<UserDTO> Get(UserDTO user);
-        Task<UserDTO> GetProfile(Guid id);
+        Task<UserDTO> Get(Guid id);
         Task<UserDTO> Add(UserDTO item);
         Task<UserDTO> Update(UserDTO item);
         Task<string> Delete(Guid id);
@@ -15,5 +14,7 @@ namespace Services.Abstract
         Task<string> Login(UserDTO item);
 
         Task<string> GenerateJwtToken(string Email, string Password);
+
+        Task<List<UserDTO>> GetUsersBySearch(string search);
     }
 }

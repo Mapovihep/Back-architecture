@@ -18,81 +18,97 @@ namespace Data.Repository
         {
             db = _serviceProvider.GetService<ApplicationContext>();
         }
-        public async Task<RoomEntity> Add(RoomEntity room)
+        public async Task<Room> Add(Room room)
         {
-            await db.Rooms.AddAsync(room); 
-            await db.SaveChangesAsync();
-
-            var updatedRooms = await db.Rooms.ToListAsync();
-            var needed = updatedRooms.Find(x => x.Id == room.Id);
-            return needed;
+            try
+            {
+                await db.Rooms.AddAsync(room);
+                await db.SaveChangesAsync();
+                return await db.Rooms.Include(x => x.InventoryList)
+                    .FirstOrDefaultAsync(x => x.Id == room.Id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + Environment.NewLine + "Inventory Repository Add Error");
+                throw ex;
+            }
+        }
+        public async Task<List<Room>> AddRange(List<Room> entityList)
+        {
+            try
+            {
+                await db.Rooms.AddRangeAsync(entityList);
+                await db.SaveChangesAsync();
+                return await db.Rooms.ToListAsync();
+            } 
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message + Environment.NewLine + "Room Repository AddRange Error");
+                throw ex;
+            }
         }
 
         public async Task<string> Delete(Guid id)
         {
             try
             {
-                RoomEntity deleted = await db.Rooms.FindAsync(id);
-                if (deleted != null)
-                {
-                    db.Rooms.Remove(deleted);
-                    await db.SaveChangesAsync();
-                }
-                if (await db.Rooms.FindAsync(id) == null)
-                {
-                    return "success";
-                }
-                return "no success";
+                Room deleted = await db.Rooms.FindAsync(id);
+                db.Rooms.Remove(deleted);
+                await db.SaveChangesAsync();
+                return await db.Rooms.FindAsync(id) == null ? "success" :"no success";
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                return ex.Message + Environment.NewLine + "Room Repository Delete Error";
             }
             
         }
 
-        public async Task<IEnumerable<RoomEntity>> Find(Func<RoomEntity, bool> predicate)
+        public async Task<IEnumerable<Room>> Find(Func<Room, bool> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<RoomEntity> Get(Guid id)
+        public async Task<Room> Get(Guid id)
         {
             try
             {
-                return await db.Rooms.FindAsync(id);
+                return await db.Rooms
+                    .Include(r=>r.InventoryList)
+                    .FirstAsync(r=>r.Id==id);
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message + "in RoomRep In Get");
-                return null;
+                Console.WriteLine(ex.Message + Environment.NewLine + "Room Repository Get By Id Error");
+                throw ex;
             }
         }
 
-        public async Task<List<RoomEntity>> GetAll()
+        public async Task<List<Room>> GetAll()
         {
             try
             {
-                return await db.Rooms.ToListAsync();
-            }catch (Exception ex)
+                return await db.Rooms.Include(r=>r.InventoryList).ToListAsync();
+            }
+            catch (Exception ex)
             {
-                Console.WriteLine(ex.Message + "in RoomRep In GetAll");
-                return null;
+                Console.WriteLine(ex.Message + Environment.NewLine + "Room Repository GetAll Error");
+                throw ex;
             }
         }
 
-        public async Task<RoomEntity> Update(RoomEntity item)
+        public async Task<Room> Update(Room item)
         {
             try
             {
                 db.Rooms.Update(item);
                 await db.SaveChangesAsync();
-                return item;
+                return await db.Rooms.Include(p => p.InventoryList).FirstAsync(x => x.Id == item.Id);
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message + "in RoomRep In GetAll");
-                return null;
+                Console.WriteLine(ex.Message + Environment.NewLine + "Room Repository Update Error");
+                throw ex;
             }
         }
     }

@@ -9,7 +9,6 @@ namespace API.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
-
         public UserController(IServiceProvider _serviceProvider)
         {
             _userService = _serviceProvider.GetService<IUserService>();
@@ -42,62 +41,82 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("user/{id}")]
+        [Route("{controller}/{id}")]
         public async Task<IActionResult> GetUser(Guid id)
         {
              try
              {
-                 return Ok(await _userService.GetProfile(id));
+                 return Ok(await _userService.Get(id));
              }
              catch (Exception ex)
              {
                  return BadRequest(ex.Message);
              }
         }
-        [HttpGet]
-        [Route("user")]
-        public async Task<IActionResult> GetAllUser()
+        [HttpPost]
+        [Route("{controller}/add")]
+        public async Task<IActionResult> AddUser([FromBody] UserDTO newUser)
         {
-            throw new NotImplementedException();
-
-            /*try
+            try
             {
-                return Ok(await _inventoryService.GetAll());
+                return Ok(await _userService.Add(newUser));
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
-            }*/
+            }
+        }
+        [HttpGet]
+        [Route("{controller}")]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            try
+            {
+                return Ok(await _userService.GetAll());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [HttpPut]
-        [Route("user/{id}")]
+        [Route("{controller}/{id}")]
         public async Task<IActionResult> UpdateUser([FromBody] UserDTO userDTO)
         {
-            throw new NotImplementedException();
-
-            /*try
+            try
             {
-                return Ok(await _inventoryService.Update(inventoryDTO));
+                return Ok(await _userService.Update(userDTO));
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
-            }*/
+            }
         }
         [HttpDelete]
-        [Route("user/{id}")]
+        [Route("{controller}/{id}")]
         public async Task<IActionResult> DeleteUser(Guid id)
         {
-            throw new NotImplementedException();
-
-            /*try
-            {
-                return Ok(await _inventoryService.Delete(id));
+            try
+            { 
+                return Ok(await _userService.Delete(id));
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
-            }*/
+            }
+        }
+        [HttpGet]
+        [Route("{controller}/search/{search}")]
+        public async Task<IActionResult> GetInventoryBySearch(string search)
+        {
+            try
+            {
+                return Ok(await _userService.GetUsersBySearch(search));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

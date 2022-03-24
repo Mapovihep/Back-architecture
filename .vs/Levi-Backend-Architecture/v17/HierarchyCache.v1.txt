@@ -1,0 +1,457 @@
+﻿++Solution 'Levi-Backend-Architecture' ‎(8 of 8 projects)
+i:{00000000-0000-0000-0000-000000000000}:Levi-Backend-Architecture.sln
+++Entities
+i:{00000000-0000-0000-0000-000000000000}:Entities
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\entities\bin\debug\net6.0\entities.dll
+i:{a2ff181d-3cdb-4adb-8542-1ae59dddb0f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\entities\bin\debug\net6.0\entities.dll
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\entities\entities.csproj
+++Dependencies
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:>1045
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:>977
+i:{b0a59960-4b99-493e-b41e-73b7db06b3f7}:>980
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:>1048
+i:{a2ff181d-3cdb-4adb-8542-1ae59dddb0f2}:>1046
+i:{e2c3cf1b-2b7f-4889-bce6-ff51a61639dd}:>1113
+i:{b3135f1f-ef0c-477b-a6ca-8f53c58b294f}:>1047
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:>1344
+++Abstract
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\entities\abstract\
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\data\unitofwork\abstract\
+i:{b0a59960-4b99-493e-b41e-73b7db06b3f7}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\domain\abstract\
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\services\abstract\
+++BaseEntity.cs
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\entities\abstract\baseentity.cs
+++IBaseEntity.cs
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\entities\abstract\ibaseentity.cs
+++NonAbstract
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\entities\nonabstract\
+++Defect.cs
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\entities\nonabstract\defect.cs
+++Department.cs
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\entities\nonabstract\department.cs
+++Inventory.cs
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\entities\nonabstract\inventory.cs
+++InventorySetup.cs
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\entities\nonabstract\inventorysetup.cs
+++Room.cs
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\entities\nonabstract\room.cs
+++User.cs
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\entities\nonabstract\user.cs
+++Analyzers
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:analyzers
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:analyzers
+i:{b0a59960-4b99-493e-b41e-73b7db06b3f7}:analyzers
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:analyzers
+i:{a2ff181d-3cdb-4adb-8542-1ae59dddb0f2}:analyzers
+i:{e2c3cf1b-2b7f-4889-bce6-ff51a61639dd}:analyzers
+i:{b3135f1f-ef0c-477b-a6ca-8f53c58b294f}:analyzers
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:analyzers
+++Frameworks
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:frameworks
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:frameworks
+i:{b0a59960-4b99-493e-b41e-73b7db06b3f7}:frameworks
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:frameworks
+i:{a2ff181d-3cdb-4adb-8542-1ae59dddb0f2}:frameworks
+i:{e2c3cf1b-2b7f-4889-bce6-ff51a61639dd}:frameworks
+i:{b3135f1f-ef0c-477b-a6ca-8f53c58b294f}:frameworks
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:frameworks
+++Packages
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:packages
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:packages
+i:{e2c3cf1b-2b7f-4889-bce6-ff51a61639dd}:packages
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:packages
+++Microsoft.CodeAnalysis.CSharp.NetAnalyzers
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+i:{b0a59960-4b99-493e-b41e-73b7db06b3f7}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+i:{a2ff181d-3cdb-4adb-8542-1ae59dddb0f2}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+i:{e2c3cf1b-2b7f-4889-bce6-ff51a61639dd}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+i:{b3135f1f-ef0c-477b-a6ca-8f53c58b294f}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+++Microsoft.CodeAnalysis.NetAnalyzers
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+i:{b0a59960-4b99-493e-b41e-73b7db06b3f7}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+i:{a2ff181d-3cdb-4adb-8542-1ae59dddb0f2}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+i:{e2c3cf1b-2b7f-4889-bce6-ff51a61639dd}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+i:{b3135f1f-ef0c-477b-a6ca-8f53c58b294f}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+++Microsoft.EntityFrameworkCore.Analyzers
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:c:\users\leviossa it\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.1\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\users\leviossa it\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.1\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\users\leviossa it\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.1\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
+i:{a2ff181d-3cdb-4adb-8542-1ae59dddb0f2}:c:\users\leviossa it\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.1\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
+i:{e2c3cf1b-2b7f-4889-bce6-ff51a61639dd}:c:\users\leviossa it\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.1\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.1\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
+++Microsoft.Extensions.Logging.Generators
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:c:\users\leviossa it\.nuget\packages\microsoft.extensions.logging.abstractions\6.0.0\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\users\leviossa it\.nuget\packages\microsoft.extensions.logging.abstractions\6.0.0\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\users\leviossa it\.nuget\packages\microsoft.extensions.logging.abstractions\6.0.0\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
+i:{a2ff181d-3cdb-4adb-8542-1ae59dddb0f2}:c:\users\leviossa it\.nuget\packages\microsoft.extensions.logging.abstractions\6.0.0\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
+i:{e2c3cf1b-2b7f-4889-bce6-ff51a61639dd}:c:\users\leviossa it\.nuget\packages\microsoft.extensions.logging.abstractions\6.0.0\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.0\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
+++System.Text.Json.SourceGeneration
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.0\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.0\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+i:{b0a59960-4b99-493e-b41e-73b7db06b3f7}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.0\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.0\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+i:{a2ff181d-3cdb-4adb-8542-1ae59dddb0f2}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.0\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+i:{e2c3cf1b-2b7f-4889-bce6-ff51a61639dd}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.0\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+i:{b3135f1f-ef0c-477b-a6ca-8f53c58b294f}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.0\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.0\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+++Microsoft.NETCore.App
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\entities\microsoft.netcore.app
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\data\microsoft.netcore.app
+i:{b0a59960-4b99-493e-b41e-73b7db06b3f7}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\domain\microsoft.netcore.app
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\services\microsoft.netcore.app
+i:{a2ff181d-3cdb-4adb-8542-1ae59dddb0f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\mappers\microsoft.netcore.app
+i:{e2c3cf1b-2b7f-4889-bce6-ff51a61639dd}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\api\microsoft.netcore.app
+i:{b3135f1f-ef0c-477b-a6ca-8f53c58b294f}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\configurationcontainer\microsoft.netcore.app
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\microsoft.netcore.app
+++Microsoft.EntityFrameworkCore (6.0.1)
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:>1396
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:>1397
+i:{e2c3cf1b-2b7f-4889-bce6-ff51a61639dd}:>1398
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:>1435
+++Microsoft.EntityFrameworkCore.SqlServer (6.0.1)
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:>1399
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:>1401
+i:{e2c3cf1b-2b7f-4889-bce6-ff51a61639dd}:>1402
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:>1436
+++Microsoft.EntityFrameworkCore.Tools (6.0.1)
+i:{ab8f5a21-4f52-4d15-a61d-e4b2cc7df9f4}:>1404
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:>1405
+i:{e2c3cf1b-2b7f-4889-bce6-ff51a61639dd}:>1411
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:>1442
+++Data
+i:{00000000-0000-0000-0000-000000000000}:Data
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\data\bin\debug\net6.0\data.dll
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\data\data.csproj
+++UnitOfWork
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\data\unitofwork\
+++IConstructorRepository.cs
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\data\unitofwork\abstract\iconstructorrepository.cs
+++IDefectRepository.cs
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\data\unitofwork\abstract\idefectrepository.cs
+++IInventoryRepository.cs
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\data\unitofwork\abstract\iinventoryrepository.cs
+++IRoomRepository.cs
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\data\unitofwork\abstract\iroomrepository.cs
+++IUserRepository.cs
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\data\unitofwork\abstract\iuserrepository.cs
+++Repositories
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\data\unitofwork\repositories\
+++DefectRepository.cs
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\data\unitofwork\repositories\defectrepository.cs
+++DepartmentRepository.cs
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\data\unitofwork\repositories\departmentrepository.cs
+++InventoryRepository.cs
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\data\unitofwork\repositories\inventoryrepository.cs
+++InventorySetupRepository.cs
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\data\unitofwork\repositories\inventorysetuprepository.cs
+++RoomRepository.cs
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\data\unitofwork\repositories\roomrepository.cs
+++UserRepository.cs
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\data\unitofwork\repositories\userrepository.cs
+++IUnitOfWork.cs
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\data\unitofwork\iunitofwork.cs
+++ApplicationContext.cs
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\data\applicationcontext.cs
+++Projects
+i:{1c54a5c1-43f9-4bfa-9652-2a0aef4060e5}:projects
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:projects
+i:{a2ff181d-3cdb-4adb-8542-1ae59dddb0f2}:projects
+i:{e2c3cf1b-2b7f-4889-bce6-ff51a61639dd}:projects
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:projects
+++DomainDTO
+i:{00000000-0000-0000-0000-000000000000}:DomainDTO
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\domain\bin\debug\net6.0\domaindto.dll
+i:{a2ff181d-3cdb-4adb-8542-1ae59dddb0f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\domain\bin\debug\net6.0\domaindto.dll
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\domain\domaindto.csproj
+++Models
+i:{b0a59960-4b99-493e-b41e-73b7db06b3f7}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\domain\models\
+++CategoryDTO.cs
+i:{b0a59960-4b99-493e-b41e-73b7db06b3f7}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\domain\models\categorydto.cs
+++DefectDTO.cs
+i:{b0a59960-4b99-493e-b41e-73b7db06b3f7}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\domain\models\defectdto.cs
+++InventoryDTO.cs
+i:{b0a59960-4b99-493e-b41e-73b7db06b3f7}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\domain\models\inventorydto.cs
+++InventorySetupDTO.cs
+i:{b0a59960-4b99-493e-b41e-73b7db06b3f7}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\domain\models\inventorysetupdto.cs
+++RoomDTO.cs
+i:{b0a59960-4b99-493e-b41e-73b7db06b3f7}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\domain\models\roomdto.cs
+++UserDTO.cs
+i:{b0a59960-4b99-493e-b41e-73b7db06b3f7}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\domain\models\userdto.cs
+++BaseDTO.cs
+i:{b0a59960-4b99-493e-b41e-73b7db06b3f7}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\domain\abstract\basedto.cs
+++Services
+i:{00000000-0000-0000-0000-000000000000}:Services
+i:{e2c3cf1b-2b7f-4889-bce6-ff51a61639dd}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\services\bin\debug\net6.0\services.dll
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\services\services.csproj
+++DefectService
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\services\defectservice\
+++DefectService.cs
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\services\defectservice\defectservice.cs
+++InventoryService
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\services\inventoryservice\
+++InventoryService.cs
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\services\inventoryservice\inventoryservice.cs
+++RoomService
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\services\roomservice\
+++RoomService.cs
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\services\roomservice\roomservice.cs
+++UserService
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\services\userservice\
+++UserService.cs
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\services\userservice\userservice.cs
+++RoomServiceLoggerDecorator.cs
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\services\roomserviceloggerdecorator.cs
+++ClearAllDb.cs
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\services\abstract\clearalldb.cs
+++IDefectService.cs
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\services\abstract\idefectservice.cs
+++IInventoryService.cs
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\services\abstract\iinventoryservice.cs
+++IRoomService.cs
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\services\abstract\iroomservice.cs
+++IUserService.cs
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\services\abstract\iuserservice.cs
+++ConfigurationContainer
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\configurationcontainer\bin\debug\net6.0\configurationcontainer.dll
+i:{00000000-0000-0000-0000-000000000000}:ConfigurationContainer
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\configurationcontainer\configurationcontainer.csproj
+++Mappers
+i:{1e98c620-cf64-4016-bf6b-c63a728498f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\mappers\bin\debug\net6.0\mappers.dll
+i:{00000000-0000-0000-0000-000000000000}:Mappers
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\mappers\mappers.csproj
+++DefectMapper.cs
+i:{a2ff181d-3cdb-4adb-8542-1ae59dddb0f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\mappers\defectmapper.cs
+++InventoryMapper.cs
+i:{a2ff181d-3cdb-4adb-8542-1ae59dddb0f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\mappers\inventorymapper.cs
+++InventorySetupMapper.cs
+i:{a2ff181d-3cdb-4adb-8542-1ae59dddb0f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\mappers\inventorysetupmapper.cs
+++RoomMapper.cs
+i:{a2ff181d-3cdb-4adb-8542-1ae59dddb0f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\mappers\roommapper.cs
+++UserMapper.cs
+i:{a2ff181d-3cdb-4adb-8542-1ae59dddb0f2}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\mappers\usermapper.cs
+++API
+i:{00000000-0000-0000-0000-000000000000}:API
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\api\api.csproj
+++Controllers
+i:{e2c3cf1b-2b7f-4889-bce6-ff51a61639dd}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\api\controllers\
+++DefectController.cs
+i:{e2c3cf1b-2b7f-4889-bce6-ff51a61639dd}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\api\controllers\defectcontroller.cs
+++InventoryController.cs
+i:{e2c3cf1b-2b7f-4889-bce6-ff51a61639dd}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\api\controllers\inventorycontroller.cs
+++RoomController.cs
+i:{e2c3cf1b-2b7f-4889-bce6-ff51a61639dd}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\api\controllers\roomcontroller.cs
+++UserController.cs
+i:{e2c3cf1b-2b7f-4889-bce6-ff51a61639dd}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\api\controllers\usercontroller.cs
+++Microsoft.AspNetCore.Mvc.Core (2.2.5)
+i:{e2c3cf1b-2b7f-4889-bce6-ff51a61639dd}:>1410
+++Microsoft.EntityFrameworkCore.InMemory (6.0.1)
+i:{e2c3cf1b-2b7f-4889-bce6-ff51a61639dd}:>1406
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:>1441
+++GetConnectionString.cs
+i:{b3135f1f-ef0c-477b-a6ca-8f53c58b294f}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\configurationcontainer\getconnectionstring.cs
+++GetJwtSettings.cs
+i:{b3135f1f-ef0c-477b-a6ca-8f53c58b294f}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\configurationcontainer\getjwtsettings.cs
+++Levi-Inventarization-Backend
+i:{00000000-0000-0000-0000-000000000000}:Levi-Inventarization-Backend
+++Connected Services 
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:>1345
+++Properties
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\properties\
+++wwwroot
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\
+++Migrations
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\migrations\
+++appsettings.json
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\appsettings.json
+++Program.cs
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\program.cs
+++No service dependencies discovered
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:>1346
+++launchSettings.json
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\properties\launchsettings.json
+++css
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\css\
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\
+++js
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\js\
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\js\
+++lib
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\
+++favicon.ico
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\favicon.ico
+++20220305082249_changedNamesOfEntities.cs
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\migrations\20220305082249_changednamesofentities.cs
+++20220305085114_addedIdOfUserToInventory.cs
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\migrations\20220305085114_addedidofusertoinventory.cs
+++20220305090204_addedDatesMockOfUserToInventory.cs
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\migrations\20220305090204_addeddatesmockofusertoinventory.cs
+++ApplicationContextModelSnapshot.cs
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\migrations\applicationcontextmodelsnapshot.cs
+++appsettings.Development.json
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\appsettings.development.json
+++Microsoft.AspNetCore.Analyzers
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.analyzers.dll
+++Microsoft.AspNetCore.App.Analyzers
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.0\analyzers\dotnet\cs\microsoft.aspnetcore.app.analyzers.dll
+++Microsoft.AspNetCore.App.CodeFixes
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.0\analyzers\dotnet\cs\microsoft.aspnetcore.app.codefixes.dll
+++Microsoft.AspNetCore.Components.Analyzers
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.components.analyzers.dll
+++Microsoft.AspNetCore.Mvc.Analyzers
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.mvc.analyzers.dll
+++Microsoft.AspNetCore.Razor.Internal.SourceGenerator.Transport
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk.razor\source-generators\microsoft.aspnetcore.razor.internal.sourcegenerator.transport.dll
+++Microsoft.NET.Sdk.Razor.SourceGenerators
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk.razor\source-generators\microsoft.net.sdk.razor.sourcegenerators.dll
+++Microsoft.AspNetCore.App
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\microsoft.aspnetcore.app
+++AutoMapper (11.0.1)
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:>1439
+++AutoMapper.Extensions.Microsoft.DependencyInjection (11.0.0)
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:>1437
+++Microsoft.AspNetCore.Authentication.JwtBearer (6.0.1)
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:>1440
+++System.Linq (4.3.0)
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:>1438
+++site.css
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\css\site.css
+++site.js
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\js\site.js
+++bootstrap
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\
+++jquery
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\jquery\
+++jquery-validation
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\jquery-validation\
+++jquery-validation-unobtrusive
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\jquery-validation-unobtrusive\
+++20220305082249_changedNamesOfEntities.Designer.cs
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\migrations\20220305082249_changednamesofentities.designer.cs
+++20220305085114_addedIdOfUserToInventory.Designer.cs
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\migrations\20220305085114_addedidofusertoinventory.designer.cs
+++20220305090204_addedDatesMockOfUserToInventory.Designer.cs
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\migrations\20220305090204_addeddatesmockofusertoinventory.designer.cs
+++dist
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\jquery\dist\
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\jquery-validation\dist\
+++LICENSE
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\license
+++LICENSE.txt
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\jquery\license.txt
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\jquery-validation-unobtrusive\license.txt
+++LICENSE.md
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\jquery-validation\license.md
+++jquery.validate.unobtrusive.js
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
+++jquery.js
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\jquery\dist\jquery.js
+++additional-methods.js
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\jquery-validation\dist\additional-methods.js
+++jquery.validate.js
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\jquery-validation\dist\jquery.validate.js
+++jquery.validate.unobtrusive.min.js
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js
+++bootstrap.css
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap.css
+++bootstrap-grid.css
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
+++bootstrap-reboot.css
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+++bootstrap-utilities.css
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
+++bootstrap.js
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\js\bootstrap.js
+++jquery.min.js
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\jquery\dist\jquery.min.js
+++additional-methods.min.js
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+++jquery.validate.min.js
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+++bootstrap.css.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+++bootstrap.min.css
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+++bootstrap.rtl.css
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
+++bootstrap-grid.css.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
+++bootstrap-grid.min.css
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
+++bootstrap-grid.rtl.css
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
+++bootstrap-reboot.css.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
+++bootstrap-reboot.min.css
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
+++bootstrap-reboot.rtl.css
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
+++bootstrap-utilities.css.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
+++bootstrap-utilities.min.css
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
+++bootstrap-utilities.rtl.css
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
+++bootstrap.bundle.js
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
+++bootstrap.esm.js
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
+++bootstrap.js.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
+++bootstrap.min.js
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+++jquery.min.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\jquery\dist\jquery.min.map
+++bootstrap.min.css.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+++bootstrap.rtl.css.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
+++bootstrap.rtl.min.css
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
+++bootstrap-grid.min.css.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+++bootstrap-grid.rtl.css.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
+++bootstrap-grid.rtl.min.css
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
+++bootstrap-reboot.min.css.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
+++bootstrap-reboot.rtl.css.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
+++bootstrap-reboot.rtl.min.css
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
+++bootstrap-utilities.min.css.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
+++bootstrap-utilities.rtl.css.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
+++bootstrap-utilities.rtl.min.css
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
+++bootstrap.bundle.js.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
+++bootstrap.bundle.min.js
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
+++bootstrap.esm.js.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
+++bootstrap.esm.min.js
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
+++bootstrap.min.js.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
+++bootstrap.rtl.min.css.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
+++bootstrap-grid.rtl.min.css.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
+++bootstrap-reboot.rtl.min.css.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
+++bootstrap-utilities.rtl.min.css.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
+++bootstrap.bundle.min.js.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
+++bootstrap.esm.min.js.map
+i:{59e3e213-fc3a-4af5-82e4-02a6d6719870}:c:\users\leviossa it\desktop\react\asp net\levi-backend-architecture\back-architecture\levi-inventarization-backend\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map

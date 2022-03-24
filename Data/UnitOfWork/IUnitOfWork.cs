@@ -8,7 +8,7 @@ namespace Data.UnitOfWork
         UserRepository Users { get; }
         RoomRepository Rooms { get; }
         InventoryRepository Inventories { get; }
-        InventorySetupRepository InventorySetups { get; }
+        SetupRepository InventorySetups { get; }
         DepartmentRepository Departments { get; }
         DefectRepository Defects { get; }
         void Save();

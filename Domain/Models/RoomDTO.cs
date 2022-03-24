@@ -7,6 +7,6 @@ namespace DomainDTO.Models
     public class RoomDTO : BaseDTO
     {
         public List<InventoryDTO>? InventoryDTOList { get; set; }
-        public List<InventorySetupDTO>? InventorySetupDTOList { get; set; }
+        public List<SetupDTO>? SetupDTOList { get; set; }
     }
 }

@@ -10,27 +10,22 @@ namespace Services.InventoryService
     public class InventoryService : IInventoryService
     {
         private readonly IInventoryRepository _inventoryRepository;
-        private readonly IDefectRepository _defectRepository;
         public InventoryService(IServiceProvider _serviceProvider)
         {
             _inventoryRepository = _serviceProvider.GetService<IInventoryRepository>();
-            _defectRepository = _serviceProvider.GetService<IDefectRepository>();
         }
         public async Task<InventoryDTO> Add(InventoryDTO item)
         {
             try
             {
-                InventoryEntity itemEntity = InventoryMapper.ToEntity(item);
-                itemEntity.DefectsEntityList.ForEach(async entity => await _defectRepository.Add(entity));
-                itemEntity.DefectsEntityList = null;
-                itemEntity = await _inventoryRepository.Add(itemEntity);
-                itemEntity.DefectsEntityList = await _defectRepository.GetByInventoryId(itemEntity.Id);
-                return InventoryMapper.ToDTO(itemEntity);
+                return InventoryMapper.ToDTO(
+                    await _inventoryRepository.Add(InventoryMapper.ToEntity(item))
+                    );
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Inventory Service - Add");
-                return null;
+                Console.WriteLine(ex.Message + Environment.NewLine + "Inventory Service - Add Error");
+                throw ex;
             }
         }
 
@@ -38,14 +33,12 @@ namespace Services.InventoryService
         {
             try
             {
-                List<DefectEntity> defects = await _defectRepository.GetByInventoryId(id);
-                defects.ForEach(async x => await _defectRepository.Delete(x.Id));
                 return await _inventoryRepository.Delete(id);
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Inventory Service - Delete");
-                return ex.Message;
+                Console.WriteLine(ex.Message + Environment.NewLine + "Inventory Service - Delete Error");
+                throw ex;
             }
         }
 
@@ -53,14 +46,12 @@ namespace Services.InventoryService
         {
             try
             {
-                InventoryEntity needed = await _inventoryRepository.Get(id);
-                needed.DefectsEntityList = await _defectRepository.GetByInventoryId(needed.Id);
-                return InventoryMapper.ToDTO(needed);
+                return InventoryMapper.ToDTO(await _inventoryRepository.Get(id));
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Inventory Service - Get by Id");
-                return null;
+                Console.WriteLine(ex.Message + Environment.NewLine + "Inventory Service - Get by Id");
+                throw ex;
             }
         }
 
@@ -68,17 +59,12 @@ namespace Services.InventoryService
         {
             try
             {
-                List<InventoryEntity> emptyEntities = await _inventoryRepository.GetAll();
-                List<DefectEntity> defectEntities = await _defectRepository.GetAll();
-                List<InventoryDTO> fullDTOs = new List<InventoryDTO>();
-                emptyEntities.ForEach(x=>x.DefectsEntityList = defectEntities.FindAll(d=>d.InventoryEntityId==x.Id));
-                emptyEntities.ForEach(x => fullDTOs.Add(InventoryMapper.ToDTO(x)));
-                return fullDTOs;
+                return InventoryMapper.ToDTOList(await _inventoryRepository.GetAll());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Inventory Service - GetAll");
-                return null;
+                Console.WriteLine(ex.Message + Environment.NewLine + "Inventory Service - GetAll Error");
+                throw ex;
             }
         }
 
@@ -86,12 +72,44 @@ namespace Services.InventoryService
         {
             try
             {
-                return InventoryMapper.ToDTO(await _inventoryRepository.Update(InventoryMapper.ToEntity(item)));
+                return InventoryMapper.ToDTO(
+                    await _inventoryRepository.Update(InventoryMapper.ToEntity(item))
+                    );
             } 
             catch (Exception ex)
             {
-                Console.WriteLine("Inventory Service - Update");
-                return null;
+                Console.WriteLine(ex.Message + Environment.NewLine + "Inventory Service - Update Error");
+                throw ex;
+            }
+        }
+        public async Task<List<IGrouping<string, InventoryDTO>>> GetSelectedByCategories()
+        {
+            try
+            {
+                return InventoryMapper.ToDTOList(await _inventoryRepository.GetAll())
+                    .GroupBy(x => x.Category)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + Environment.NewLine + "Inventory Service - GetSelectedByCategories Error");
+                throw ex;
+            }
+        }
+
+        public async Task<List<InventoryDTO>> GetInventoryFiltered(string? search, int page, int offSet, 
+            string? filters, bool ascend, string? category)
+        {
+            try
+            {
+                var endResult = await _inventoryRepository.GetInventoryFiltered(search, page, offSet, filters, ascend, category);
+                 
+                return InventoryMapper.ToDTOList(endResult);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + Environment.NewLine + "Inventory Service - GetInventoryBySearch Error");
+                throw ex;
             }
         }
     }
