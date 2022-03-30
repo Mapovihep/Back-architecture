@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Yh/K6CF1wJcaTyf+sq0Pjgu/4SEn3qQ1UkX+PZfEQtSipapk+fJzmNdJL239uVs5Nn5KCSzgeyPuKV4ggwnzOA==",
+  "dgSpecHash": "CxNqINNQrZwnCbnnAN2YP6mMyNA3GTdGtnDtWm1Wo3FWbCRsYYFivxb5SKkPRbwS4qWuaN94VTEKguRRQJ4/+g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Back-architecture\\Mappers\\Mappers.csproj",
+  "projectFilePath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\Mappers\\Mappers.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Leviossa IT\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Leviossa IT\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",

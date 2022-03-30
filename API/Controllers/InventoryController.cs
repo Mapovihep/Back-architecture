@@ -111,16 +111,7 @@ namespace API.Controllers
         }
 
 
-        //[HttpGet]
-        //[Route("{controller}/get/{page}/{pageSize}/{ort}")]
-        //public async Task<IActionResult> GetTest([FromQuery]int page )
-        //{
-
-        //}
-
-
         [HttpGet]
-        
         [Route("{controller}/{page}x{offSet}")]
         [Route("{controller}/{page}x{offSet}/{search?}")]
         [Route("{controller}/{page}x{offSet}/f={filters}-{ascend}")]

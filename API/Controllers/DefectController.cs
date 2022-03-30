@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace API.Controllers
 {
     [ApiController]
+    [Authorize(Policy = "Bearer")]
     public class DefectController : ControllerBase
     {
         private readonly IDefectService _defectService;

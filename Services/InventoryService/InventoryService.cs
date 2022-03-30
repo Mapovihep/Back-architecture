@@ -1,6 +1,7 @@
-﻿using Data.UnitOfWork.Abstract;
+﻿using Data.UnitOfWork;
+using Data.UnitOfWork.Abstract;
 using DomainDTO.Models;
-using Entities;
+using Entities.NonAbstract;
 using Mappers;
 using Microsoft.Extensions.DependencyInjection;
 using Services.Abstract;
@@ -10,9 +11,10 @@ namespace Services.InventoryService
     public class InventoryService : IInventoryService
     {
         private readonly IInventoryRepository _inventoryRepository;
-        public InventoryService(IServiceProvider _serviceProvider)
+
+        public InventoryService(IUnitOfWork unitOfWork)
         {
-            _inventoryRepository = _serviceProvider.GetService<IInventoryRepository>();
+            _inventoryRepository = unitOfWork.Inventories;
         }
         public async Task<InventoryDTO> Add(InventoryDTO item)
         {
@@ -54,7 +56,6 @@ namespace Services.InventoryService
                 throw ex;
             }
         }
-
         public async Task<List<InventoryDTO>> GetAll()
         {
             try
@@ -75,7 +76,7 @@ namespace Services.InventoryService
                 return InventoryMapper.ToDTO(
                     await _inventoryRepository.Update(InventoryMapper.ToEntity(item))
                     );
-            } 
+            }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message + Environment.NewLine + "Inventory Service - Update Error");
@@ -97,13 +98,28 @@ namespace Services.InventoryService
             }
         }
 
-        public async Task<List<InventoryDTO>> GetInventoryFiltered(string? search, int page, int offSet, 
+        public async Task<List<NameIdClass>> GetAvailable(int page, int offSet)
+        {
+            try
+            {
+                return InventoryMapper.ToBaseInfo(
+                    await _inventoryRepository.GetInventoryFiltered("Available", page, offSet, "Date", false, "")
+                    );
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + Environment.NewLine +
+                    "Inventory Service GetAvailable > GetInventoryFiltered Error");
+                throw ex;
+            }
+        }
+        public async Task<List<InventoryDTO>> GetInventoryFiltered(string? search, int page, int offSet,
             string? filters, bool ascend, string? category)
         {
             try
             {
                 var endResult = await _inventoryRepository.GetInventoryFiltered(search, page, offSet, filters, ascend, category);
-                 
+
                 return InventoryMapper.ToDTOList(endResult);
             }
             catch (Exception ex)

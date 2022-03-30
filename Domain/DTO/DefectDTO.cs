@@ -9,6 +9,6 @@ namespace DomainDTO.Models
         public string Image { get; set; }
         public Guid UpdateBy { get; set; }
 
-        public Guid? InventoryDTOId { get; set; }
+        public Guid? InventoryId { get; set; }
     }
 }

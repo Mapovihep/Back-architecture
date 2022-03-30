@@ -13,7 +13,12 @@ namespace Mappers
                 roomEntity.Name = roomDTO.Name;
                 roomEntity.CreatedAt = roomDTO.CreatedAt;
 
-                roomEntity.Id = roomDTO.Id != Guid.Empty ?  roomDTO.Id : Guid.NewGuid();
+                roomEntity.Id = roomDTO.Id != Guid.Empty ? roomDTO.Id : Guid.NewGuid();
+
+                if (roomDTO.InventoryList.Count() != 0)
+                    roomEntity.InventoryList = InventoryMapper.ToEntityList(roomDTO.InventoryList);
+                if (roomDTO.SetupList.Count() != 0)
+                    roomEntity.SetupList = SetupMapper.ToEntityList(roomDTO.SetupList);
                 return roomEntity;
             }
             return null;
@@ -21,7 +26,7 @@ namespace Mappers
         public static List<Room> ToEntityList(List<RoomDTO> roomDTOList)
         {
             List<Room> roomEntityList = new List<Room>();
-            foreach(RoomDTO room in roomDTOList)
+            foreach (RoomDTO room in roomDTOList)
             {
                 roomEntityList.Add(ToEntity(room));
             }
@@ -37,6 +42,10 @@ namespace Mappers
                 roomDTO.CreatedAt = roomEntity.CreatedAt;
                 roomDTO.Id = roomEntity.Id;
 
+                if (roomEntity.InventoryList.Count() != 0)
+                    roomDTO.InventoryList = InventoryMapper.ToDTOList(roomEntity.InventoryList);
+                if (roomEntity.SetupList.Count() != 0)
+                    roomDTO.SetupList = SetupMapper.ToDTOList(roomEntity.SetupList);
                 return roomDTO;
             }
             return null;

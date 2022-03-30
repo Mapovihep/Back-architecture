@@ -1,4 +1,5 @@
 ﻿using Entities.Abstract;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entities
 {
@@ -11,7 +12,10 @@ namespace Entities
         public Guid UpdateBy { get; set; }
         public bool IsAdmin { get; set; }
 
-        public List<Setup>? InventorySetupList = new List<Setup>();
+        [ForeignKey("Setup")]
+        public Guid? SetupId { get; set; }
+        public Setup? Setup { get; set; }
+        
         public List<Inventory>? InventoryList = new List<Inventory>();
     }
 }

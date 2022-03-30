@@ -1,20 +1,23 @@
-﻿using Entities.Abstract;
+﻿
 
-namespace Entities
+using DomainDTO.Abstract;
+
+namespace DomainDTO.Models
 {
-    public class Setup : BaseEntity
+    public class SetupDTO : BaseDTO
     {
         public string? RoomName { get; set; }
         public string? Category { get; set; }
-        public string? QRCode { get; set; }
+        public string? Image { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public Guid? UpdatedBy { get; set; }
         public bool Status { get; set; }
-
-        public User? User { get; set; }
+ 
+        public UserDTO? User { get; set; }
         public Guid? UserId { get; set; }
-        public Room? Room { get; set; }
+        public RoomDTO? Room { get; set; }
         public Guid? RoomId { get; set; }
-        public List<Inventory> InventoryList { get; set; } = new List<Inventory>();
+        public List<InventoryDTO>? InventoryList { get; set; } = new List<InventoryDTO>();   
+
     }
 }

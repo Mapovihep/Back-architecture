@@ -8,8 +8,13 @@ namespace DomainDTO.Abstract
 {
     public class BaseDTO
     {
+        private DateTime _newDate = DateTime.Now;
         public string Name { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt {
+            get { return _newDate; }
+            set { _newDate = value; }
+        }
         public Guid Id { get; set; }
+
     }
 }

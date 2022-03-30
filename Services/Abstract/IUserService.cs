@@ -15,6 +15,7 @@ namespace Services.Abstract
 
         Task<string> GenerateJwtToken(string Email, string Password);
 
-        Task<List<UserDTO>> GetUsersBySearch(string search);
+        Task<List<UserDTO>> GetUsersFiltered(string? search, int page, int offSet,
+            string filters, bool ascend, bool isAdmin);
     }
 }

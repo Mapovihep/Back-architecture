@@ -61,8 +61,8 @@ namespace Data
                  .HasOne(setup => setup.Room)
                  .WithMany(r => r.SetupList)
                  .OnDelete(DeleteBehavior.SetNull);
-            
-            var depMockData = new DepartmentMock().GetDepMock(DepId, MainAdmin);
+
+            /*var depMockData = new DepartmentMock().GetDepMock(DepId, MainAdmin);
             modelBuilder.Entity<Department>().HasData(depMockData);
 
             var userMockData = new UserMock().GetRandomData(10, MainAdmin);
@@ -72,14 +72,14 @@ namespace Data
             var roomMockData = new RoomMock().GetRandomData(RoomNames, DepId);
             modelBuilder.Entity<Room>().HasData(roomMockData);
 
-            var setupMockData = new SetupMock().GetRandomData(roomMockData, MainAdmin);
+            var setupMockData = new SetupMock().GetRandomData(roomMockData, userMockData, MainAdmin);
             modelBuilder.Entity<Setup>().HasData(setupMockData);
 
-            var inventoryMockData = new InventoryMock().GetRandomData(roomMockData, userMockData, setupMockData);
+            var inventoryMockData = new InventoryMock().GetRandomData(roomMockData, userMockData, setupMockData, MainAdmin);
             modelBuilder.Entity<Inventory>().HasData(inventoryMockData);
 
-            var defectMockData = new DefectMock().GetRandomData(inventoryMockData, userMockData);
-            modelBuilder.Entity<Defect>().HasData(defectMockData);
+            var defectMockData = new DefectMock().GetRandomData(inventoryMockData, userMockData, MainAdmin);
+            modelBuilder.Entity<Defect>().HasData(defectMockData);*/
 
 
             //    modelBuilder.Entity<Criminal>().Ignore(c => c.ammount); //для игнорирования свойства

@@ -6,7 +6,7 @@ namespace DomainDTO.Models
     // отсутствует необходимость иметь поля id в слое бизнес-логики 
     public class RoomDTO : BaseDTO
     {
-        public List<InventoryDTO>? InventoryDTOList { get; set; }
-        public List<SetupDTO>? SetupDTOList { get; set; }
+        public List<InventoryDTO>? InventoryList { get; set; } = new List<InventoryDTO>();
+        public List<SetupDTO>? SetupList { get; set; } = new List<SetupDTO>();
     }
 }

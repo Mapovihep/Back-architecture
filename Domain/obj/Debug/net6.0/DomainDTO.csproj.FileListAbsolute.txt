@@ -10,3 +10,15 @@ C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-archit
 C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\Domain\obj\Debug\net6.0\DomainDTO.dll
 C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\Domain\obj\Debug\net6.0\ref\DomainDTO.dll
 C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\Back-architecture\Domain\obj\Debug\net6.0\DomainDTO.pdb
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Domain\bin\Debug\net6.0\DomainDTO.deps.json
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Domain\bin\Debug\net6.0\DomainDTO.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Domain\bin\Debug\net6.0\ref\DomainDTO.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Domain\bin\Debug\net6.0\DomainDTO.pdb
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Domain\obj\Debug\net6.0\DomainDTO.csproj.AssemblyReference.cache
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Domain\obj\Debug\net6.0\DomainDTO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Domain\obj\Debug\net6.0\DomainDTO.AssemblyInfoInputs.cache
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Domain\obj\Debug\net6.0\DomainDTO.AssemblyInfo.cs
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Domain\obj\Debug\net6.0\DomainDTO.csproj.CoreCompileInputs.cache
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Domain\obj\Debug\net6.0\DomainDTO.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Domain\obj\Debug\net6.0\ref\DomainDTO.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Domain\obj\Debug\net6.0\DomainDTO.pdb

@@ -9,23 +9,24 @@ namespace Data.UnitOfWork.MockData
 {
     public class SetupMock
     {
-        public List<Setup> GetRandomData(List<Room> rooms, Guid MainAdmin)
+        public List<Setup> GetRandomData(List<Room> rooms, List<User> users, Guid MainAdmin)
         {
             var RandomString = new WordRandomizer().RandomString;
-
+            Random random = new Random();
             List<Setup> setupList = new List<Setup>();
-            foreach(Room room in rooms)
+            foreach (Room room in rooms)
             {
                 setupList.Add(new Setup()
                 {
                     Id = Guid.NewGuid(),
-                    Name = $"{room.Name} Work Desk" ,
+                    Name = $"{room.Name} Work Desk",
 
-                    RoomName = RandomString(10),
-                    QRCode = "QRCode" + room.Name,
-                    UpdatedAt = new DateTime(),
+                    RoomName = room.Name,
+                    QRCode = "QRCode",
+                    UpdatedAt = new DateTime(2022, 3, 5).AddHours(random.Next(0,200)),
                     Category = "WorkPlaces",
                     UpdatedBy = MainAdmin,
+                    UserId = users.Count() > rooms.IndexOf(room) ? users[rooms.IndexOf(room)].Id : null,
                 }
                 );
             }

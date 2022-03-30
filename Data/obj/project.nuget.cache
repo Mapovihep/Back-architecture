@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uY20GWQCY9KJIHvvYc1Xihh1GphTWpsd5czVCndNnodStaDUg0WR8wZXWHvUCAk5/wKbVNYmT5TAds1wwQGxvw==",
+  "dgSpecHash": "ZnYTTSrEjizYQBAIleK8vtVSCjURVcWx48w3LJ2Y9BvJhQpw8LHIkrbacXM1GVt8EppaOdNRRnWunJPFS/w5cw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Back-architecture\\Data\\Data.csproj",
+  "projectFilePath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\Data\\Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Leviossa IT\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Leviossa IT\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

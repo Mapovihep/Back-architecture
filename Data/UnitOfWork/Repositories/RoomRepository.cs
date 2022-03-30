@@ -3,20 +3,18 @@ using Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Data.Repository
+namespace Data.UnitOfWork.Repositories
 {
     public class RoomRepository : IRoomRepository
     {
         //CRUD repository
         //может соединяться с облаком, файлами, БД, InMemory(в ОЗУ)
         //repository должен быть в единственном экземпляре
-        //Active Record, ORM(Object-Relational Mapping)
 
-        /*private static List<RoomEntity> _rooms = new List<RoomEntity>();*/
         private ApplicationContext db;
-        public RoomRepository(IServiceProvider _serviceProvider)
+        public RoomRepository(ApplicationContext _db)
         {
-            db = _serviceProvider.GetService<ApplicationContext>();
+            db = _db;
         }
         public async Task<Room> Add(Room room)
         {
@@ -39,7 +37,9 @@ namespace Data.Repository
             {
                 await db.Rooms.AddRangeAsync(entityList);
                 await db.SaveChangesAsync();
-                return await db.Rooms.ToListAsync();
+                return await db.Rooms
+                    .Where(x=>entityList.Contains(x))
+                    .ToListAsync();
             } 
             catch(Exception ex)
             {
@@ -54,6 +54,11 @@ namespace Data.Repository
             {
                 Room deleted = await db.Rooms.FindAsync(id);
                 db.Rooms.Remove(deleted);
+                var rooms = await db.Rooms.Where(x => x.Name == "There is no Room yet").ToListAsync(); 
+                foreach (Room room in rooms)
+                {
+                    db.Rooms.Remove(room);
+                }    
                 await db.SaveChangesAsync();
                 return await db.Rooms.FindAsync(id) == null ? "success" :"no success";
             }
@@ -84,11 +89,17 @@ namespace Data.Repository
             }
         }
 
-        public async Task<List<Room>> GetAll()
+        public async Task<List<Room>> GetAll(bool withInclude)
         {
             try
             {
-                return await db.Rooms.Include(r=>r.InventoryList).ToListAsync();
+                if(withInclude)
+                    return await db.Rooms
+                        .Include(r=>r.SetupList)
+                        .Include(r=>r.InventoryList)
+                        .ToListAsync();
+                else
+                    return await db.Rooms.ToListAsync();
             }
             catch (Exception ex)
             {

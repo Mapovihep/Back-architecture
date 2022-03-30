@@ -1,5 +1,6 @@
 ﻿using DomainDTO.Models;
 using Entities;
+using Entities.NonAbstract;
 
 namespace Mappers
 {
@@ -21,32 +22,30 @@ namespace Mappers
                 inventorySetupEntity.UpdatedBy = inventorySetupDTO.UpdatedBy;
                 inventorySetupEntity.Status = inventorySetupDTO.Status;
 
-                
-                if (inventorySetupDTO.UserDTO != null)
+
+                if (inventorySetupDTO.User != null)
                 {
-                    inventorySetupEntity.User = UserMapper.ToEntity(inventorySetupDTO.UserDTO);
-                    inventorySetupEntity.UserId = inventorySetupDTO.UserDTO.Id;
+                    inventorySetupEntity.User = UserMapper.ToEntity(inventorySetupDTO.User);
+                    inventorySetupEntity.UserId = inventorySetupDTO.User.Id;
                 }
-                if (inventorySetupDTO.RoomDTO != null)
+                if (inventorySetupDTO.Room != null)
                 {
-                    inventorySetupEntity.Room = RoomMapper.ToEntity(inventorySetupDTO.RoomDTO);
-                    inventorySetupEntity.RoomId = inventorySetupDTO.RoomDTO.Id;
+                    inventorySetupEntity.Room = RoomMapper.ToEntity(inventorySetupDTO.Room);
+                    inventorySetupEntity.RoomId = inventorySetupDTO.Room.Id;
                 }
-                if(inventorySetupDTO.InventoryDTOList!=null)
+                if (inventorySetupDTO.InventoryList != null)
                 {
-                    foreach (var inv in inventorySetupDTO.InventoryDTOList)
+                    foreach (var inv in inventorySetupDTO.InventoryList)
                     {
                         inventorySetupEntity.InventoryList.Add(InventoryMapper.ToEntity(inv));
                     }
                 }
                 else
-                {
                     inventorySetupEntity.InventoryList = new List<Inventory>();
-                }
             }
             return inventorySetupEntity;
         }
-        public static SetupDTO ToDTO (Setup inventorySetupEntity)
+        public static SetupDTO ToDTO(Setup inventorySetupEntity)
         {
             SetupDTO inventorySetupDTO = new SetupDTO();
             if (inventorySetupEntity != null)
@@ -63,20 +62,20 @@ namespace Mappers
                 inventorySetupDTO.Status = inventorySetupEntity.Status;
 
 
-                if (inventorySetupDTO.UserDTO != null)
+                if (inventorySetupDTO.User != null)
                 {
-                    inventorySetupDTO.UserDTO = UserMapper.ToDTO(inventorySetupEntity.User);
+                    inventorySetupDTO.User = UserMapper.ToDTO(inventorySetupEntity.User);
                     inventorySetupDTO.UserId = inventorySetupEntity.User.Id;
                 }
-                if (inventorySetupDTO.RoomDTO != null)
+                if (inventorySetupDTO.Room != null)
                 {
-                    inventorySetupDTO.RoomDTO = RoomMapper.ToDTO(inventorySetupEntity.Room);
+                    inventorySetupDTO.Room = RoomMapper.ToDTO(inventorySetupEntity.Room);
                     inventorySetupDTO.RoomId = inventorySetupEntity.Room.Id;
                 }
                 if (inventorySetupEntity.InventoryList != null)
-                    inventorySetupDTO.InventoryDTOList = InventoryMapper.ToDTOList(inventorySetupEntity.InventoryList);
+                    inventorySetupDTO.InventoryList = InventoryMapper.ToDTOList(inventorySetupEntity.InventoryList);
                 else
-                    inventorySetupDTO.InventoryDTOList=new List<InventoryDTO>();
+                    inventorySetupDTO.InventoryList = new List<InventoryDTO>();
             }
             return inventorySetupDTO;
         }
@@ -99,6 +98,14 @@ namespace Mappers
             }
             return EntityList;
         }
-
+        public static List<NameIdClass> ToBaseList(List<Setup> setupList)
+        {
+            var baseList = new List<NameIdClass>();
+            foreach (var setup in setupList)
+            {
+                baseList.Add(new NameIdClass { Id = setup.Id, Name = setup.Name });
+            }
+            return baseList;
+        }
     }
 }

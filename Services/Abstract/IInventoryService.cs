@@ -1,4 +1,6 @@
-﻿using DomainDTO.Models;
+﻿using DomainDTO.Abstract;
+using DomainDTO.Models;
+using Entities.NonAbstract;
 
 namespace Services.Abstract
 {
@@ -10,6 +12,7 @@ namespace Services.Abstract
         Task<InventoryDTO> Update(InventoryDTO item);
         Task<string> Delete(Guid id);
         Task<List<IGrouping<string, InventoryDTO>>> GetSelectedByCategories();
+        Task<List<NameIdClass>> GetAvailable(int page, int offSet);
         Task<List<InventoryDTO>> GetInventoryFiltered(string? search, int page, int offSet, string? filters,
             bool ascend, string? category);
 

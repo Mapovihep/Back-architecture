@@ -3,14 +3,14 @@ using Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
-namespace Data.Repository
+namespace Data.UnitOfWork.Repositories
 {
     public class SetupRepository : ISetupRepository
     {
         private readonly ApplicationContext db;
-        public SetupRepository(IServiceProvider _serviceProvider)
+        public SetupRepository(ApplicationContext _db)
         {
-            db = _serviceProvider.GetService<ApplicationContext>();
+            db = _db;
         }
 
         public async Task<Setup> Add(Setup setup)
@@ -61,11 +61,17 @@ namespace Data.Repository
             }
         }
 
-        public async Task<List<Setup>> GetAll()
+        public async Task<List<Setup>> GetAll(string? available)
         {
             try
             {
-                return await db.Setups.Include(s => s.InventoryList).ToListAsync();
+                if(string.IsNullOrEmpty(available))
+                    return await db.Setups.Include(s => s.InventoryList).ToListAsync();
+                else
+                    return await db.Setups
+                                    .Where(s=>s.UserId == null)
+                                    .Select(s => new Setup { Id = s.Id, Name = s.Name, CreatedAt = s.CreatedAt} )
+                                    .ToListAsync();
             }
             catch (Exception ex)
             {

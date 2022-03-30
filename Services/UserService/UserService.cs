@@ -1,9 +1,11 @@
 ﻿using ConfigurationContainer;
+using Data.UnitOfWork;
 using Data.UnitOfWork.Abstract;
 using DomainDTO.Models;
 using Entities;
 using Mappers;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Services.Abstract;
 using System.IdentityModel.Tokens.Jwt;
@@ -16,13 +18,19 @@ namespace Services.UserService
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-        private readonly GetJwtSettings _settingsJwt;
-
-        public UserService(IServiceProvider _serviceProvider, GetJwtSettings settingsJwt)
+        private readonly GetJwtSettings _getJwtSettings;
+        /*public UserService(IdentitySettings identitySettings)
         {
-            _userRepository = _serviceProvider.GetService<IUserRepository>();
-            _settingsJwt = _serviceProvider.GetService<GetJwtSettings>();
+            //_userRepository = unitOfWork.Users;
+            //_getJwtSettings = _serviceProvider.GetService<GetJwtSettings>();
+        }*/
+        public UserService(IServiceProvider _serviceProvider, IUnitOfWork unitOfWork)
+        {
+            _userRepository = unitOfWork.Users;
+            //_getJwtSettings = getJwtSettings;
+            _getJwtSettings = _serviceProvider.GetService<GetJwtSettings>();
         }
+
 
         List<User> usersFromDB = new List<User>();
         List<User> usersInSession = new List<User>();
@@ -47,7 +55,7 @@ namespace Services.UserService
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message + "/n User Service - Registration Error");
+                Console.WriteLine(ex.Message + Environment.NewLine + "User Service - Registration Error");
                 throw ex;
             }
         }
@@ -71,17 +79,18 @@ namespace Services.UserService
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message + "/n User Service - Login Error");
+                Console.WriteLine(ex.Message + Environment.NewLine + "User Service - Login Error");
                 throw ex;
             }
         }
         public async Task<string> GenerateJwtToken(string password, string mail)
         {
-            string[] jwtInfo = _settingsJwt.GetJWT();
-            Console.WriteLine(jwtInfo[0]);
+            //var getTest = _identitySettings.JWTKey;
+            string[] jwtInfo = _getJwtSettings.GetJWT();
+            /*Console.WriteLine(jwtInfo[0]);
             Console.WriteLine(jwtInfo[1]);
             Console.WriteLine(jwtInfo[2]);
-            Console.WriteLine(password);
+            Console.WriteLine(password);*/
             List<Claim> claims = new List<Claim>() {
                 new Claim("EmailAddress", mail),
                 new Claim("NonHashedPassword", password),
@@ -89,7 +98,7 @@ namespace Services.UserService
             var jwtTokenHandler = new JwtSecurityTokenHandler();
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtInfo[0]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-            
+
             JwtSecurityToken SecurityToken = new JwtSecurityToken(
                 issuer: jwtInfo[1],
                 audience: jwtInfo[2],
@@ -109,9 +118,9 @@ namespace Services.UserService
             {
                 return await _userRepository.Delete(id);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Console.WriteLine(ex.Message + "/n User Service Delete Error");
+                Console.WriteLine(ex.Message + Environment.NewLine + "User Service Delete Error");
                 throw ex;
             }
         }
@@ -124,7 +133,7 @@ namespace Services.UserService
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message + "/n User Service Get By Id Error");
+                Console.WriteLine(ex.Message + Environment.NewLine + "User Service Get By Id Error");
                 throw ex;
             }
         }
@@ -137,11 +146,11 @@ namespace Services.UserService
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message + "/n User service - GetAll method Error");
+                Console.WriteLine(ex.Message + Environment.NewLine + "User service - GetAll method Error");
                 throw ex;
             }
         }
-        
+
         public async Task<UserDTO> Update(UserDTO updatedUser)
         {
             try
@@ -150,9 +159,9 @@ namespace Services.UserService
                     await _userRepository.Update(UserMapper.ToEntity(updatedUser))
                     );
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Console.WriteLine(ex.Message + "/n User service - Update Error");
+                Console.WriteLine(ex.Message + Environment.NewLine + "User service - Update Error");
                 throw ex;
             }
         }
@@ -160,28 +169,29 @@ namespace Services.UserService
         {
             try
             {
-                
+
                 return UserMapper.ToDTO(
                     await _userRepository.Add(UserMapper.ToEntity(newUser))
                     );
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message + "/n User service - Add Error");
+                Console.WriteLine(ex.Message + Environment.NewLine + "User service - Add Error");
                 throw ex;
             }
         }
-
-        public async Task<List<UserDTO>> GetUsersBySearch(string search)
+        public async Task<List<UserDTO>> GetUsersFiltered(string? search, int page, int offSet,
+            string filters, bool ascend, bool isAdmin)
         {
             try
             {
-                //////////////////////////
-                return UserMapper.ToDTOList(await _userRepository.GetUsersBySearch(search));
-                /////////////////////////////
+                return UserMapper.ToDTOList(
+                    await _userRepository.GetUsersFiltered(search, page, offSet, filters, ascend, isAdmin)
+                    );
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message + Environment.NewLine + "User Service GetUsersFiltered Repository");
                 throw ex;
             }
         }

@@ -16,8 +16,8 @@ namespace Mappers
                 defectEntity.Image = defectDTO.Image;
                 defectEntity.UpdateBy = defectDTO.UpdateBy;
                 defectEntity.Id = defectDTO.Id == Guid.Empty ? Guid.NewGuid() : defectDTO.Id;
-                defectEntity.InventoryId = defectDTO.InventoryDTOId;
-                
+                defectEntity.InventoryId = defectDTO.InventoryId;
+
                 return defectEntity;
             }
             return null;
@@ -33,21 +33,21 @@ namespace Mappers
                 defectDTO.Image = defectEntity.Image;
                 defectDTO.UpdateBy = defectEntity.UpdateBy;
                 defectDTO.Id = defectEntity.Id;
-                defectDTO.InventoryDTOId = defectEntity.InventoryId;
+                defectDTO.InventoryId = defectEntity.InventoryId;
                 return defectDTO;
             }
             return null;
         }
         public static List<DefectDTO> ToDTOList(List<Defect> defectEntities)
         {
-            List<DefectDTO> defectDTOs= new List<DefectDTO>();
+            List<DefectDTO> defectDTOs = new List<DefectDTO>();
             foreach (Defect defect in defectEntities)
             {
                 defectDTOs.Add(ToDTO(defect));
             }
             return defectDTOs;
         }
-        public static List<Defect> ToDTOList(List<DefectDTO> defectDTOs)
+        public static List<Defect> ToEntityList(List<DefectDTO> defectDTOs)
         {
             List<Defect> defectEntities = new List<Defect>();
             foreach (DefectDTO defect in defectDTOs)

@@ -5,21 +5,22 @@ using DomainDTO.Models;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 
-
-using Entities;
-using Data.UnitOfWork.Abstract;
-
 namespace API.Controllers
 {
     [ApiController]
+    //[Authorize(Policy = "Bearer")]
     public class SetupsController : ControllerBase
     {
         private readonly ISetupService _setupService;
 
-        public SetupsController(IServiceProvider _serviceProvider)
+        public SetupsController(ISetupService setupService)
+        {
+            _setupService = setupService;
+        }
+        /*public SetupsController(IServiceProvider _serviceProvider)
         {
             _setupService = _serviceProvider.GetService<ISetupService>();
-        }
+        }*/
 
         [HttpPost]
         [Route("{controller}/add")]
@@ -69,6 +70,20 @@ namespace API.Controllers
             try
             {
                 return Ok(await _setupService.GetAll());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("{controller}/available")]
+        public async Task<IActionResult> GetAvailableSetups()
+        {
+            try
+            {
+                return Ok(await _setupService.GetAvailable());
             }
             catch (Exception ex)
             {

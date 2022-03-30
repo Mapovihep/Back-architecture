@@ -2,7 +2,7 @@
 using Data.UnitOfWork.Abstract;
 using Entities;
 
-namespace Data.Repository
+namespace Data.UnitOfWork.Repositories
 {
     public class DepartmentRepository : IDepartmentRepository
     {
