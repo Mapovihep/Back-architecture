@@ -1,7 +1,8 @@
 ﻿namespace ConfigurationContainer
 {
-    public class GetJwtSettings
+    public class GetJwtSettings : IGetJwtSettings
     {
+
         private string _jwtKey;
         private string _jwtIssuer;
         private string _jwtAudience;

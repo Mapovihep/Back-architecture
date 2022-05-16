@@ -11,6 +11,7 @@ namespace Data.UnitOfWork.Abstract
         Task<User> Add(User user);
         Task<User> Update(User user);
         Task<string> Delete(Guid id);
-        Task<List<User>> GetUsersBySearch(string search);
+        Task<List<User>> GetUsersFiltered(string? search, int page, int offSet,
+            string filters, bool ascend, bool isAdmin);
     }
 }

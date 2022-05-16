@@ -1,5 +1,7 @@
-﻿using DomainDTO.Models;
+﻿using DomainDTO.Abstract;
+using DomainDTO.Models;
 using Entities;
+using Entities.NonAbstract;
 
 namespace Mappers
 {
@@ -10,7 +12,6 @@ namespace Mappers
             Inventory inventoryEntity = new Inventory();
             if (inventoryDTO != null)
             {
-                
                 //BaseDTO
                 inventoryEntity.Name = inventoryDTO.Name;
                 inventoryEntity.CreatedAt = inventoryDTO.CreatedAt;
@@ -21,28 +22,19 @@ namespace Mappers
                 inventoryEntity.UpdateBy = inventoryDTO.UpdateBy;
                 inventoryEntity.Status = inventoryDTO.Status;
                 inventoryEntity.Price = inventoryDTO.Price;
-                //Если в запросе нет названия комнаты, добавляет пустую сущность. Если есть - сущность с названием
-                inventoryEntity.Room = inventoryDTO.RoomName == null ? new Room() : new Room() { Name = inventoryDTO.RoomName };
-                
-                //всегда добавляет набор дефектов
-                inventoryEntity.DefectList = new List<Defect>();
-                //если дефекты есть в присланном объекте, добавляет их в список сущностей
-                if(inventoryDTO.Defects.Count()!=0)
-                {
-                    inventoryDTO.Defects.ForEach(x => x.InventoryDTOId = inventoryEntity.Id);
-                    inventoryDTO.Defects.ForEach(x => inventoryEntity.DefectList.Add(DefectMapper.ToEntity(x)));
-                }
 
-                /*inventoryEntity.DefectsEntity = new List<DefectEntity>();*/
-                /*inventoryEntity.RoomEntity = new RoomEntity();
-                inventoryEntity.UserEntity = new UserEntity();*/
+                inventoryEntity.DefectList = DefectMapper.ToEntityList(inventoryDTO.Defects);
+
+                inventoryEntity.UserId = inventoryDTO.UserId;
+                inventoryEntity.RoomId = inventoryDTO.RoomId;
+                inventoryEntity.SetupId = inventoryDTO.SetupId;
             }
             return inventoryEntity;
         }
-        public static InventoryDTO ToDTO (Inventory inventoryEntity)
+        public static InventoryDTO ToDTO(Inventory inventoryEntity)
         {
             InventoryDTO inventoryDTO = new InventoryDTO();
-            if(inventoryEntity != null)
+            if (inventoryEntity != null)
             {
                 //BaseEntity
                 inventoryDTO.Id = inventoryEntity.Id;
@@ -55,18 +47,18 @@ namespace Mappers
                 inventoryDTO.Category = inventoryEntity.Category;
                 inventoryDTO.Price = inventoryEntity.Price;
                 //сущность комнаты будет всегда, но может быть null - тогда RoomName = "There is no Room yet" 
-                inventoryDTO.RoomName = inventoryEntity.Room == null ? "There is no Room yet" : inventoryEntity.Room.Name;
-                //всегда создает пустой список дефектов
-                inventoryDTO.Defects = new List<DefectDTO>();
-                //если дефекты с бд есть, то каждый добавляется в переводе в DTO
-                inventoryEntity.DefectList.ForEach(x => inventoryDTO.Defects.Add(DefectMapper.ToDTO(x)));
+                inventoryDTO.Defects = DefectMapper.ToDTOList(inventoryEntity.DefectList);
+
+                inventoryDTO.UserId = inventoryEntity.UserId;
+                inventoryDTO.RoomId = inventoryEntity.RoomId;
+                inventoryDTO.SetupId = inventoryEntity.SetupId;
             }
             return inventoryDTO;
         }
         public static List<InventoryDTO> ToDTOList(List<Inventory> inventoryEntities)
         {
-            List<InventoryDTO> inventoryDTOs = new List<InventoryDTO>();
-            foreach(Inventory inventoryEntity in inventoryEntities)
+            var inventoryDTOs = new List<InventoryDTO>();
+            foreach (var inventoryEntity in inventoryEntities)
             {
                 inventoryDTOs.Add(ToDTO(inventoryEntity));
             }
@@ -74,12 +66,21 @@ namespace Mappers
         }
         public static List<Inventory> ToEntityList(List<InventoryDTO> inventoryDTOs)
         {
-            List<Inventory> inventoryEntities = new List<Inventory>();
-            foreach (InventoryDTO inventoryDTO in inventoryDTOs)
+            var inventoryEntities = new List<Inventory>();
+            foreach (var inventoryDTO in inventoryDTOs)
             {
                 inventoryEntities.Add(ToEntity(inventoryDTO));
             }
             return inventoryEntities;
+        }
+        public static List<NameIdClass> ToBaseInfo(List<Inventory> inventoryEntities)
+        {
+            var inventoryBase = new List<NameIdClass>();
+            foreach (var inventory in inventoryEntities)
+            {
+                inventoryBase.Add(new NameIdClass { Name = inventory.Name, Id = inventory.Id });
+            }
+            return inventoryBase;
         }
     }
 }

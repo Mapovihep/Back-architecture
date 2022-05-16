@@ -17,6 +17,17 @@
           "Services.dll": {}
         }
       },
+      "Autofac/6.3.0": {
+        "dependencies": {
+          "System.Diagnostics.DiagnosticSource": "6.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/Autofac.dll": {
+            "assemblyVersion": "6.3.0.0",
+            "fileVersion": "6.3.0.0"
+          }
+        }
+      },
       "Microsoft.CSharp/4.5.0": {},
       "Microsoft.Data.SqlClient/2.1.4": {
         "dependencies": {
@@ -460,12 +471,16 @@
         }
       },
       "ConfigurationContainer/1.0.0": {
+        "dependencies": {
+          "Autofac": "6.3.0"
+        },
         "runtime": {
           "ConfigurationContainer.dll": {}
         }
       },
       "Data/1.0.0": {
         "dependencies": {
+          "Autofac": "6.3.0",
           "Entities": "1.0.0",
           "Microsoft.EntityFrameworkCore": "6.0.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.3"
@@ -475,12 +490,16 @@
         }
       },
       "DomainDTO/1.0.0": {
+        "dependencies": {
+          "Autofac": "6.3.0"
+        },
         "runtime": {
           "DomainDTO.dll": {}
         }
       },
       "Entities/1.0.0": {
         "dependencies": {
+          "Autofac": "6.3.0",
           "Microsoft.EntityFrameworkCore": "6.0.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.3"
         },
@@ -490,6 +509,7 @@
       },
       "Mappers/1.0.0": {
         "dependencies": {
+          "Autofac": "6.3.0",
           "DomainDTO": "1.0.0",
           "Entities": "1.0.0"
         },
@@ -504,6 +524,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Autofac/6.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gO4bli0N8tDnBHzbYktcnbXlmN6T+IT5W+FUGgCUaM6pwwHXIxOPoUGvfGum7sZpJJgfQNgjFFv80ZPuARgRdA==",
+      "path": "autofac/6.3.0",
+      "hashPath": "autofac.6.3.0.nupkg.sha512"
     },
     "Microsoft.CSharp/4.5.0": {
       "type": "package",

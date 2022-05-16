@@ -12,7 +12,5 @@ namespace Data.UnitOfWork.Abstract
         Task<string> Delete(Guid id);
         Task<List<Inventory>> GetInventoryFiltered(string? search, int page, int offSet, string? filters, 
             bool ascend, string? category);
-
-
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace ConfigurationContainer
 {
-    public class GetConnectionString
+    public class GetConnectionString : IGetConnectionString
     {
         private string _connect;
         public GetConnectionString(string connect)

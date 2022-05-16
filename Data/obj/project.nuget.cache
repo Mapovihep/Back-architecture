@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "uY20GWQCY9KJIHvvYc1Xihh1GphTWpsd5czVCndNnodStaDUg0WR8wZXWHvUCAk5/wKbVNYmT5TAds1wwQGxvw==",
+  "dgSpecHash": "jTPGe0rb+NGxDv2SlbLwxqpV4oN+HRk+ZnHceTSpSXyFg0HvvQHswcJAciGyOAXmSIZaDKHqQzP9mTzx4gyZzw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Back-architecture\\Data\\Data.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Leviossa IT\\.nuget\\packages\\autofac\\6.3.0\\autofac.6.3.0.nupkg.sha512",
     "C:\\Users\\Leviossa IT\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Leviossa IT\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Leviossa IT\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",

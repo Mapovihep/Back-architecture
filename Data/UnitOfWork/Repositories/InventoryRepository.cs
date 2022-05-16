@@ -5,14 +5,14 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using System.Reflection;
 
-namespace Data.Repository
+namespace Data.UnitOfWork.Repositories
 {
     public class InventoryRepository : IInventoryRepository
     {
         private ApplicationContext db;
-        public InventoryRepository(IServiceProvider _serviceProvider)
+        public InventoryRepository(ApplicationContext _db)
         {
-            db = _serviceProvider.GetService<ApplicationContext>();
+            db = _db;
         }
         public async Task<Inventory> Add(Inventory inventory)
         {
@@ -20,7 +20,9 @@ namespace Data.Repository
             {
                 await db.Inventory.AddAsync(inventory);
                 await db.SaveChangesAsync();
-                return await db.Inventory.Include(inv => inv.DefectList).FirstOrDefaultAsync(x => x.Id == inventory.Id);
+                return await db.Inventory
+                    .Include(inv => inv.DefectList)
+                    .FirstOrDefaultAsync(x => x.Id == inventory.Id);
             }
             catch (Exception ex)
             {
@@ -33,10 +35,10 @@ namespace Data.Repository
         {
             try
             {
-                var deleted = await db.Inventory.FindAsync(id);
+                var deleted = await db.Inventory.FirstOrDefaultAsync(x=>x.Id==id);
                 db.Remove(deleted);
                 await db.SaveChangesAsync();
-                return await db.Inventory.FindAsync(id)!=null ? "Success" : "Your lot doesn't exist";
+                return await db.Inventory.FindAsync(id)==null ? "Success" : "Your lot doesn't exist";
             }
             catch (Exception ex)
             {
@@ -142,11 +144,7 @@ namespace Data.Repository
                         .Count();
                     if ((page - 1) * offSet > ammount)
                         throw new Exception("Page is not available, cause there is no needed ammount of Data");
-                    Console.WriteLine("Ammount - " + ammount);
-                    Console.WriteLine("Page*offSet - " + page * offSet);
-                    Console.WriteLine("result skip - " + (ammount > page * offSet ? (page - 1) * offSet : 0));
-                    Console.WriteLine("result take - " + (ammount - (page - 1) * offSet));
-                    
+                  
                     var searchCategoryQueryable = db.Inventory
                         .Include(x => x.DefectList.OrderByDescending(def => def.CreatedAt))
                         .OrderByDescending(x => x.CreatedAt)
@@ -185,6 +183,11 @@ namespace Data.Repository
                         .Skip(ammount < page * offSet ? (page - 1) * offSet : 0)
                         .Take(offSet)
                         .AsQueryable();
+
+                    if (search == "Available")
+                        justCategoryQueryable = justCategoryQueryable
+                            .Where(x=>x.UserId==null)
+                            .AsQueryable();
 
                     result = await justCategoryQueryable.ToListAsync();
                 }

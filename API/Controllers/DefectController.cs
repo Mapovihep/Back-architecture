@@ -7,17 +7,26 @@ using Microsoft.AspNetCore.Authorization;
 namespace API.Controllers
 {
     [ApiController]
-    public class DefectController : ControllerBase
+    //[Authorize(Policy = "Bearer")]
+    public class DefectsController : ControllerBase
     {
         private readonly IDefectService _defectService;
-        
-        public DefectController(IServiceProvider _serviceProvider)
+
+        /*public DefectController(IServiceProvider _serviceProvider)
         {
             _defectService = _serviceProvider.GetService<IDefectService>();
+        }*/
+        /*public DefectController([FromServices] IDefectService defectService)
+        {
+            _defectService = defectService;
+        }*/
+        public DefectsController(IDefectService defectService)
+        {
+            _defectService = defectService;
         }
 
         [HttpPost]
-        [Route("add/defects")]
+        [Route("{controller}/add")]
         public async Task<IActionResult> AddDefect([FromBody]DefectDTO defectDTO)
         {
             try
@@ -30,8 +39,8 @@ namespace API.Controllers
             }
         }
 
-        [HttpPost]
-        [Route("update/defect")]
+        [HttpPut]
+        [Route("{controller}/update")]
         public async Task<IActionResult> UpdateDefect([FromBody] DefectDTO defectDTO)
         {
             try
@@ -45,7 +54,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("get/defects")]
+        [Route("{controller}/get")]
         public async Task<IActionResult> GetDefects()
         {
             try
@@ -59,7 +68,7 @@ namespace API.Controllers
         }
 
         [HttpDelete]
-        [Route("delete/defects/{id}")]
+        [Route("{controller}/{id}")]
         public async Task<IActionResult> DeleteDefects(Guid id)
         {
             try
@@ -72,18 +81,5 @@ namespace API.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("{controller}/page={pageNumber}/{filters}")]
-        public async Task<IActionResult> GetDefectsWithParams(string pageNumber, string filters)
-        {
-            try
-            {
-                return Ok(" ");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
     }
 }

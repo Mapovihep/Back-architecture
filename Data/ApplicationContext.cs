@@ -27,12 +27,12 @@ namespace Data
 
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            /*optionsBuilder.UseSqlServer(@"Server=(localdb)\\MSSQLLocalDB;Database=inventoryWithArchDB;Trusted_Connection=True;");*/
+            *//*optionsBuilder.UseSqlServer(@"Server=(localdb)\\MSSQLLocalDB;Database=inventoryWithArchDB;Trusted_Connection=True;");*/
             /*optionsBuilder.UseSqlServer(@"Server=(localdb)\\MSSQLLocalDB;Database=inventoryWithArchDB;Trusted_Connection=True;",
-             *b => b.MigrationsAssembly("Data"));*/
-        }
+             *b => b.MigrationsAssembly("Data"));*//*
+        }*/
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -61,8 +61,22 @@ namespace Data
                  .HasOne(setup => setup.Room)
                  .WithMany(r => r.SetupList)
                  .OnDelete(DeleteBehavior.SetNull);
-            
-            var depMockData = new DepartmentMock().GetDepMock(DepId, MainAdmin);
+
+            /*modelBuilder.Entity<Setup>()
+                .HasOne(s => s.User)
+                .WithOne(u => u.Setup)
+                .OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.Setup)
+                .WithOne(s => s.User)
+                .OnDelete(DeleteBehavior.SetNull);*/
+
+            modelBuilder.Entity<Setup>()
+                .HasMany(s => s.InventoryList)
+                .WithOne(inv => inv.Setup)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            /*var depMockData = new DepartmentMock().GetDepMock(DepId, MainAdmin);
             modelBuilder.Entity<Department>().HasData(depMockData);
 
             var userMockData = new UserMock().GetRandomData(10, MainAdmin);
@@ -72,14 +86,15 @@ namespace Data
             var roomMockData = new RoomMock().GetRandomData(RoomNames, DepId);
             modelBuilder.Entity<Room>().HasData(roomMockData);
 
-            var setupMockData = new SetupMock().GetRandomData(roomMockData, MainAdmin);
+            var setupMockData = new SetupMock().GetRandomData(roomMockData, userMockData, MainAdmin);
             modelBuilder.Entity<Setup>().HasData(setupMockData);
 
-            var inventoryMockData = new InventoryMock().GetRandomData(roomMockData, userMockData, setupMockData);
+            var inventoryMockData = new InventoryMock().GetRandomData(roomMockData, userMockData, setupMockData, MainAdmin);
             modelBuilder.Entity<Inventory>().HasData(inventoryMockData);
 
-            var defectMockData = new DefectMock().GetRandomData(inventoryMockData, userMockData);
-            modelBuilder.Entity<Defect>().HasData(defectMockData);
+            var defectMockData = new DefectMock().GetRandomData(inventoryMockData, userMockData, MainAdmin);
+            modelBuilder.Entity<Defect>().HasData(defectMockData);*/
+
 
 
             //    modelBuilder.Entity<Criminal>().Ignore(c => c.ammount); //для игнорирования свойства

@@ -8,14 +8,15 @@ using System.IdentityModel.Tokens.Jwt;
 namespace API.Controllers
 {
     [ApiController]
-    [Authorize(Policy = "Bearer")]
+    //[Authorize(Policy = "Bearer")]
     public class InventoryController : ControllerBase
     {
         private readonly IInventoryService _inventoryService;
 
-        public InventoryController(IServiceProvider _serviceProvider)
+        public InventoryController(IInventoryService inventoryService)
         {
-            _inventoryService = _serviceProvider.GetService<IInventoryService>();
+            _inventoryService = inventoryService;
+            //_inventoryService = _serviceProvider.GetService<IInventoryService>();
         }
 
         [HttpPost]
@@ -109,32 +110,34 @@ namespace API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
-
-        //[HttpGet]
-        //[Route("{controller}/get/{page}/{pageSize}/{ort}")]
-        //public async Task<IActionResult> GetTest([FromQuery]int page )
-        //{
-
-        //}
-
-
         [HttpGet]
-        
+        [Route("{controller}/{page}x{offSet}/available")]
+        public async Task<IActionResult> GetAvailableInventory(int page, int offSet)
+        {
+            try
+            {
+                return Ok(await _inventoryService.GetAvailable(page, offSet));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpGet]
         [Route("{controller}/{page}x{offSet}")]
-        [Route("{controller}/{page}x{offSet}/{search?}")]
+        [Route("{controller}/{page}x{offSet}/s={search}")]
         [Route("{controller}/{page}x{offSet}/f={filters}-{ascend}")]
         [Route("{controller}/{page}x{offSet}/c={category}")]
-        [Route("{controller}/{page}x{offSet}/{search?}/f={filter}")]
-        [Route("{controller}/{page}x{offSet}/{search?}/c={category}")]
+        [Route("{controller}/{page}x{offSet}/s={search}/f={filter}")]
+        [Route("{controller}/{page}x{offSet}/s={search}/c={category}")]
         [Route("{controller}/{page}x{offSet}/f={filters}-{ascend}/c={category}")]
-        [Route("{controller}/{page}x{offSet}/{search?}/f={filters}-{ascend}/c={category}")]
+        [Route("{controller}/{page}x{offSet}/s={search}/f={filters}-{ascend}/c={category}")]
         public async Task<IActionResult> GetInventoryFiltered(
             string? search,
             int page,
             int offSet,
             string? filters,
-            bool ascend,
+            bool ascend, 
             string? category)
         {
             Console.WriteLine(search);

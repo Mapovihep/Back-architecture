@@ -1,26 +1,18 @@
-﻿using Data.UnitOfWork.Abstract;
+﻿using Data.UnitOfWork;
+using Data.UnitOfWork.Abstract;
 using DomainDTO.Models;
+using Entities.NonAbstract;
 using Mappers;
-using Microsoft.Extensions.DependencyInjection;
 using Services.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services.SetupService
 {
     public class SetupService : ISetupService
     {
-        private readonly IUserRepository _userRepository;
-        private readonly IInventoryRepository _inventoryRepository;
         private readonly ISetupRepository _setupRepository;
-        public SetupService(IServiceProvider _serviceProvider)
+        public SetupService(IUnitOfWork unitOfWork)
         {
-            _userRepository = _serviceProvider.GetService<IUserRepository>();
-            _inventoryRepository = _serviceProvider.GetService<IInventoryRepository>();
-            _setupRepository = _serviceProvider.GetService<ISetupRepository>();
+            _setupRepository = unitOfWork.Setups;
         }
         public async Task<SetupDTO> Add(SetupDTO setup)
         { 
@@ -32,31 +24,74 @@ namespace Services.SetupService
             }
             catch (Exception ex)
             {
-                Console.WriteLine("SetupService - Add");
+                Console.WriteLine(ex.Message + Environment.NewLine + "SetupService - Add");
                 throw ex;
             }
         }
 
         public async Task<string> Delete(Guid id)
         {
-            return await _setupRepository.Delete(id);
+            try
+            {
+                return await _setupRepository.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + Environment.NewLine + "SetupService - Delete");
+                throw ex;
+            }
         }
 
         public async Task<SetupDTO> Get(Guid id)
         {
-            return SetupMapper.ToDTO(await _setupRepository.Get(id));
+            try
+            {
+                return SetupMapper.ToDTO(await _setupRepository.Get(id));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + Environment.NewLine + "SetupService - GetById");
+                throw ex;
+            }
         }
-
         public async Task<List<SetupDTO>> GetAll()
         {
-            return SetupMapper.ToDTOList(await _setupRepository.GetAll());
+            try
+            {
+                return SetupMapper.ToDTOList(await _setupRepository.GetAll(null));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + Environment.NewLine + "SetupService - GetAll");
+                throw ex;
+            }
+        }
+        public async Task<List<NameIdClass>> GetAvailable()
+        {
+            try
+            {
+                return SetupMapper.ToBaseList(await _setupRepository.GetAll("Available"));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + Environment.NewLine + "SetupService - GetAvailable");
+                throw ex;
+            }
         }
 
         public async Task<SetupDTO> Update(SetupDTO setup)
         {
-            return SetupMapper.ToDTO(
+            try
+            {
+                return SetupMapper.ToDTO(
                 await _setupRepository.Update(SetupMapper.ToEntity(setup))
                 );
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + Environment.NewLine + "SetupService - Update");
+                throw ex;
+            }
         }
     }
 }

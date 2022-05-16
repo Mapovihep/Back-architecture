@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "vjEcB9jRaI1SyBr9t7Mw9K/54kMIWOytbzRWYsQAPvkMNnsLaR5ZU63JumkyW1xCld+uSf0GZ+qBpUqFaBKInA==",
+  "dgSpecHash": "MBFQ8CMJA47ZR/+UkhM0x+c8u9/FwtRniqZWXyCgjGQdKO1UnRdo3pTGW6BPYGOyBzTSINrdHV96uEo7ZJMOYA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\Back-architecture\\ConfigurationContainer\\ConfigurationContainer.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Leviossa IT\\.nuget\\packages\\autofac\\6.3.0\\autofac.6.3.0.nupkg.sha512",
+    "C:\\Users\\Leviossa IT\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.1\\system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512"
+  ],
   "logs": []
 }

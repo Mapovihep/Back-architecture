@@ -2,18 +2,16 @@
 using Data.UnitOfWork.Abstract;
 using Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace Data.Repository
+namespace Data.UnitOfWork.Repositories
 {
     public class DefectRepository : IDefectRepository
     {
         private ApplicationContext db;
-        public DefectRepository(IServiceProvider _serviceProvider)
+        public DefectRepository(ApplicationContext _db)
         {
-            db = _serviceProvider.GetService<ApplicationContext>();
+            db = _db;
         }
-
         public async Task<Defect> Add(Defect defect)
         {
             try
@@ -75,31 +73,6 @@ namespace Data.Repository
                 throw ex;
             }
         }
-
-        /*public async Task<int> GetAmmount()
-        {
-            return db.Defects.Count();
-        }
-        public async Task<List<Defect>> GetElementsByPage(Defect last, int offset)
-        {
-            ///////////////////
-            FilterAbstract<Defect> filter = new Filter();
-            return await filter.Filter(last, "3", "Price");
-            ///////////////////
-            try
-            {
-                return await db.Defects
-                    .Where(x => x.CreatedAt > last.CreatedAt)
-                    .OrderBy(x => x.CreatedAt)
-                    .Take(offset)
-                    .ToListAsync();
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message + Environment.NewLine + "Defect GetElementsByPage");
-                throw ex;
-            }
-        }*/
 
         public async Task<Defect> Update(Defect defect)
         {

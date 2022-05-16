@@ -1,18 +1,23 @@
-﻿using Data.UnitOfWork.Abstract;
+﻿using Data.UnitOfWork;
+using Data.UnitOfWork.Abstract;
 using DomainDTO.Models;
-using Entities;
+using Entities.NonAbstract;
 using Mappers;
 using Microsoft.Extensions.DependencyInjection;
 using Services.Abstract;
+using Services.CommonModels;
 
 namespace Services.InventoryService
 {
     public class InventoryService : IInventoryService
     {
         private readonly IInventoryRepository _inventoryRepository;
-        public InventoryService(IServiceProvider _serviceProvider)
+
+        private readonly IdentitySettings _identitySettings;
+        public InventoryService(IUnitOfWork unitOfWork, IdentitySettings identitySettings)
         {
-            _inventoryRepository = _serviceProvider.GetService<IInventoryRepository>();
+            _inventoryRepository = unitOfWork.Inventories;
+            _identitySettings = identitySettings ?? throw new ArgumentNullException(nameof(identitySettings));
         }
         public async Task<InventoryDTO> Add(InventoryDTO item)
         {
@@ -54,7 +59,6 @@ namespace Services.InventoryService
                 throw ex;
             }
         }
-
         public async Task<List<InventoryDTO>> GetAll()
         {
             try
@@ -97,6 +101,21 @@ namespace Services.InventoryService
             }
         }
 
+        public async Task<List<NameIdClass>> GetAvailable(int page, int offSet)
+        {
+            try
+            {
+                return InventoryMapper.ToBaseInfo(
+                    await _inventoryRepository.GetInventoryFiltered("Available", page, offSet, "Date", false, "")
+                    );
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + Environment.NewLine + 
+                    "Inventory Service GetAvailable > GetInventoryFiltered Error");
+                throw ex;
+            }
+        } 
         public async Task<List<InventoryDTO>> GetInventoryFiltered(string? search, int page, int offSet, 
             string? filters, bool ascend, string? category)
         {

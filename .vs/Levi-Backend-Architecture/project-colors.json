@@ -50,7 +50,12 @@
       "ProjectGuid": "b3135f1f-ef0c-477b-a6ca-8f53c58b294f",
       "DisplayName": "ConfigurationContainer",
       "ColorIndex": 8
+    },
+    "eb2f55f4-8b03-4724-8328-4434544b0d5c": {
+      "ProjectGuid": "eb2f55f4-8b03-4724-8328-4434544b0d5c",
+      "DisplayName": "Core",
+      "ColorIndex": 9
     }
   },
-  "NextColorIndex": 9
+  "NextColorIndex": 10
 }

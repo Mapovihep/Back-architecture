@@ -4,23 +4,22 @@ using Entities;
 using Microsoft.Extensions.DependencyInjection;
 using Mappers;
 using DomainDTO.Models;
+using Data.UnitOfWork;
 
 namespace Services.RoomService
 {
     public class RoomService : IRoomService
     {
         private readonly IRoomRepository _roomRepository;
-        public RoomService(IServiceProvider _serviceProvider)
+        public RoomService(IUnitOfWork unitOfWork)
         {
-            _roomRepository = _serviceProvider.GetService<IRoomRepository>();
+            _roomRepository = unitOfWork.Rooms;
         }
         public async Task<RoomDTO> Add(RoomDTO item)
         {
             try
             {
-                return RoomMapper.ToDTO(
-                    await _roomRepository.Add(RoomMapper.ToEntity(item))
-                    );
+                return RoomMapper.ToDTO(await _roomRepository.Add(RoomMapper.ToEntity(item)));
             }
             catch (Exception ex)
             {
@@ -69,11 +68,11 @@ namespace Services.RoomService
             }
         }
 
-        public async Task<List<RoomDTO>> GetAll()
+        public async Task<List<RoomDTO>> GetAll(bool withInclude)
         {
             try
             {
-                return RoomMapper.ToDTOList(await _roomRepository.GetAll());
+                return RoomMapper.ToDTOList(await _roomRepository.GetAll(withInclude));
             }
             catch (Exception ex)
             {
