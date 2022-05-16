@@ -23,7 +23,8 @@ namespace API.Controllers
         }*/
 
         [HttpPost]
-        [Route("{controller}/add")]
+        //[Route("{controller}/addSetup")]
+        [Route("Setups/add")]
         public async Task<IActionResult> AddSetup([FromBody] SetupDTO inventorySetupDTO)
         {
             try
@@ -37,7 +38,8 @@ namespace API.Controllers
         }
 
         [HttpPut]
-        [Route("{controller}/update")]
+        //[Route("{controller}/updateSetup")]
+        [Route("Setups/update")]
         public async Task<IActionResult> UpdateDefect([FromBody] SetupDTO inventorySetupDTO)
         {
             try
@@ -50,7 +52,8 @@ namespace API.Controllers
             }
         }
         [HttpGet]
-        [Route("{controller}/{id}")]
+        //[Route("{controller}/{id}/Setup")]
+        [Route("Setups/get/{id}")]
         public async Task<IActionResult> GetSetupById(Guid id)
         {
             try
@@ -64,7 +67,8 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("{controller}")]
+        //[Route("{controller}/Setup")]
+        [Route("Setups/getAll")]
         public async Task<IActionResult> GetSetups()
         {
             try
@@ -78,7 +82,8 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("{controller}/available")]
+        //[Route("{controller}/availableSetup")]
+        [Route("Setups/available")]
         public async Task<IActionResult> GetAvailableSetups()
         {
             try
@@ -92,7 +97,8 @@ namespace API.Controllers
         }
 
         [HttpDelete]
-        [Route("{controller}/{id}")]
+        //[Route("{controller}/{id}/Setup")]
+        [Route("Setups/delete/{id}")]
         public async Task<IActionResult> DeleteSetup(Guid id)
         {
             try

@@ -22,7 +22,7 @@ namespace Data.UnitOfWork.Repositories
             {
                 await db.Rooms.AddAsync(room);
                 await db.SaveChangesAsync();
-                return await db.Rooms.Include(x => x.InventoryList)
+                return await db.Set<Room>().Include(x => x.InventoryList)
                     .FirstOrDefaultAsync(x => x.Id == room.Id);
             }
             catch (Exception ex)

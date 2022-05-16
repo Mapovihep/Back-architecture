@@ -16,17 +16,17 @@ using Services.SetupService;
 using Data.UnitOfWork;
 
 var builder = WebApplication.CreateBuilder(args);
-// Add services to the container.
-
+//Swagger
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+//Swagger
 IConfiguration configuration = builder.Configuration;
 
 builder.Services.AddDbContext<ApplicationContext>(opts => 
     opts.UseSqlServer(configuration["ConnectionStrings:DefaultConnection"],
      b => b.MigrationsAssembly("Levi-Inventarization-Backend")
      ));//---------------------//
-
 
 builder.Services.AddAuthorization(auth =>
 {
@@ -48,7 +48,6 @@ builder.Services.AddTransient<IRoomService, RoomService>();
 builder.Services.AddTransient<IInventoryService, InventoryService>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ISetupService, SetupService>();
-
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -82,6 +81,17 @@ app.UseEndpoints(endpoints =>
 });
 
 app.MapFallbackToFile("index.html");
+//Swagger
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
-
+app.UseSwaggerUI(options =>
+{
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+    options.RoutePrefix = string.Empty;
+});
+//Swagger
 app.Run("http://localhost:3001");

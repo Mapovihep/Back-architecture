@@ -27,12 +27,19 @@ namespace Services.RoomService
                 throw ex;
             }
         }
-        public async Task<List<RoomDTO>> AddRange(List<RoomDTO> roomList)
+        public async Task<List<RoomDTO>> AddRange(List<string> roomNameList)
         {
             try
             {
+                var roomDTOList = new List<RoomDTO>();
+                foreach (var roomName in roomNameList)
+                {
+                    roomDTOList.Add(new RoomDTO { 
+                        Id= Guid.NewGuid(), 
+                        Name = roomName });
+                }
                 return RoomMapper.ToDTOList(
-                        await _roomRepository.AddRange(RoomMapper.ToEntityList(roomList))
+                        await _roomRepository.AddRange(RoomMapper.ToEntityList(roomDTOList))
                     );
             }
             catch (Exception ex)

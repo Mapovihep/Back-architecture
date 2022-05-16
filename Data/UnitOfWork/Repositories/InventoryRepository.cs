@@ -70,7 +70,9 @@ namespace Data.UnitOfWork.Repositories
         {
             try
             {
-                return await db.Inventory.ToListAsync();
+                return await db.Inventory
+                    .Include(x=>x.DefectList)
+                    .ToListAsync();
             }
             catch (Exception ex)
             {
@@ -114,7 +116,7 @@ namespace Data.UnitOfWork.Repositories
                     var searchSortCategory = db.Inventory
                         .Include(inv => inv.DefectList.OrderByDescending(def => def.CreatedAt))
                         .Where(inv => inv.Category == category && inv.Name.Contains(search))
-                        .Skip(ammount < page * offSet ? (page - 1) * offSet : 0)
+                        .Skip((page - 1) * offSet)
                         .Take(offSet)
                         .AsQueryable();
                     
@@ -131,7 +133,7 @@ namespace Data.UnitOfWork.Repositories
                     var sortCategory = db.Inventory
                         .Include(x => x.DefectList.OrderByDescending(def => def.CreatedAt))
                         .Where(inv => inv.Category == category)
-                        .Skip(ammount < page * offSet ? (page - 1) * offSet : 0)
+                        .Skip((page - 1) * offSet)
                         .Take(offSet)
                         .AsQueryable();
 
@@ -149,7 +151,7 @@ namespace Data.UnitOfWork.Repositories
                         .Include(x => x.DefectList.OrderByDescending(def => def.CreatedAt))
                         .OrderByDescending(x => x.CreatedAt)
                         .Where(inv => inv.Category == category && inv.Name.Contains(search))
-                        .Skip(ammount < page * offSet ? (page - 1) * offSet : 0)
+                        .Skip((page - 1) * offSet)
                         .Take(offSet)
                         .AsQueryable();
 
@@ -167,11 +169,21 @@ namespace Data.UnitOfWork.Repositories
                         .Include(inv => inv.DefectList.OrderByDescending(def=>def.CreatedAt))
                         .OrderByDescending(inv => inv.CreatedAt)
                         .Where(inv => inv.Category == category)
-                        .Skip(ammount < page * offSet ? (page - 1) * offSet : 0)
+                        .Skip((page - 1) * offSet)
                         .Take(offSet)
                         .AsQueryable();
 
                     result = await justCategoryQueryable.ToListAsync();
+                }
+                else if (!string.IsNullOrEmpty(filters))
+                {
+                    var justFiltersQueryable = db.Inventory
+                        .Include(inv => inv.DefectList.OrderByDescending(def => def.CreatedAt))
+                        .Skip((page - 1) * offSet)
+                        .Take(offSet)
+                        .AsQueryable();
+
+                    result = await AddFilterParams(justFiltersQueryable, filters, ascend).ToListAsync();
                 }
                 else
                 {
@@ -180,17 +192,18 @@ namespace Data.UnitOfWork.Repositories
                     var justCategoryQueryable = db.Inventory
                         .Include(x => x.DefectList.OrderByDescending(def => def.CreatedAt))
                         .OrderByDescending(x => x.CreatedAt)
-                        .Skip(ammount < page * offSet ? (page - 1) * offSet : 0)
+                        .Skip((page - 1) * offSet)
                         .Take(offSet)
                         .AsQueryable();
 
                     if (search == "Available")
                         justCategoryQueryable = justCategoryQueryable
-                            .Where(x=>x.UserId==null)
+                            .Where(x => x.UserId == null)
                             .AsQueryable();
 
                     result = await justCategoryQueryable.ToListAsync();
                 }
+                
                 return result;
             }
             catch (Exception ex)
@@ -224,7 +237,7 @@ namespace Data.UnitOfWork.Repositories
         {
             switch (filterValue)
             {
-                case "Defects":
+                case "Number Of Defects":
                     queryable = ascend ?
                         queryable.OrderBy(x => x.DefectList.Count()).AsQueryable()
                         : queryable.OrderByDescending(x => x.DefectList.Count()).AsQueryable();

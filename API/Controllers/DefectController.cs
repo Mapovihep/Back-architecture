@@ -7,32 +7,42 @@ using Microsoft.AspNetCore.Authorization;
 namespace API.Controllers
 {
     [ApiController]
-    [Authorize(Policy = "Bearer")]
-    public class DefectController : ControllerBase
+    //[Authorize(Policy = "Bearer")]
+    public class DefectsController : ControllerBase
     {
         private readonly IDefectService _defectService;
-        
-        public DefectController(IServiceProvider _serviceProvider)
+
+        /*public DefectController(IServiceProvider _serviceProvider)
         {
             _defectService = _serviceProvider.GetService<IDefectService>();
+        }*/
+        /*public DefectController([FromServices] IDefectService defectService)
+        {
+            _defectService = defectService;
+        }*/
+        public DefectsController(IDefectService defectService)
+        {
+            _defectService = defectService;
         }
 
         [HttpPost]
-        [Route("add/defects")]
-        public async Task<IActionResult> AddDefect([FromBody]DefectDTO defectDTO)
+        //[Route("{controller}/add")]
+        [Route("Defects/add")]
+        public async Task<IActionResult> AddDefect([FromBody] DefectDTO defectDTO)
         {
             try
             {
                 return Ok(await _defectService.Add(defectDTO));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
 
-        [HttpPost]
-        [Route("update/defect")]
+        [HttpPut]
+        //[Route("{controller}/updateDefect")]
+        [Route("Defects/update")]
         public async Task<IActionResult> UpdateDefect([FromBody] DefectDTO defectDTO)
         {
             try
@@ -46,7 +56,8 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("get/defects")]
+        //[Route("{controller}/getDefect")]
+        [Route("Defects/get")]
         public async Task<IActionResult> GetDefects()
         {
             try
@@ -60,7 +71,8 @@ namespace API.Controllers
         }
 
         [HttpDelete]
-        [Route("delete/defects/{id}")]
+        //[Route("{controller}/{id}/Defect")]
+        [Route("Defects/delete")]
         public async Task<IActionResult> DeleteDefects(Guid id)
         {
             try
@@ -73,18 +85,5 @@ namespace API.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("{controller}/page={pageNumber}/{filters}")]
-        public async Task<IActionResult> GetDefectsWithParams(string pageNumber, string filters)
-        {
-            try
-            {
-                return Ok(" ");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
     }
 }

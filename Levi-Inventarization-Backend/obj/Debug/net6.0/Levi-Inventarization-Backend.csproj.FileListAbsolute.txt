@@ -227,3 +227,8 @@ C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkin
 C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Levi-Inventarization-Backend\obj\Debug\net6.0\scopedcss\bundle\Levi-Inventarization-Backend.styles.css
 C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Levi-Inventarization-Backend\obj\Debug\net6.0\Levi-Inventarization-Backend.csproj.CopyComplete
 C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Levi-Inventarization-Backend\obj\Debug\net6.0\Levi-Inventarization-Backend.genruntimeconfig.cache
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Levi-Inventarization-Backend\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Levi-Inventarization-Backend\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Levi-Inventarization-Backend\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Levi-Inventarization-Backend\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Levi-Inventarization-Backend\bin\Debug\net6.0\nunit.framework.dll

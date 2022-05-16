@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace API.Controllers
 {
     [ApiController]
-    //[Authorize(Policy = "Bearer")]
+    [Authorize(Policy = "Bearer")]
     public class RoomsController : ControllerBase
     {
         private readonly IRoomService _roomService;
@@ -22,7 +22,9 @@ namespace API.Controllers
         }*/
 
         [HttpPost]
-        [Route("{controller}/add")]
+        //[Route("{controller}/addRoom")]
+        [Route("Rooms/add")]
+        //[Route("add/{controller}")]
         public async Task<IActionResult> AddRoom([FromBody] RoomDTO roomDTO)
         {
             try
@@ -36,12 +38,14 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        [Route("{controller}/addRange")]
-        public async Task<IActionResult> AddRange([FromBody] List<RoomDTO> roomDTOList)
+        //[Route("{controller}/addRoomRange")]
+        [Route("Rooms/addRange")]
+
+        public async Task<IActionResult> AddRange([FromBody] List<string> roomNameList)
         {
             try
             {
-                return Ok(await _roomService.AddRange(roomDTOList));
+                return Ok(await _roomService.AddRange(roomNameList));
             }
             catch (Exception ex)
             {
@@ -50,7 +54,9 @@ namespace API.Controllers
         }
 
         [HttpPut]
-        [Route("{controller}/put/{id}")]
+        //[Route("{controller}/putRoom/{id}")]
+        [Route("Rooms/{id}")]
+
         public async Task<IActionResult> UpdateRoom([FromBody] RoomDTO roomDTO, Guid id)
         {
 
@@ -66,7 +72,9 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("{controller}/getAll/{withInclude?}")]
+        //[Route("{controller}/getAllRoom/{withInclude?}")]
+        [Route("Rooms/all/{withInclude?}")]
+
         public async Task<IActionResult> GetRooms(string? withInclude)
         {
             try
@@ -80,7 +88,9 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("{controller}/get/{id}")]
+        //[Route("{controller}/getRoom/{id}")]
+        [Route("Rooms/{id}")]
+
         public async Task<IActionResult> GetRoom(Guid id)
         {
             try
@@ -94,7 +104,8 @@ namespace API.Controllers
         }
 
         [HttpDelete]
-        [Route("{controller}/delete/{id}")]
+        //[Route("{controller}/deleteRoom/{id}")]
+        [Route("Rooms/{id}")]
         public async Task<IActionResult> DeleteRoom(Guid id)
         {
             try

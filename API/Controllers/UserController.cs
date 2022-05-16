@@ -42,7 +42,8 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("{controller}/{id}")]
+        //[Route("{controller}/{id}/User")]
+        [Route("Users/{id}")]
         [Authorize(Policy = "Bearer")]
         public async Task<IActionResult> GetUser(Guid id)
         {
@@ -56,7 +57,8 @@ namespace API.Controllers
              }
         }
         [HttpPost]
-        [Route("{controller}/add")]
+        //[Route("{controller}/addUser")]
+        [Route("Users/add/{id}")]
         [Authorize(Policy = "Bearer")]
         public async Task<IActionResult> AddUser([FromBody] UserDTO newUser)
         {
@@ -70,7 +72,8 @@ namespace API.Controllers
             }
         }
         [HttpGet]
-        [Route("{controller}")]
+        //[Route("{controller}/getAllUsers")]
+        [Route("Users/getAll")]
         [Authorize(Policy = "Bearer")]
         public async Task<IActionResult> GetAllUsers()
         {
@@ -84,7 +87,8 @@ namespace API.Controllers
             }
         }
         [HttpPut]
-        [Route("{controller}/{id}")]
+        //[Route("{controller}/{id}/User")]
+        [Route("Users/update/{id}")]
         [Authorize(Policy = "Bearer")]
         public async Task<IActionResult> UpdateUser([FromBody] UserDTO userDTO)
         {
@@ -98,7 +102,8 @@ namespace API.Controllers
             }
         }
         [HttpDelete]
-        [Route("{controller}/{id}")]
+        //[Route("{controller}/{id}/User")]
+        [Route("Users/delete/{id}")]
         [Authorize(Policy = "Bearer")]
         public async Task<IActionResult> DeleteUser(Guid id)
         {
@@ -112,14 +117,22 @@ namespace API.Controllers
             }
         }
         [HttpGet]
-        [Route("{controller}/{page}x{offSet}")]
+        /*[Route("{controller}/{page}x{offSet}")]
         [Route("{controller}/{page}x{offSet}/s={search}")]
         [Route("{controller}/{page}x{offSet}/f={filters}-{ascend}")]
         [Route("{controller}/{page}x{offSet}/status={isAdmin}")]
         [Route("{controller}/{page}x{offSet}/s={search}/f={filter}")]
         [Route("{controller}/{page}x{offSet}/s={search}/status={isAdmin}")]
         [Route("{controller}/{page}x{offSet}/f={filters}-{ascend}/status={isAdmin}")]
-        [Route("{controller}/{page}x{offSet}/s={search}/f={filters}-{ascend}/status={isAdmin}")]
+        [Route("{controller}/{page}x{offSet}/s={search}/f={filters}-{ascend}/status={isAdmin}")]*/
+        [Route("Users/{page}x{offSet}")]
+        [Route("Users/{page}x{offSet}/s={search}")]
+        [Route("Users/{page}x{offSet}/f={filters}-{ascend}")]
+        [Route("Users/{page}x{offSet}/status={isAdmin}")]
+        [Route("Users/{page}x{offSet}/s={search}/f={filter}-{ascend}")]
+        [Route("Users/{page}x{offSet}/s={search}/status={isAdmin}")]
+        [Route("Users/{page}x{offSet}/f={filters}-{ascend}/status={isAdmin}")]
+        [Route("Users/{page}x{offSet}/s={search}/f={filters}-{ascend}/status={isAdmin}")]
         [Authorize(Policy = "Bearer")]
         public async Task<IActionResult> GetInventoryFiltered(
             string? search,
@@ -127,7 +140,7 @@ namespace API.Controllers
             int offSet,
             string? filters,
             bool ascend,
-            bool isAdmin)
+            string? isAdmin)
         {
             Console.WriteLine(search);
             Console.WriteLine(page);

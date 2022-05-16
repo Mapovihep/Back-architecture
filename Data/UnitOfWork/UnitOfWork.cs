@@ -17,7 +17,6 @@ namespace Data.UnitOfWork
         public UnitOfWork(ApplicationContext applicationContext) 
         {
             _applicationContext = applicationContext;
-            //_applicationContext = serviceProvider.GetService<ApplicationContext>();
         }
 
         public DefectRepository Defects

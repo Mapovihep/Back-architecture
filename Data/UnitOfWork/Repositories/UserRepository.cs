@@ -125,7 +125,7 @@ namespace Data.UnitOfWork.Repositories
         }
 
         public async Task<List<User>> GetUsersFiltered(string? search, int page, int offSet,
-            string filters, bool ascend, bool isAdmin)
+            string filters, bool ascend, string isAdmin)
         {
             List<User> result = new List<User>();
             try
@@ -134,79 +134,169 @@ namespace Data.UnitOfWork.Repositories
                 if ((page - 1) * offSet > ammount)
                     throw new Exception("Page is not available, cause there is no needed ammount of Data");
 
-                if (!string.IsNullOrEmpty(search) && !string.IsNullOrEmpty(filters) && isAdmin)
+                if (!string.IsNullOrEmpty(search) && !string.IsNullOrEmpty(filters) && !string.IsNullOrEmpty(isAdmin))
                 {
-                    ammount = db.Users
-                        .Where(u => u.Name.Contains(search) && u.IsAdmin == isAdmin)
+                    if (isAdmin == "All")
+                    {
+                        ammount = db.Users
+                        .Where(u => u.Name.Contains(search))
                         .Count();
+                    }else
+                    {
+                        ammount = db.Users
+                          .Where(u => u.Name.Contains(search) && u.IsAdmin == (isAdmin == "Active"))
+                          .Count();
+                    }
+
                     if ((page - 1) * offSet > ammount)
                         throw new Exception("Page is not available, cause there is no needed ammount of Data");
 
-                    var searchSortCategory = db.Users
-                        //.Include(u => u.InventoryList.OrderByDescending(def => def.CreatedAt))
-                        //.Include(u => u.InventorySetupList.OrderByDescending(def => def.CreatedAt))
-                        .Where(u => u.Name.Contains(search) && u.IsAdmin == isAdmin)
+                    var searchSortCategory = new List<User>().AsQueryable();
+
+                    if (isAdmin == "All")
+                    {
+                        searchSortCategory = db.Users
+                        .Where(u => u.Name.Contains(search))
                         .Skip(ammount < page * offSet ? (page - 1) * offSet : 0)
                         .Take(offSet)
                         .AsQueryable();
+                    }
+                    else
+                    {
+                        searchSortCategory = db.Users
+                        .Where(u => u.Name.Contains(search) && u.IsAdmin == (isAdmin == "Active"))
+                        .Skip(ammount < page * offSet ? (page - 1) * offSet : 0)
+                        .Take(offSet)
+                        .AsQueryable();
+                    }
 
-                    result = await AddFilterParams(searchSortCategory, filters, ascend).ToListAsync();
+                    result = await AddFilterParams(searchSortCategory, filters, ascend)
+                        //.Include(u => u.InventoryList.OrderByDescending(def => def.CreatedAt))
+                        //.Include(u => u.InventorySetupList.OrderByDescending(def => def.CreatedAt))
+                        .ToListAsync();
                 }
-                else if (!string.IsNullOrEmpty(filters) && isAdmin)
+                else if (!string.IsNullOrEmpty(filters) && !string.IsNullOrEmpty(isAdmin))
                 {
-                    ammount = db.Users
-                        .Where(u => u.IsAdmin == isAdmin)
-                        .Count();
+                    if (isAdmin == "All")
+                    {
+                        ammount = db.Users.Count();
+                    }else
+                    {
+                        ammount = db.Users
+                          .Where(u => u.IsAdmin == (isAdmin == "Active"))
+                          .Count();
+                    }
+
                     if ((page - 1) * offSet > ammount)
                         throw new Exception("Page is not available, cause there is no needed ammount of Data");
 
-                    var sortCategory = db.Users
-                        //.Include(u => u.InventoryList.OrderByDescending(def => def.CreatedAt))
-                        //.Include(u => u.InventorySetupList.OrderByDescending(def => def.CreatedAt))
-                        .Where(u => u.IsAdmin == isAdmin)
-                        .Skip(ammount < page * offSet ? (page - 1) * offSet : 0)
-                        .Take(offSet)
-                        .AsQueryable();
+                    var sortCategory = new List<User>().AsQueryable();
+
+                    if (isAdmin == "All")
+                    {
+                        sortCategory = db.Users
+                            .Skip(ammount < page * offSet ? (page - 1) * offSet : 0)
+                            .Take(offSet)
+                            .AsQueryable();
+                    }
+                    else
+                    {
+                        sortCategory =
+                          db.Users
+                              .Where(u => u.IsAdmin == (isAdmin == "Active"))
+                              .Skip(ammount < page * offSet ? (page - 1) * offSet : 0)
+                              .Take(offSet)
+                              .AsQueryable();
+                    }
+                    
 
                     result = await AddFilterParams(sortCategory, filters, ascend).ToListAsync();
                 }
-                else if (!string.IsNullOrEmpty(search) && isAdmin)
+                else if (!string.IsNullOrEmpty(search) && !string.IsNullOrEmpty(isAdmin))
                 {
-                    ammount = db.Users
-                        .Where(u => u.IsAdmin == isAdmin && u.Name.Contains(search))
-                        .Count();
+                    if (isAdmin == "All")
+                    {
+                        ammount = db.Users
+                            .Where(u=>u.Name.Contains(search))
+                            .Count();
+                    }
+                    else
+                    {
+                        ammount = db.Users
+                          .Where(u => u.IsAdmin == (isAdmin == "Active") && u.Name.Contains(search))
+                          .Count();
+                    }
+
                     if ((page - 1) * offSet > ammount)
                         throw new Exception("Page is not available, cause there is no needed ammount of Data");
 
-                    var searchCategoryQueryable = db.Users
-                        //.Include(u => u.InventoryList.OrderByDescending(def => def.CreatedAt))
-                        //.Include(u => u.InventorySetupList.OrderByDescending(def => def.CreatedAt))
+                    var searchCategoryQueryable = new List<User>().AsQueryable();
+                    if(isAdmin == "All")
+                    {
+                        searchCategoryQueryable = db.Users
                         .OrderByDescending(x => x.CreatedAt)
-                        .Where(u => u.IsAdmin == isAdmin && u.Name.Contains(search))
+                        .Where(u =>u.Name.Contains(search))
                         .Skip(ammount < page * offSet ? (page - 1) * offSet : 0)
                         .Take(offSet)
                         .AsQueryable();
+                    }
+                    else
+                    {
+                        searchCategoryQueryable =
+                            db.Users
+                        .OrderByDescending(x => x.CreatedAt)
+                        .Where(u => u.Name.Contains(search) && u.IsAdmin == (isAdmin == "Active"))
+                        .Skip(ammount < page * offSet ? (page - 1) * offSet : 0)
+                        .Take(offSet)
+                        .AsQueryable();
+                    }
 
-                    result = await searchCategoryQueryable.ToListAsync();
+                    result = await searchCategoryQueryable
+                        //.Include(u => u.InventoryList.OrderByDescending(def => def.CreatedAt))
+                        //.Include(u => u.InventorySetupList.OrderByDescending(def => def.CreatedAt))
+                        .ToListAsync();
                 }
-                else if (isAdmin)
+                else if (!string.IsNullOrEmpty(isAdmin))
                 {
-                    ammount = db.Users
-                        .Where(u => u.IsAdmin == isAdmin)
+                    if (isAdmin == "All")
+                    {
+                        ammount = db.Users.Count();
+                    }
+                    else
+                    {
+                        ammount = db.Users
+                        .Where(u => u.IsAdmin == (isAdmin == "Active"))
                         .Count();
+                    }
                     if ((page - 1) * offSet > ammount)
                         throw new Exception("Page is not available, cause there is no needed ammount of Data");
 
-                    var justCategoryQueryable = db.Users
+                    var justCategoryQueryable = new List<User>().AsQueryable();
+                    
+
+                    if (isAdmin == "All")
+                    {
+                        justCategoryQueryable = db.Users
+                            .OrderByDescending(inv => inv.CreatedAt)
+                            .Skip(ammount < page * offSet ? (page - 1) * offSet : 0)
+                            .Take(offSet)
+                            .AsQueryable();
+                    }
+                    else
+                    {
+                        justCategoryQueryable = db.Users
+                            .Where(u => u.IsAdmin == (isAdmin == "Active"))
+                            .OrderByDescending(inv => inv.CreatedAt)
+                            .Skip(ammount < page * offSet ? (page - 1) * offSet : 0)
+                            .Take(offSet)
+                            .AsQueryable();
+                    }
+                    
+
+                    result = await justCategoryQueryable
                         //.Include(u => u.InventoryList.OrderByDescending(def => def.CreatedAt))
                         //.Include(u => u.InventorySetupList.OrderByDescending(def => def.CreatedAt))
-                        .OrderByDescending(inv => inv.CreatedAt)
-                        .Where(u => u.IsAdmin == isAdmin)
-                        .Skip(ammount < page * offSet ? (page - 1) * offSet : 0)
-                        .Take(offSet)
-                        .AsQueryable();
-
-                    result = await justCategoryQueryable.ToListAsync();
+                        .ToListAsync();
                 }
                 else
                 {

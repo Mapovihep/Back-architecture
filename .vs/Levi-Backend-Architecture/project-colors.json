@@ -50,7 +50,17 @@
       "ProjectGuid": "b3135f1f-ef0c-477b-a6ca-8f53c58b294f",
       "DisplayName": "ConfigurationContainer",
       "ColorIndex": 8
+    },
+    "26a3e7ed-9bea-4830-b641-60bb2a95196c": {
+      "ProjectGuid": "26a3e7ed-9bea-4830-b641-60bb2a95196c",
+      "DisplayName": "InventoryTestProject",
+      "ColorIndex": 9
+    },
+    "8c4c544c-e9f5-4b1e-b7c1-3c508f98b2b4": {
+      "ProjectGuid": "8c4c544c-e9f5-4b1e-b7c1-3c508f98b2b4",
+      "DisplayName": "TestingTemplate",
+      "ColorIndex": 10
     }
   },
-  "NextColorIndex": 9
+  "NextColorIndex": 11
 }
