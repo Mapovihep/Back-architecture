@@ -1,7 +1,7 @@
 ﻿using ConfigurationContainer;
 using Data.UnitOfWork;
 using Data.UnitOfWork.Abstract;
-using DomainDTO.Models;
+using DomainDTO.DTO;
 using Entities;
 using Mappers;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +12,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using static Data.UnitOfWork.Repositories.UserRepository;
 
 namespace Services.UserService
 {
@@ -59,21 +60,26 @@ namespace Services.UserService
                 throw ex;
             }
         }
-        public async Task<string> Login(UserDTO user)
+        public async Task<string> Login(LoginDTO loginDto)
         {
+            var loginInfo = new LoginInfo()
+            {
+                Email = loginDto.Email,
+                Password = loginDto.Password,
+            };
             try
             {
-                byte[] data = new UTF8Encoding().GetBytes(user.Password);
+                byte[] data = new UTF8Encoding().GetBytes(loginDto.Password);
                 byte[] hashedPassword;
                 SHA256 shaM = new SHA256Managed();
                 hashedPassword = shaM.ComputeHash(data);
                 Console.WriteLine("In UserController - Login method");
-                Console.WriteLine(user.Password);
-                string token = await GenerateJwtToken(user.Password, user.Email);
-                user.Password = Convert.ToBase64String(hashedPassword);
-                if (await _userRepository.GetProfileToAuth(UserMapper.ToEntity(user)) != null)
+                Console.WriteLine(loginDto.Password);
+                string token = await GenerateJwtToken(loginDto.Password, loginDto.Email);
+                loginDto.Password = Convert.ToBase64String(hashedPassword);
+                if (await _userRepository.GetProfileToAuth(loginInfo) != null)
                 {
-                    return await GenerateJwtToken(user.Password, user.Email);
+                    return await GenerateJwtToken(loginDto.Password, loginDto.Email);
                 }
                 throw new Exception("Doesn't generate the token");
             }

@@ -3,7 +3,7 @@ using Services.Abstract;
 using Entities;
 using Microsoft.Extensions.DependencyInjection;
 using Mappers;
-using DomainDTO.Models;
+using DomainDTO.DTO;
 using Data.UnitOfWork;
 
 namespace Services.RoomService

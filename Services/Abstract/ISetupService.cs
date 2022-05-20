@@ -1,4 +1,4 @@
-﻿using DomainDTO.Models;
+﻿using DomainDTO.DTO;
 using Entities.NonAbstract;
 using System;
 using System.Collections.Generic;

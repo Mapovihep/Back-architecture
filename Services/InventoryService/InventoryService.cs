@@ -1,6 +1,6 @@
 ﻿using Data.UnitOfWork;
 using Data.UnitOfWork.Abstract;
-using DomainDTO.Models;
+using DomainDTO.DTO;
 using Entities.NonAbstract;
 using Mappers;
 using Microsoft.Extensions.DependencyInjection;

@@ -1,7 +1,7 @@
 ﻿using Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using DomainDTO.Models;
+using DomainDTO.DTO;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 
@@ -10,7 +10,7 @@ namespace API.Controllers
     [ApiController]
     //[Authorize(Policy = "Bearer")]
     public class SetupsController : ControllerBase
-    {
+    { 
         private readonly ISetupService _setupService;
 
         public SetupsController(ISetupService setupService)

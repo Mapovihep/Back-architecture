@@ -1,7 +1,7 @@
 ﻿using Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using DomainDTO.Models;
+using DomainDTO.DTO;
 using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
@@ -23,7 +23,7 @@ namespace API.Controllers
 
         [HttpPost]
         //[Route("{controller}/addRoom")]
-        [Route("Rooms/add")]
+        [Route("rooms/add")]
         //[Route("add/{controller}")]
         public async Task<IActionResult> AddRoom([FromBody] RoomDTO roomDTO)
         {
@@ -39,7 +39,7 @@ namespace API.Controllers
 
         [HttpPost]
         //[Route("{controller}/addRoomRange")]
-        [Route("Rooms/addRange")]
+        [Route("rooms/addRange")]
 
         public async Task<IActionResult> AddRange([FromBody] List<string> roomNameList)
         {
@@ -55,7 +55,7 @@ namespace API.Controllers
 
         [HttpPut]
         //[Route("{controller}/putRoom/{id}")]
-        [Route("Rooms/{id}")]
+        [Route("rooms/{id}")]
 
         public async Task<IActionResult> UpdateRoom([FromBody] RoomDTO roomDTO, Guid id)
         {
@@ -73,7 +73,7 @@ namespace API.Controllers
 
         [HttpGet]
         //[Route("{controller}/getAllRoom/{withInclude?}")]
-        [Route("Rooms/all/{withInclude?}")]
+        [Route("rooms/all/{withInclude?}")]
 
         public async Task<IActionResult> GetRooms(string? withInclude)
         {
@@ -89,7 +89,7 @@ namespace API.Controllers
 
         [HttpGet]
         //[Route("{controller}/getRoom/{id}")]
-        [Route("Rooms/{id}")]
+        [Route("rooms/{id}")]
 
         public async Task<IActionResult> GetRoom(Guid id)
         {
@@ -105,7 +105,7 @@ namespace API.Controllers
 
         [HttpDelete]
         //[Route("{controller}/deleteRoom/{id}")]
-        [Route("Rooms/{id}")]
+        [Route("rooms/{id}")]
         public async Task<IActionResult> DeleteRoom(Guid id)
         {
             try

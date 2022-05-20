@@ -1,7 +1,6 @@
-﻿
-using DomainDTO.Abstract;
+﻿using DomainDTO.Abstract;
 
-namespace DomainDTO.Models
+namespace DomainDTO.DTO
 {
     public class DefectDTO : BaseDTO
     {

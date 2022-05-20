@@ -69,16 +69,18 @@ builder.Services.AddAutoMapper(typeof(Program).Assembly);//все классы, наследующ
 var app = builder.Build();
 app.UseRouting();
 
-app.UseAuthorization();
-
 app.UseCors(x => x.AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader());
+
+app.UseAuthorization();
+
 
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
 });
+
 
 app.MapFallbackToFile("index.html");
 //Swagger

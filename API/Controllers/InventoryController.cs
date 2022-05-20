@@ -1,7 +1,7 @@
 ﻿using Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using DomainDTO.Models;
+using DomainDTO.DTO;
 using Microsoft.AspNetCore.Authorization;
 using System.IdentityModel.Tokens.Jwt;
 

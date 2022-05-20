@@ -1,4 +1,4 @@
-﻿using DomainDTO.Models;
+﻿using DomainDTO.DTO;
 
 namespace Services.Abstract
 {
@@ -11,7 +11,7 @@ namespace Services.Abstract
         Task<string> Delete(Guid id);
 
         Task<UserDTO> Registration(UserDTO item);
-        Task<string> Login(UserDTO item);
+        Task<string> Login(LoginDTO loginDto);
 
         Task<string> GenerateJwtToken(string Email, string Password);
 

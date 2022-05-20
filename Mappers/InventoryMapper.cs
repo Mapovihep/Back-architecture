@@ -1,5 +1,5 @@
 ﻿using DomainDTO.Abstract;
-using DomainDTO.Models;
+using DomainDTO.DTO;
 using Entities;
 using Entities.NonAbstract;
 

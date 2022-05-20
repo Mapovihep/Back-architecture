@@ -1,4 +1,4 @@
-﻿using DomainDTO.Models;
+﻿using DomainDTO.DTO;
 
 namespace Services.Abstract
 {

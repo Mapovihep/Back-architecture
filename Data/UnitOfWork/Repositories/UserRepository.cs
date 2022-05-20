@@ -8,6 +8,11 @@ namespace Data.UnitOfWork.Repositories
     public class UserRepository : IUserRepository
     {
         private ApplicationContext db;
+        public class LoginInfo
+        {
+            public string Email { get; set; }
+            public string Password { get; set; }
+        }
         public UserRepository(ApplicationContext _db)
         {
             db = _db;
@@ -26,8 +31,8 @@ namespace Data.UnitOfWork.Repositories
                 await db.Users.AddAsync(user);
                 await db.SaveChangesAsync();
                 return await db.Users
-                    .Include(u=>u.InventoryList)
-                    .Include(u=>u.Setup)
+                    .Include(u => u.InventoryList)
+                    .Include(u => u.Setup)
                     .FirstAsync(x => x.Id == user.Id);
             }
             catch (Exception ex)
@@ -44,7 +49,7 @@ namespace Data.UnitOfWork.Repositories
                 var user = await db.Users.FirstOrDefaultAsync(x => x.Id == id);
                 db.Users.Remove(user);
                 await db.SaveChangesAsync();
-                return await db.Users.FirstOrDefaultAsync(x => x.Id == id)!=null ?
+                return await db.Users.FirstOrDefaultAsync(x => x.Id == id) != null ?
                     "Success" : "Not successed deleting";
             }
             catch (Exception ex)
@@ -59,12 +64,13 @@ namespace Data.UnitOfWork.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<User> GetProfileToAuth(User user)
+        
+        public async Task<User> GetProfileToAuth(LoginInfo loginInfo)
         {
             try
             {
                 return await db.Users.FirstAsync(x =>
-                                x.Password == user.Password && x.Email == user.Email);
+                                x.Password == loginInfo.Password && x.Email == loginInfo.Email);
             }
             catch (Exception ex)
             {

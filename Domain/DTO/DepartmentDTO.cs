@@ -1,11 +1,6 @@
 ﻿using DomainDTO.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DomainDTO.Models
+namespace DomainDTO.DTO
 {
     public class DepartmentDTO : BaseDTO
     {

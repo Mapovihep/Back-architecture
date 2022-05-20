@@ -1,8 +1,9 @@
 ﻿using Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using DomainDTO.Models;
+using DomainDTO.DTO;
 using Microsoft.AspNetCore.Authorization;
+using DomainDTO.DTO;
 
 namespace API.Controllers
 {
@@ -29,11 +30,11 @@ namespace API.Controllers
         }
         [HttpPost]
         [Route("{controller}/login")]
-        public async Task<IActionResult> Login([FromBody] UserDTO userDTO)
+        public async Task<IActionResult> Login([FromBody] LoginDTO loginDTO)
         {
             try
             {
-                return Ok(await _userService.Login(userDTO));
+                return Ok(await _userService.Login(loginDTO));
             }
             catch (Exception ex)
             {
