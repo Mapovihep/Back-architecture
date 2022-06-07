@@ -15,7 +15,8 @@ namespace Mappers
                     //BaseDTO
                     userEntity.Name = userDTO.Name;
                     userEntity.CreatedAt = userDTO.CreatedAt;
-                    userEntity.Id = userDTO.Id == Guid.Empty ? Guid.NewGuid() : userDTO.Id;//есть ли id в запросе
+                    userEntity.Id = userDTO.Id == null ? Guid.NewGuid() : (Guid)userDTO.Id;
+                    //есть ли id в запросе
                     //UserDTO
                     userEntity.Email = userDTO.Email;
                     userEntity.Password = userDTO.Password;

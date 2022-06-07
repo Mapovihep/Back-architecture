@@ -632,6 +632,16 @@
           }
         }
       },
+      "DomainDTO/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/DomainDTO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DomainDTO.dll": {}
+        }
+      },
       "Entities/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1865,6 +1875,11 @@
         "version.txt"
       ]
     },
+    "DomainDTO/1.0.0": {
+      "type": "project",
+      "path": "../Domain/DomainDTO.csproj",
+      "msbuildProject": "../Domain/DomainDTO.csproj"
+    },
     "Entities/1.0.0": {
       "type": "project",
       "path": "../Entities/Entities.csproj",
@@ -1873,6 +1888,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "DomainDTO >= 1.0.0",
       "Entities >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 6.0.3",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.3",
@@ -1906,6 +1922,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\Domain\\DomainDTO.csproj": {
+              "projectPath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\Domain\\DomainDTO.csproj"
+            },
             "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\Entities\\Entities.csproj": {
               "projectPath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\Entities\\Entities.csproj"
             }

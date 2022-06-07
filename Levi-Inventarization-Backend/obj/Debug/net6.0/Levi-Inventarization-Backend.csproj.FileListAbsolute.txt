@@ -232,3 +232,5 @@ C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkin
 C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Levi-Inventarization-Backend\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Levi-Inventarization-Backend\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Levi-Inventarization-Backend\bin\Debug\net6.0\nunit.framework.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Levi-Inventarization-Backend\bin\Debug\net6.0\Microsoft.Azure.Core.Spatial.NewtonsoftJson.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Levi-Inventarization-Backend\bin\Debug\net6.0\Microsoft.Spatial.dll

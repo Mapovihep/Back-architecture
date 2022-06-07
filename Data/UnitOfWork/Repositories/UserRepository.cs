@@ -1,4 +1,5 @@
 ﻿using Data.UnitOfWork.Abstract;
+using DomainDTO.DTO;
 using Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -65,7 +66,7 @@ namespace Data.UnitOfWork.Repositories
         }
 
         
-        public async Task<User> GetProfileToAuth(LoginInfo loginInfo)
+        public async Task<User> GetProfileToAuth(LoginDTO loginInfo)
         {
             try
             {

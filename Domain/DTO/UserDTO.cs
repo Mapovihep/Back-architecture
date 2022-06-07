@@ -13,12 +13,12 @@ namespace DomainDTO.DTO
             get { return _newDate; }
             set { _newDate = value; }
         }
-        public Guid Id { get; set; }
+        public Guid? Id { get; set; }
         public string? LastName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string? Phone { get; set; }
-        public Guid UpdateBy { get; set; } = Guid.NewGuid();
+        public Guid UpdateBy { get; set; }
         public bool IsAdmin { get; set; } = false;
         public List<InventoryDTO>? InventoryList { get; set; } = new List<InventoryDTO>();
         public List<string>? InventoryIdList { get; set; } = new List<string>();

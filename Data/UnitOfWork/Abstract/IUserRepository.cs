@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using DomainDTO.DTO;
+using Entities;
 using static Data.UnitOfWork.Repositories.UserRepository;
 
 namespace Data.UnitOfWork.Abstract
@@ -7,7 +8,7 @@ namespace Data.UnitOfWork.Abstract
     {
         Task<List<User>> GetAll();
         Task<User> Get(Guid id);
-        Task<User> GetProfileToAuth(LoginInfo loginInfo);
+        Task<User> GetProfileToAuth(LoginDTO loginInfo);
         Task<IEnumerable<User>> Find(Func<User, bool> predicate);
         Task<User> Add(User user);
         Task<User> Update(User user);

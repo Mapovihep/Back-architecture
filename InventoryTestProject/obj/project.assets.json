@@ -370,16 +370,6 @@
         "runtime": {
           "lib/netstandard2.0/System.Reflection.Metadata.dll": {}
         }
-      },
-      "TestingTemplate/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "compile": {
-          "bin/placeholder/TestingTemplate.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/TestingTemplate.dll": {}
-        }
       }
     }
   },
@@ -1282,11 +1272,6 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
-    },
-    "TestingTemplate/1.0.0": {
-      "type": "project",
-      "path": "../TestingTemplate/TestingTemplate.csproj",
-      "msbuildProject": "../TestingTemplate/TestingTemplate.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1295,7 +1280,6 @@
       "NUnit >= 3.13.2",
       "NUnit3TestAdapter >= 4.0.0",
       "Selenium.WebDriver >= 4.1.0",
-      "TestingTemplate >= 1.0.0",
       "coverlet.collector >= 3.1.0"
     ]
   },
@@ -1325,11 +1309,7 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {
-            "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\TestingTemplate\\TestingTemplate.csproj": {
-              "projectPath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\TestingTemplate\\TestingTemplate.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

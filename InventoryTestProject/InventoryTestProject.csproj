@@ -15,8 +15,4 @@
     <PackageReference Include="Selenium.WebDriver" Version="4.1.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\TestingTemplate\TestingTemplate.csproj" />
-  </ItemGroup>
-
 </Project>

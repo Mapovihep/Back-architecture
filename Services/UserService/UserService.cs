@@ -2,6 +2,7 @@
 using Data.UnitOfWork;
 using Data.UnitOfWork.Abstract;
 using DomainDTO.DTO;
+using DomainDTO.DTO.AuthDto;
 using Entities;
 using Mappers;
 using Microsoft.Extensions.DependencyInjection;
@@ -60,26 +61,26 @@ namespace Services.UserService
                 throw ex;
             }
         }
-        public async Task<string> Login(LoginDTO loginDto)
+        public async Task<AuthResponseDto> Login(LoginDTO loginDto)
         {
-            var loginInfo = new LoginInfo()
-            {
-                Email = loginDto.Email,
-                Password = loginDto.Password,
-            };
             try
             {
-                byte[] data = new UTF8Encoding().GetBytes(loginDto.Password);
+                byte[] passwordByteSequence = new UTF8Encoding().GetBytes(loginDto.Password);
                 byte[] hashedPassword;
                 SHA256 shaM = new SHA256Managed();
-                hashedPassword = shaM.ComputeHash(data);
+                hashedPassword = shaM.ComputeHash(passwordByteSequence);
                 Console.WriteLine("In UserController - Login method");
                 Console.WriteLine(loginDto.Password);
                 string token = await GenerateJwtToken(loginDto.Password, loginDto.Email);
                 loginDto.Password = Convert.ToBase64String(hashedPassword);
-                if (await _userRepository.GetProfileToAuth(loginInfo) != null)
+                var authentiedUser = await _userRepository.GetProfileToAuth(loginDto);
+                if (authentiedUser != null)
                 {
-                    return await GenerateJwtToken(loginDto.Password, loginDto.Email);
+                    return new AuthResponseDto() 
+                    { 
+                        Token = await GenerateJwtToken(loginDto.Password, loginDto.Email),
+                        AdminId = authentiedUser.Id
+                    };
                 }
                 throw new Exception("Doesn't generate the token");
             }

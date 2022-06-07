@@ -65,7 +65,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);//все классы, наследующие от библиотеки
-
+//builder.Services.AddControllers().AddNewtonsoftJson()
 var app = builder.Build();
 app.UseRouting();
 

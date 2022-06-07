@@ -51,3 +51,5 @@ C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkin
 C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Data\bin\Debug\net6.0\Entities.pdb
 C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Data\obj\Debug\net6.0\Data.csproj.CopyComplete
 C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Data\obj\Debug\net6.0\Data.genruntimeconfig.cache
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Data\bin\Debug\net6.0\DomainDTO.dll
+C:\Users\Leviossa IT\Desktop\React\ASP Net\Levi-Backend-Architecture\ElderWorkingVersion\Back-architecture\Data\bin\Debug\net6.0\DomainDTO.pdb

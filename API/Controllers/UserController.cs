@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using DomainDTO.DTO;
 using Microsoft.AspNetCore.Authorization;
 using DomainDTO.DTO;
+using System.Net;
 
 namespace API.Controllers
 {
@@ -34,7 +35,9 @@ namespace API.Controllers
         {
             try
             {
+                //base.HttpContext.Response.Headers.Add("Authorization", authInfo.token);
                 return Ok(await _userService.Login(loginDTO));
+                
             }
             catch (Exception ex)
             {
@@ -44,22 +47,23 @@ namespace API.Controllers
 
         [HttpGet]
         //[Route("{controller}/{id}/User")]
-        [Route("Users/{id}")]
+        [Route("{controller}/get/{id}")]
         [Authorize(Policy = "Bearer")]
         public async Task<IActionResult> GetUser(Guid id)
         {
-             try
-             {
-                 return Ok(await _userService.Get(id));
-             }
-             catch (Exception ex)
-             {
-                 return BadRequest(ex.Message);
-             }
+            try
+            {
+                return Ok(await _userService.Get(id));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
+        
         [HttpPost]
         //[Route("{controller}/addUser")]
-        [Route("Users/add/{id}")]
+        [Route("{controller}/add")]
         [Authorize(Policy = "Bearer")]
         public async Task<IActionResult> AddUser([FromBody] UserDTO newUser)
         {
@@ -74,7 +78,7 @@ namespace API.Controllers
         }
         [HttpGet]
         //[Route("{controller}/getAllUsers")]
-        [Route("Users/getAll")]
+        [Route("{controller}/getAll")]
         [Authorize(Policy = "Bearer")]
         public async Task<IActionResult> GetAllUsers()
         {
@@ -89,7 +93,7 @@ namespace API.Controllers
         }
         [HttpPut]
         //[Route("{controller}/{id}/User")]
-        [Route("Users/update/{id}")]
+        [Route("{controller}/update/{id}")]
         [Authorize(Policy = "Bearer")]
         public async Task<IActionResult> UpdateUser([FromBody] UserDTO userDTO)
         {
@@ -104,7 +108,7 @@ namespace API.Controllers
         }
         [HttpDelete]
         //[Route("{controller}/{id}/User")]
-        [Route("Users/delete/{id}")]
+        [Route("{controller}/delete/{id}")]
         [Authorize(Policy = "Bearer")]
         public async Task<IActionResult> DeleteUser(Guid id)
         {
@@ -118,30 +122,15 @@ namespace API.Controllers
             }
         }
         [HttpGet]
-        /*[Route("{controller}/{page}x{offSet}")]
-        [Route("{controller}/{page}x{offSet}/s={search}")]
-        [Route("{controller}/{page}x{offSet}/f={filters}-{ascend}")]
-        [Route("{controller}/{page}x{offSet}/status={isAdmin}")]
-        [Route("{controller}/{page}x{offSet}/s={search}/f={filter}")]
-        [Route("{controller}/{page}x{offSet}/s={search}/status={isAdmin}")]
-        [Route("{controller}/{page}x{offSet}/f={filters}-{ascend}/status={isAdmin}")]
-        [Route("{controller}/{page}x{offSet}/s={search}/f={filters}-{ascend}/status={isAdmin}")]*/
-        [Route("Users/{page}x{offSet}")]
-        [Route("Users/{page}x{offSet}/s={search}")]
-        [Route("Users/{page}x{offSet}/f={filters}-{ascend}")]
-        [Route("Users/{page}x{offSet}/status={isAdmin}")]
-        [Route("Users/{page}x{offSet}/s={search}/f={filter}-{ascend}")]
-        [Route("Users/{page}x{offSet}/s={search}/status={isAdmin}")]
-        [Route("Users/{page}x{offSet}/f={filters}-{ascend}/status={isAdmin}")]
-        [Route("Users/{page}x{offSet}/s={search}/f={filters}-{ascend}/status={isAdmin}")]
+        [Route("{controller}/")]
         [Authorize(Policy = "Bearer")]
         public async Task<IActionResult> GetInventoryFiltered(
-            string? search,
-            int page,
-            int offSet,
-            string? filters,
-            bool ascend,
-            string? isAdmin)
+            [FromQuery]string? search,
+            [FromQuery]int page,
+            [FromQuery]int offSet,
+            [FromQuery]string? filters,
+            [FromQuery]bool ascend,
+            [FromQuery] string? isAdmin)
         {
             Console.WriteLine(search);
             Console.WriteLine(page);
@@ -149,7 +138,6 @@ namespace API.Controllers
             Console.WriteLine(filters);
             try
             {
-                Console.WriteLine($"inventory/page={page}x{offSet}/search ={search}/sort={filters}-{ascend}/status={isAdmin}");
                 return Ok(await _userService.GetUsersFiltered(search, page, offSet, filters, ascend, isAdmin));
             }
             catch (Exception ex)
