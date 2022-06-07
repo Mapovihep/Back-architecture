@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\Domain\\DomainDTO.csproj": {}
+    "C:\\Users\\Leviossa IT\\Desktop\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\Domain\\DomainDTO.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\Domain\\DomainDTO.csproj": {
+    "C:\\Users\\Leviossa IT\\Desktop\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\Domain\\DomainDTO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\Domain\\DomainDTO.csproj",
+        "projectUniqueName": "C:\\Users\\Leviossa IT\\Desktop\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\Domain\\DomainDTO.csproj",
         "projectName": "DomainDTO",
-        "projectPath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\Domain\\DomainDTO.csproj",
+        "projectPath": "C:\\Users\\Leviossa IT\\Desktop\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\Domain\\DomainDTO.csproj",
         "packagesPath": "C:\\Users\\Leviossa IT\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\Leviossa IT\\Desktop\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Leviossa IT\\AppData\\Roaming\\NuGet\\NuGet.Config",

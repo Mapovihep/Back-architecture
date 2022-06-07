@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\ConfigurationContainer\\ConfigurationContainer.csproj": {}
+    "C:\\Users\\Leviossa IT\\Desktop\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\ConfigurationContainer\\ConfigurationContainer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\ConfigurationContainer\\ConfigurationContainer.csproj": {
+    "C:\\Users\\Leviossa IT\\Desktop\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\ConfigurationContainer\\ConfigurationContainer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\ConfigurationContainer\\ConfigurationContainer.csproj",
+        "projectUniqueName": "C:\\Users\\Leviossa IT\\Desktop\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\ConfigurationContainer\\ConfigurationContainer.csproj",
         "projectName": "ConfigurationContainer",
-        "projectPath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\ConfigurationContainer\\ConfigurationContainer.csproj",
+        "projectPath": "C:\\Users\\Leviossa IT\\Desktop\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\ConfigurationContainer\\ConfigurationContainer.csproj",
         "packagesPath": "C:\\Users\\Leviossa IT\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\ConfigurationContainer\\obj\\",
+        "outputPath": "C:\\Users\\Leviossa IT\\Desktop\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\ConfigurationContainer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Leviossa IT\\AppData\\Roaming\\NuGet\\NuGet.Config",

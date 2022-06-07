@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "52aDhpTt93Fb6SMi8Og1C6UVFvChTF0g4j/JqcT8+8wzighwsKfNqUWtywd9++rWZEjNfF2DMr1SYZXP05RtGg==",
+  "dgSpecHash": "R4/F0gq/I2KdAI8fOy2Lwz9wfb1rS+Kmh1g1DMCA5d8v3CsCRfNPFvxSZtssoRWF6BUgveHE/sTd7RwqaIwdnw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\Leviossa IT\\Desktop\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Leviossa IT\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\Leviossa IT\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

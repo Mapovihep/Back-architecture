@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TGUmcjkYmAPFxV9ta26W4+Ri0U4i07BByFLHkUFR1jAADC82AL7GTZ++j/CsbsOR7Zy/dd3DOZHxIKmRmqlYwg==",
+  "dgSpecHash": "raSlv3HWSmdHgzTjj0dDmCJIMQh+94y87hVlS20sxF9u2FaQL8Fcp0VC5TXiboGPg1I4jNsBtBztdKmUrnBRYQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\Services\\Services.csproj",
+  "projectFilePath": "C:\\Users\\Leviossa IT\\Desktop\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\Services\\Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Leviossa IT\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Leviossa IT\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",

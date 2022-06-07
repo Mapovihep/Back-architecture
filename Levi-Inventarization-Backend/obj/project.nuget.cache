@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SEf2z+cwv4LNplAEhszRDWxJ8F9HnO+mKawOVGH0J07TbbxaVbYlZvccNREvENCoYUER2uXy2gxja5YS4VyQxg==",
+  "dgSpecHash": "xVEyK55W0uJgCyQ0AIjaVqFw4W1myy75+i2fucAdSg7q+agqNyQkWYGNbcRl7eokFbtj+7rXSVBcYnRn6NdUBw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\Levi-Inventarization-Backend\\Levi-Inventarization-Backend.csproj",
+  "projectFilePath": "C:\\Users\\Leviossa IT\\Desktop\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\Levi-Inventarization-Backend\\Levi-Inventarization-Backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Leviossa IT\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\Leviossa IT\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",

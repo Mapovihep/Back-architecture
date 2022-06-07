@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+0UiTwYPRi0Po3XC1r6BUufGplB2Wt00omV3EIVE2OUgXZRCB6DsKS5SzZhWfmwyTglEhzoLpIW6RCjJXBNtGA==",
+  "dgSpecHash": "Vl5+z8vfBUwX6uT+OCi22cOgnOMBmBEP1LkLf3OOscKzV3pvTbSRNxKO5mVcCGPAARKnrTdENlQ7lDD0GYY8zg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Leviossa IT\\Desktop\\React\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\Domain\\DomainDTO.csproj",
+  "projectFilePath": "C:\\Users\\Leviossa IT\\Desktop\\ASP Net\\Levi-Backend-Architecture\\ElderWorkingVersion\\Back-architecture\\Domain\\DomainDTO.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
